@@ -1,4 +1,4 @@
-PWD /home/paolo/fisica/laboratori/nucleare/appunti_latex
+PWD /home/paolo/fisica/lab_iii_anno/nucleare/appunti_latex
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT main.tex
@@ -83,15 +83,9 @@ INPUT /usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 INPUT /usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 INPUT /usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 INPUT /usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
-INPUT /usr/share/texmf-dist/tex/generic/atbegshi/atbegshi.sty
-INPUT /usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty
-INPUT /usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 INPUT /usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
 INPUT /usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
 INPUT /usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
-INPUT /usr/share/texmf-dist/tex/latex/atveryend/atveryend.sty
-INPUT /usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty
-INPUT /usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty
 INPUT /usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 INPUT /usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 INPUT /usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
@@ -124,13 +118,13 @@ INPUT /usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT /usr/share/texmf-dist/tex/generic/babel/babel.sty
 INPUT /usr/share/texmf-dist/tex/generic/babel/babel.sty
 INPUT /usr/share/texmf-dist/tex/generic/babel/txtbabel.def
-INPUT /usr/share/texmf-dist/tex/generic/babel-italian/italian.ldf
-INPUT /usr/share/texmf-dist/tex/generic/babel-italian/italian.ldf
-INPUT /usr/share/texmf-dist/tex/generic/babel-italian/italian.ldf
 INPUT /usr/share/texmf-dist/tex/generic/babel/locale/it/babel-italian.tex
 INPUT /usr/share/texmf-dist/tex/generic/babel/locale/it/babel-italian.tex
 INPUT /usr/share/texmf-dist/tex/generic/babel/locale/it/babel-italian.tex
 INPUT /usr/share/texmf-dist/tex/generic/babel/locale/it/babel-it.ini
+INPUT /usr/share/texmf-dist/tex/generic/babel-italian/italian.ldf
+INPUT /usr/share/texmf-dist/tex/generic/babel-italian/italian.ldf
+INPUT /usr/share/texmf-dist/tex/generic/babel-italian/italian.ldf
 INPUT /usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty
 INPUT /usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty
 INPUT /usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
@@ -143,6 +137,10 @@ INPUT /usr/share/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex
 INPUT /usr/share/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex
 INPUT /usr/share/texmf-dist/tex/latex/tools/multicol.sty
 INPUT /usr/share/texmf-dist/tex/latex/tools/multicol.sty
+INPUT /usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+INPUT /usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+INPUT /usr/share/texmf-dist/tex/latex/physics/physics.sty
+INPUT /usr/share/texmf-dist/tex/latex/physics/physics.sty
 INPUT /usr/share/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/share/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/share/texmf-dist/tex/latex/caption/caption3.sty
@@ -229,6 +227,7 @@ INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb

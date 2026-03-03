@@ -2,7 +2,7 @@
 \section{Introduzione e ripasso}
 \subsection{Unità di misura e costanti fisiche}
 Nell'ambito della fisica nucleare e subnucleare, come in ogni altro della fisica,
-esistono delle unità di misura non appartenenti al SI, che però risultano più
+esistono delle unità di misura non appartenenti al SI che però risultano più
 utilizzate per praticità:
 \begin{itemize}
     \item Lunghezza: $1 fm = 10^{-15}m$, femtométro o Fermi;
@@ -21,7 +21,7 @@ utilizzate per praticità:
     \item Costante di struttura fine: $\alpha = \frac{e^2}{4\pi \epsilon_0 \hbar c}\approx \frac{1}{137.04}$;
 \end{itemize}
 \subsection{Ripasso: cinematica relativistica}
-Ricordo qui i concetti fondamentali della cinematica relativistica.
+Si ricordano qui i concetti fondamentali della cinematica relativistica.
 
 L'usuale spazio delle configurazioni $ \mathbb{R}^3$ viene sostituito dallo spazio
 di Minkowski $ M $, uno spazio vettoriale a 4 dimensioni con un prodotto scalare
@@ -36,26 +36,26 @@ $a\cdot b = a_0b_0 - \vec{a}\cdot\vec{b}$: è noto che il risultato di prodotti 
 tra quadrivettori è invariante per trasformazioni di Lorentz e che quindi è
 indipendente dal sistema di riferimento.
  
-Considero il quadrimpulso $p = (\frac{E}{c},\vec{p})$ e la quadrivelocità
+Si considerino il quadrimpulso $p = (\frac{E}{c},\vec{p})$ e la quadrivelocità
 $u = \gamma(c,\vec{v})$ (con $ \gamma = \frac{1}{\sqrt{1-\beta^2}} $ e
 $\beta = \frac{v}{c}$); per definizione, $p = mu = \gamma(mc,m\vec{v})$ e dunque
 $$ p^2 = p\cdot p = \gamma^2m^2c^2 - \gamma^2m^2v^2 = \gamma^2m^2c^2(1-\beta^2) = m^2c^2 $$
-Dall'altra definizione di $p$, si trova dunque
+Dall'altra definizione di $p$ si trova dunque
 $$ p^2 = \frac{E^2}{c^2} - |\vec{p}|^2 = m^2c^2 \rightarrow E^2 = |\vec{p}|^2c^2 + m^2c^4$$
-che è la relazione di \textit{mass-shell} che, per $\vec{p} = 0$, si riduce alla nota
+si tratta della relazione di \textit{mass-shell} che, per $\vec{p} = 0$, si riduce alla nota
 espressione dell'energia a riposo $E = mc^2 $.
 
 Ponendo $E = T + mc^2$, si trova la relazione tra il momento e l'energia cinetica
 $$ |\vec{p}|c = \sqrt{T^2 + 2mc^2T} $$
 
-\subsection{Rapporti tra relatività e MQ}
+\subsection{Rapporti tra relatività e meccanica quantistica}
 Si trova una relazione interessante mescolando quanto appena ricavato, il concetto 
-di lunghezza d'onda di De Broglie e l'indeterminazione momento-posizione:
+di lunghezza d'onda di De Broglie e l'indeterminazione momento-posizione di Heisenberg:
 
-De Broglie dice $ |\vec{p}| = \hbar k = \frac{\hbar}{\lambda} \rightarrow \lambda = \frac{\hbar}{|\vec{p}|}$
+De Broglie: $ |\vec{p}| = \hbar k = \frac{\hbar}{\lambda} \rightarrow \lambda = \frac{\hbar}{|\vec{p}|}$
 
-Heisenberg dice $ \Delta x \Delta p \geq \hbar/ 2$, che può essere approssimato a
-$ \Delta x \Delta p \geq \hbar$: se considero un errore piccolo su $|p|$, cioè
+Heisenberg: $ \Delta x \Delta p \geq \hbar/ 2$, che può essere approssimato a
+$ \Delta x \Delta p \geq \hbar$: se si considera un errore piccolo su $|p|$, cioè
 $ \frac{\Delta p }{|\vec{p}|} << 1 $, si ha che
 $$ |\vec{p}|\Delta x > \hbar \rightarrow \Delta x > \frac{\hbar}{|\vec{p}|} = \frac{\lambda}{2\pi} := \lambdabar$$ 
 cioè che il potere risolutivo sulla posizione di una particella è al più uguale alla
@@ -70,3 +70,34 @@ un massimo possibile di risoluzione spaziale $\lambdabar \approx 1.5 \cdot 10^{-
 
 \subsection{Equazione di Klein-Gordon}
 
+Si consideri ora l'equazione di Schrödinger libera
+$$ i \hbar\pdv{\psi}{t}=\frac{-\hbar^2}{2m}\laplacian\psi \rightarrow \hat{E}\psi = \hat{H}\psi$$
+definendo gli operatori $ \hat{E} = i \hbar \pdv{t} $ e $ \hat{H} = \frac{\hat{p}^2}{2m} $.
+
+Questa relazione ha senso solo in un contesto non relativistico per alcune ragioni:
+\begin{itemize}
+    \item Il tempo $ t $ è un parametro, mentre $ \vec{x}$ è un operatore, mentre nella meccanica
+	relativistica sono trattati come due variabili spaziali;
+    \item L'equazione è di primo ordine in $ t $, mentre di second'ordine in $ \vec{x} $;
+    \item L'osservabile $ \bra{\psi} \dv{\vec{x}}{t}\ket{\psi} $ (valor medio della velocità) non è
+	limitato a $ c $, come prevede la relatività speciale. 
+\end{itemize}
+
+Per questi motivi, bisogna trovare un'altra formulazione per unire le due teorie:
+un metodo è prendere la relazione di mass-shell e promuoverne i termini a operatori
+
+$$ E^2 = |\vec{p}|^2c^2 + m^2c^4, \quad \hat{E}=i \hbar\pdv{t},\quad \hat{p}^2 = -\hbar^2\laplacian$$
+$$-\hbar^2 \pdv[2]{\psi}{t} = -\hbar^2c^2\laplacian\psi + m^2c^4\psi$$ 
+
+Questo risultato è \textbf{l'equazione di Klein Gordon}, scritta anche in forma covariante come
+$$ (\hbar^2\partial^{\mu}\partial_{\mu} + m^2c^2)\psi = 0 $$ 
+
+Una soluzione di questa equazione è, come atteso, una funzione d'onda del tipo
+$$ \psi(x) = exp\{-\frac{i}{\hbar}p\cdot x\} $$
+dove $ x $ e $ p $ sono quadrivettori.
+
+In questo contesto, risulta fisicamente accettabile considerare $ E<0 $, infatti 
+$$ \pdv{\psi}{t} = p_0c\psi = \pm\sqrt{|\vec{p}|^2c^2+m^2c^4}\psi$$
+Al segno negativo si può dare il significato di particelle con energia positiva,
+ma che viaggiano nello spazio-tempo in direzione negativa: diventerà evidente dall'equazione di Dirac
+che queste sono \textit{antiparticelle}. [TO BE CONTINUED...]
