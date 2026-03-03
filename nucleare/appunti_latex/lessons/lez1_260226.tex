@@ -1,0 +1,72 @@
+%lezione del 26 febbraio 2026
+\section{Introduzione e ripasso}
+\subsection{Unità di misura e costanti fisiche}
+Nell'ambito della fisica nucleare e subnucleare, come in ogni altro della fisica,
+esistono delle unità di misura non appartenenti al SI, che però risultano più
+utilizzate per praticità:
+\begin{itemize}
+    \item Lunghezza: $1 fm = 10^{-15}m$, femtométro o Fermi;
+    \item Energia: scala da $1 GeV$ a $ 1 TeV $, con $ 1GeV = 1.602 \cdot 10^{-10} J$;
+    \item Massa: si usano i $ GeV/c^2 $, da $E=mc^2$;
+    \item Momento (impulso): $ GeV/c $; 
+\end{itemize}
+
+È anche importante ricordare qualche costante fisica:
+\begin{itemize}
+    \item Velocità della luce nel vuoto: $ c = 2.997 \cdot10^8 m/s $;
+    \item $\hbar c = 197.3 MeV\cdot fm$;
+    \item Massa del protone: $M_p = 938.272 MeV/c^2$;
+    \item Massa del neutrone: $M_n = 939.565 MeV/c^2$;
+    \item Massa dell'elettrone: $m_e = 510.998 MeV/c^2$;
+    \item Costante di struttura fine: $\alpha = \frac{e^2}{4\pi \epsilon_0 \hbar c}\approx \frac{1}{137.04}$;
+\end{itemize}
+\subsection{Ripasso: cinematica relativistica}
+Ricordo qui i concetti fondamentali della cinematica relativistica.
+
+L'usuale spazio delle configurazioni $ \mathbb{R}^3$ viene sostituito dallo spazio
+di Minkowski $ M $, uno spazio vettoriale a 4 dimensioni con un prodotto scalare
+pseudo-riemanniano rappresentato dalla matrice diag$ (+,-,-,-) $: gli elementi di
+$ M $ sono detti \textit{quadrivettori} e, usualmente, la prima componente rappresenta
+la parte "temporale" della grandezza considerata, mentre le altre sono il (tri)vettore
+classico corrispondente, ad esempio $ x = (ct,\vec{x}) $.
+
+Il prodotto scalare segue la metrica sopra riportata, di modo che, dati
+$ a = (a_0,\vec{a})$ e $ b = (b_0,\vec{b}) $,  
+$a\cdot b = a_0b_0 - \vec{a}\cdot\vec{b}$: è noto che il risultato di prodotti scalari
+tra quadrivettori è invariante per trasformazioni di Lorentz e che quindi è
+indipendente dal sistema di riferimento.
+ 
+Considero il quadrimpulso $p = (\frac{E}{c},\vec{p})$ e la quadrivelocità
+$u = \gamma(c,\vec{v})$ (con $ \gamma = \frac{1}{\sqrt{1-\beta^2}} $ e
+$\beta = \frac{v}{c}$); per definizione, $p = mu = \gamma(mc,m\vec{v})$ e dunque
+$$ p^2 = p\cdot p = \gamma^2m^2c^2 - \gamma^2m^2v^2 = \gamma^2m^2c^2(1-\beta^2) = m^2c^2 $$
+Dall'altra definizione di $p$, si trova dunque
+$$ p^2 = \frac{E^2}{c^2} - |\vec{p}|^2 = m^2c^2 \rightarrow E^2 = |\vec{p}|^2c^2 + m^2c^4$$
+che è la relazione di \textit{mass-shell} che, per $\vec{p} = 0$, si riduce alla nota
+espressione dell'energia a riposo $E = mc^2 $.
+
+Ponendo $E = T + mc^2$, si trova la relazione tra il momento e l'energia cinetica
+$$ |\vec{p}|c = \sqrt{T^2 + 2mc^2T} $$
+
+\subsection{Rapporti tra relatività e MQ}
+Si trova una relazione interessante mescolando quanto appena ricavato, il concetto 
+di lunghezza d'onda di De Broglie e l'indeterminazione momento-posizione:
+
+De Broglie dice $ |\vec{p}| = \hbar k = \frac{\hbar}{\lambda} \rightarrow \lambda = \frac{\hbar}{|\vec{p}|}$
+
+Heisenberg dice $ \Delta x \Delta p \geq \hbar/ 2$, che può essere approssimato a
+$ \Delta x \Delta p \geq \hbar$: se considero un errore piccolo su $|p|$, cioè
+$ \frac{\Delta p }{|\vec{p}|} << 1 $, si ha che
+$$ |\vec{p}|\Delta x > \hbar \rightarrow \Delta x > \frac{\hbar}{|\vec{p}|} = \frac{\lambda}{2\pi} := \lambdabar$$ 
+cioè che il potere risolutivo sulla posizione di una particella è al più uguale alla
+sua lunghezza di De Broglie ridotta.
+
+In termini relativistici, $\lambdabar$ è legata all'energia cinetica $T$:
+
+$$\lambdabar = \frac{\hbar c}{|\vec{p}|c} = \frac{\hbar c}{\sqrt{T^2 + 2mc^2T}}$$
+
+Al CERN, per esempio, per protoni $m_p = 1 GeV/c^2$ con energia $ T = 13TeV $, si ha
+un massimo possibile di risoluzione spaziale $\lambdabar \approx 1.5 \cdot 10^{-5} fm$.
+
+\subsection{Equazione di Klein-Gordon}
+
