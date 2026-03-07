@@ -1,9 +1,0 @@
-\babel@toc {italian}{}\relax 
-\babel@toc {italian}{}\relax 
-\contentsline {section}{\numberline {1}Introduzione e ripasso}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Unità di misura e costanti fisiche}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Ripasso: cinematica relativistica}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Rapporti tra relatività e meccanica quantistica}{3}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Equazione di Klein-Gordon}{4}{subsection.1.4}%
-\contentsline {section}{\numberline {2}Teoria degli urti}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Cinematica degli urti elastici}{5}{subsection.2.1}%
