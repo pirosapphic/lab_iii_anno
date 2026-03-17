@@ -1,4 +1,4 @@
-Threshold [mV] - Staircase(s) impostazioni pt 2, Vbias=54V, threshold -6mV
+Threshold [mV] - Staircase(s) impostazioni pt 2	
 -5	0.00666667	
 -6	0.00333333	
 -7	0.00666667	
