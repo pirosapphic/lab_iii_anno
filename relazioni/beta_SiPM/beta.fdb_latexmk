@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1773832373.13526 "main.aux" "main.bbl" "main" 1773832455.18374 0
-  "./references.bib" 1772006992 343 0094a34a4e3e7c28ce733c7cb0c24315 ""
+["bibtex beta"] 1773832635.76392 "beta.aux" "beta.bbl" "beta" 1773832636.69394 0
+  "./references.bib" 1773832587.68111 343 0094a34a4e3e7c28ce733c7cb0c24315 ""
   "/usr/share/texmf-dist/bibtex/bst/base/plain.bst" 1772820570 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1773832455.02411 2191 ed36695d8eafd532da60572a2c50b907 "pdflatex"
+  "beta.aux" 1773832636.54511 2191 ed36695d8eafd532da60572a2c50b907 "pdflatex"
   (generated)
-  "main.bbl"
-  "main.blg"
+  "beta.bbl"
+  "beta.blg"
   (rewritten before read)
-["pdflatex"] 1773832454.27814 "main.tex" "main.pdf" "main" 1773832455.18409 0
+["pdflatex"] 1773832635.80648 "beta.tex" "beta.pdf" "beta" 1773832636.69431 0
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1772820570 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1772820570 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1772820570 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -94,20 +94,20 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1772820570 43569 fd570f2fa160877d211e859f687312ba ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1772845170 330109 1d6d18e5da51d447ad975a55b7118f6a ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1772845123 2329482 5361999ce40940db53b41eb483f1ad04 ""
-  "abstract.tex" 1772028023.47243 11 0db843483cacb291f5cf8cc6afa99e4b ""
-  "distanzecav.jpg" 1772006992 58007 689478636e45da3f73feb13223278622 ""
-  "main.aux" 1773832455.02411 2191 ed36695d8eafd532da60572a2c50b907 "pdflatex"
-  "main.bbl" 1773832373.17111 49 0eba253fc001332e731e8aba3f23127b "bibtex main"
-  "main.out" 1773832455.02611 1187 3f36e74fc961cc1cbec5d270c11782d8 "pdflatex"
-  "main.tex" 1773832453.10311 2309 310d15c4c02a206661189364e2996c13 ""
-  "sections/1_intro.tex" 1773832359.97811 246 7e08673c6031c1f3d11f8be15304489f ""
-  "sections/2_section.tex" 1773832371.97911 948 d13a26b8fa7c9eab20f873f9ce34e1ac ""
-  "sections/3_section.tex" 1773832382.58511 200 85c5ede7d6bf7c9f15eae97c1280a767 ""
-  "sections/4_section.tex" 1773832392.27511 196 4a2a5f26f935364b4ffa2b1e274a9634 ""
-  "sections/5_conclusion.tex" 1772006992 128 2b0b0d53a78c8b1bdf48a4cc39e9a07f ""
+  "abstract.tex" 1773832587.68213 11 0db843483cacb291f5cf8cc6afa99e4b ""
+  "beta.aux" 1773832636.54511 2191 ed36695d8eafd532da60572a2c50b907 "pdflatex"
+  "beta.bbl" 1773832635.79911 49 0eba253fc001332e731e8aba3f23127b "bibtex beta"
+  "beta.out" 1773832636.54711 1187 3f36e74fc961cc1cbec5d270c11782d8 "pdflatex"
+  "beta.tex" 1773832587.68213 2309 310d15c4c02a206661189364e2996c13 ""
+  "distanzecav.jpg" 1773832587.68213 58007 689478636e45da3f73feb13223278622 ""
+  "sections/1_intro.tex" 1773832587.68213 246 7e08673c6031c1f3d11f8be15304489f ""
+  "sections/2_section.tex" 1773832587.68213 948 d13a26b8fa7c9eab20f873f9ce34e1ac ""
+  "sections/3_section.tex" 1773832587.68213 200 85c5ede7d6bf7c9f15eae97c1280a767 ""
+  "sections/4_section.tex" 1773832587.68213 196 4a2a5f26f935364b4ffa2b1e274a9634 ""
+  "sections/5_conclusion.tex" 1773832587.68213 128 2b0b0d53a78c8b1bdf48a4cc39e9a07f ""
   (generated)
-  "main.aux"
-  "main.log"
-  "main.out"
-  "main.pdf"
+  "beta.aux"
+  "beta.log"
+  "beta.out"
+  "beta.pdf"
   (rewritten before read)
