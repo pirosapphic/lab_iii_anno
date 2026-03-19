@@ -1,0 +1,11 @@
+Number of pulses received - @ High	Counts - @ High	
+128	1	
+132	3	
+136	5	
+140	11	
+144	8	
+148	4	
+152	6	
+156	5	
+160	2	
+164	5	
