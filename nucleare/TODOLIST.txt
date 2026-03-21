@@ -1,4 +1,4 @@
-    COSE DA FARE			CHI LE FA
+    COSE DA FARE			CHI LE FA	PROGRESSO
 Parte 1: caratt. SiPM
 - DCR					Sofi
 - OCT (easy)				Anna
@@ -9,11 +9,11 @@ Parte 1: caratt. SiPM
     - Int. luminosa variabile		Paolo
 
 Parte 2: sorgenti radioattive
-- Picco di conversione interna Cs137	Paolo 		
+- Picco di conversione interna Cs137	Paolo 		OK!
 - Tmax Cs137				Paolo
 - Picchi Cs137				Anna
-- Tmax Sr90				Paolo
-- k di calibrazione da Sr90		Paolo
+- Tmax Sr90				Paolo		OK!
+- k di calibrazione da Sr90		Paolo		OK! 	
 - k_eq di calibrazione da Sr90		Sofi
 - Assorbimento carta			Anna
 - Assorbimento Al			Anna

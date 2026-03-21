@@ -20,6 +20,7 @@ void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt")
     float xMin = 532.5; float xMax = 35567.5;  float binWidth = 65.;
 
     TCanvas* c1 = new TCanvas("c1","c1",20,20,800,600);
+    c1->SetGrid();
     float x;  float y; string parName; 
     TH1F* theHisto = new TH1F("Energy Spectrum", "Electron energy ^{137}Cs", (int)((xMax-xMin)/binWidth), xMin, xMax);
     //theHisto->Sumw2();
@@ -36,7 +37,7 @@ void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt")
 
     // rebinning  
     //theHisto->Rebin(2);	//constant
-    gStyle->SetOptStat(0);	//toglie tabellina di merda
+    //gStyle->SetOptStat(0);	//toglie tabellina di merda
     // fit
 
     //estremi di fit
@@ -46,7 +47,7 @@ void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt")
     TF1* ffit = new TF1("ffit","gaus(0)+gaus(3)+[6]",0.,50000.);
     ffit->SetParameter(0,700); //norm
     ffit->SetParameter(1,20000);//media
-    ffit->SetParameter(2,2000);//std dev
+    ffit->SetParameter(2,2000);//sigma
     
     ffit->SetParameter(3,3000);
     ffit->SetParameter(4,9000);
@@ -73,5 +74,20 @@ void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt")
     biggaus->SetParameter(0,0.);
     biggaus->Draw("same");
     lilgaus->Draw("same");
-
+    
+    //getting the gaussian peak
+    double peak = ffit->GetParameter(1);  //mean
+    double s_peak = ffit->GetParameter(2);//std dev
+    std::cout << "Picco gamma = ("<<peak<<" +/- "<<s_peak<<")CHN\n";
+    double k = 2.4e-5;		double s_k = 5e-6; //MeV/CHN
+    double T_gamma = k*peak;
+    double s_T_gamma = T_gamma * sqrt(pow(s_k/k,2)+pow(s_peak/peak,2));
+    std::cout << "T_gamma = ("<<T_gamma*1000<<" +/- "<<s_T_gamma*1000<<")keV\n";
+    double T_teo = 0.629; //MeV
+    double s_T_teo = 0.016;
+    std::cout << "E_teorica = ("<<T_teo*1000<<" +/- "<<s_T_teo*1000<<")keV\n";
+    double z = (T_teo - T_gamma)/(sqrt(pow(s_T_teo,2)+pow(s_T_gamma,2)));
+    std::cout << "z-score = "<<z<<std::endl;
+    double R_exp = s_peak/peak; //risoluzione sperimentiale
+    std::cout << "Risoluzione sperimentale = "<<R_exp<<std::endl;
 }
