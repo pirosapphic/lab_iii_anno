@@ -11,17 +11,17 @@
 #include "TCanvas.h"
 #include "TFile.h"
 
-void fitCs137(string input = "../data_sorg/A8_Cs137_total.txt") 
+void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt") 
 {
 
     ifstream parInput(input.c_str());
 
     // in ADC counts
-    float xMin = 525.; float xMax = 30525.;  float binWidth = 65.;
+    float xMin = 532.5; float xMax = 35567.5;  float binWidth = 65.;
 
     TCanvas* c1 = new TCanvas("c1","c1",20,20,800,600);
     float x;  float y; string parName; 
-    TH1F* theHisto = new TH1F("theHisto", "Electron energy", (int)((xMax-xMin)/binWidth), xMin, xMax);
+    TH1F* theHisto = new TH1F("Energy Spectrum", "Electron energy ^{137}Cs", (int)((xMax-xMin)/binWidth), xMin, xMax);
     //theHisto->Sumw2();
 
     if (parInput.is_open()) {
@@ -35,11 +35,11 @@ void fitCs137(string input = "../data_sorg/A8_Cs137_total.txt")
     }
 
     // rebinning  
-    //theHisto->Rebin(2);    // constant
-
+    //theHisto->Rebin(2);	//constant
+    gStyle->SetOptStat(0);	//toglie tabellina di merda
     // fit
 
-    //estremi
+    //estremi di fit
     double min = 11000;
     double max = 30000;
 
@@ -57,7 +57,8 @@ void fitCs137(string input = "../data_sorg/A8_Cs137_total.txt")
     
     theHisto->Draw("e1");
     theHisto->Fit("ffit","","e1",min,max);
-    std::cout << "Chi^2:" << ffit->GetChisquare() << ", number of DoF: " << ffit->GetNDF() << " (Probability: " << ffit->GetProb() << ")." << std::endl;
+    std::cout << "Chi^2:" << ffit->GetChisquare() << ", number of DoF: " << ffit->GetNDF();
+    std::cout << " (Probability: " << ffit->GetProb() << ")." << std::endl;
     std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
 
 

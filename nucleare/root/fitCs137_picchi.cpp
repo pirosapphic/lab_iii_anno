@@ -10,7 +10,7 @@
 #include "TCanvas.h"
 #include "TFile.h"
 
-void fit_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt") 
+void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt") 
 {
  
   ifstream parInput(input.c_str());
