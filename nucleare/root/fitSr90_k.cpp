@@ -54,6 +54,7 @@ void fitSr90_k(string input = "../data_sorg/A8_Sr90_centrato.txt"){
     
     //endpoint
     TCanvas* cep = new TCanvas("c2","c2",20,20,800,600);
+    cep->SetGrid();
     cep->cd();
     histoEp->Rebin(31);
     for (double x = xMinep; x<=xMaxep; x+=binWidth){
@@ -66,6 +67,7 @@ void fitSr90_k(string input = "../data_sorg/A8_Sr90_centrato.txt"){
 	histoEp->SetBinContent(theBin,new_y);
 	histoEp->SetBinError(theBin,s_new_y);
     }
+    gStyle->SetOptStat(0);
     histoEp->Draw("e1");
     TF1* f1 = new TF1("f1","pol1",57000,66200);
     f1->SetParameter(0,0);

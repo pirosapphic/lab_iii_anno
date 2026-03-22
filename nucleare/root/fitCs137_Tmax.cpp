@@ -11,24 +11,21 @@
 #include "TCanvas.h"
 #include "TFile.h"
 
-void fitSr90_Tmax(string input = "../data_sorg/A8_Sr90_centrato.txt"){    
+void fitCs137_Tmax(string input = "../data_sorg/A8_Cs137_total.txt"){    
 
     ifstream parInput(input.c_str());
 
     // in ADC counts
     double xMin = 532.5;
-    double xMax = 67027.5;
-    double xMinep = 57017.5;
-    double xMaxep = xMax;
+    double xMax = 35567.5;
 
     double binWidth = 65.;
-    int nbinstot = (int)((xMax-xMin)/binWidth)+1;
-    int nbinsep = (int)((xMaxep-xMinep)/binWidth)+1;
+    int nbins = (int)((xMax-xMin)/binWidth)+1;
     
     double x;
     double y;
     string parName; 
-    TH1D* histoTot = new TH1D("Energy Spectrum", "Electron energy ^{90}Sr;ADC [CHN];Counts [#]",nbinstot, xMin, xMax);
+    TH1D* histoTot = new TH1D("Energy Spectrum", "Electron energy ^{137}Cs;ADC [CHN];Counts [#]",nbins, xMin, xMax);
 
     if (parInput.is_open()) {
 	while ( parInput.good() ) {
@@ -42,12 +39,12 @@ void fitSr90_Tmax(string input = "../data_sorg/A8_Sr90_centrato.txt"){
     }
     TCanvas* ctot = new TCanvas("c1","c1",20,20,800,600);
     ctot->SetGrid();
+    histoTot->Rebin(8);
     gStyle->SetOptStat(0);
-    histoTot->Rebin(4);
     histoTot->Draw("e1");
-   
-    double minfit = 4000;
-    double maxfit = 10500;
+
+    double minfit = 2000;
+    double maxfit = 7200;
     TF1* f1 = new TF1("f1","pol2",minfit,maxfit);
     histoTot->Fit("f1","","e1",minfit,maxfit);
     std::cout << "Chi^2:" <<f1->GetChisquare() << ", number of DoF: " << f1->GetNDF();
@@ -65,5 +62,7 @@ void fitSr90_Tmax(string input = "../data_sorg/A8_Sr90_centrato.txt"){
     double s_k = 5e-6;
     double T_max = k*max; //MeV
     double s_T_max = T_max * sqrt(pow(s_k/k,2)+pow(s_max/max,2));
-    std::cout << "T_max = ("<<T_max<<" +/- "<<s_T_max<<")MeV\n";
+    std::cout << "T_max = ("<<T_max*1000<<" +/- "<<s_T_max*1000<<")keV\n";
+
 }
+

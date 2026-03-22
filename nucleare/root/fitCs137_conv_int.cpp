@@ -37,7 +37,7 @@ void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt")
 
     // rebinning  
     //theHisto->Rebin(2);	//constant
-    //gStyle->SetOptStat(0);	//toglie tabellina di merda
+    gStyle->SetOptStat(0);	//toglie tabellina di merda
     // fit
 
     //estremi di fit

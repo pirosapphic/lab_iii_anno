@@ -10,7 +10,7 @@ Parte 1: caratt. SiPM
 
 Parte 2: sorgenti radioattive
 - Picco di conversione interna Cs137	Paolo 		OK!
-- Tmax Cs137				Paolo
+- Tmax Cs137				Paolo		OK!
 - Picchi Cs137				Anna
 - Tmax Sr90				Paolo		OK!
 - k di calibrazione da Sr90		Paolo		OK! 	
