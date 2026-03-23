@@ -156,7 +156,7 @@ void fit_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
 
   double media[10]= {mean1, mean2, mean3, mean4, mean5, mean6, mean7, mean8, mean9, mean10};
   double errM[10] ={errM1,errM2,errM3,errM4,errM5,errM6,errM7,errM8,errM9,errM10};
-
+  double sigma[10] = {sigma1,sigma2,sigma3,sigma4,sigma5,sigma6,sigma7,sigma8,sigma9,sigma10};
   //delta p-p
   double deltapp[9] = {};
   double errpp[9] = {};
@@ -179,11 +179,37 @@ void fit_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
 
   meanpp= n/d;
   error= pow(1/d,1/2);
-  cout << meanpp << " +/- " << error << endl;
+  cout << "<deltapp> vale: " << meanpp << " +/- " << error << endl;
 
+  // Nci = CHNci/meanpp
+
+  double Nci[10] = {};
+  for (int i = 0; i < 10; i++)
+  {
+    Nci[i]= media[i]/meanpp; 
+  }
   
+  //risoluzione sperimentale Rexp
+   double Rexp[10] = {};
+  for ( int i = 0; i < 10; i++)
+  {
+    Rexp[i]= sigma[i]/media[i]; 
+  }
+  
+  //risoluzione attesa Rat
 
+  double Rat[10] = {};
+  for (int i = 0; i < 10; i++)
+  {
+    Rat[i]= 1/sqrt(Nci[i])*sqrt(1+pow(sigma[i]/meanpp,2));
+  }
+  
+  for (int i = 0; i < 10; i++) {
+        cout << Rexp[i]<< "  " << Rat[i]<< endl;
+  }
  
 }
 
- 
+ /*cose da fare:chiedere cos'è sigmap, media sigma o diversa per ogni fit?
+ cercare errore R e verificare formula Rat
+  */
