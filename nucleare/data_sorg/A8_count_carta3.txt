@@ -1,4 +1,3 @@
-Number of pulses received - @ Low carta N=3 GATE 500ms
 518.925	1	
 526.775	0	
 534.625	2	
@@ -19,3 +18,4 @@ Number of pulses received - @ Low carta N=3 GATE 500ms
 652.375	4	
 660.225	0	
 668.075	1	
+Number of pulses received - @ Low carta N=3 GATE 500ms
