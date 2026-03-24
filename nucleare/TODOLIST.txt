@@ -4,8 +4,8 @@ Parte 1: caratt. SiPM
 - OCT (easy)				Anna
 - DCR a temp variabile			Sofi
 - Spettri LED:
-    - Gain variabile			Paolo
-    - Vbias variabile			Paolo
+    - Gain variabile			Paolo		OK!
+    - Vbias variabile			Paolo		OK!
     - Int. luminosa variabile		Paolo
 
 Parte 2: sorgenti radioattive

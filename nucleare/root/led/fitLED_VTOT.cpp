@@ -12,39 +12,36 @@
 #include "TCanvas.h"
 #include "TFile.h"
 
-//LINEARITÀ di Deltapp e Gampl
-//deltapp = a*Gampl + b, con b=0
-			//   a=Gsipm*e/k	
-//Vbias = 55 V cost
+//Gsipm(Vbias)
+//
 //I = 2.5 cost
-//Gain = 25-35 dB a step di 2
+//Gain = 29 dB cost
+//Vbias = 53-57V a step di 1
 
-void fitLED_gainTOT(){
-    int n = 6;
-    std::vector<double> G = {25.,27.,29.,31.,33.,35.}; //dB
-    std::vector<double> s_G(6); //1 dB
-    for(int i = 0; i<n; i++){
-	s_G[i] = 20/log(10)/G[i]*1;
-	G[i] = pow(10,G[i]/20);
-    }
-    std::vector<double> delta = {151.28,185.90,231.68,293.53,369.89,469.58}; //CHN
-    std::vector<double> s_delta = {0.04,0.04,0.04,0.05,0.05,0.07};
+void fitLED_VTOT(){ 
+    int n = 5;
+    std::vector<double> Gsipm = {715.e3,1.393e6,2.05e6,2.71e6,3.36e6};
+    std::vector<double> s_Gsipm = {8.e3,1.5e4,2e4,3e4,4e4};
+
+    std::vector<double> V = {53.07,53.97,55.00,56.03,57.06}; //V
+    std::vector<double> s_V ={0.03,0.03,0.03,0.03,0.03};
     
     TCanvas* c1 = new TCanvas("c1","c1",20,20,800,600);
     c1->SetGrid();
-    TGraphErrors * g1 = new TGraphErrors(n,G.data(),delta.data(),s_G.data(),s_delta.data());
-    g1->SetTitle("<#Delta_{pp}> vs G_{ampl}, con V_{bias}=55V e intensita' 2.5;G_{ampl} [#];<#Delta_{pp}> [CHN]");
+    TGraphErrors * g1 = new TGraphErrors(n,V.data(),Gsipm.data(),s_V.data(),s_Gsipm.data());
+    g1->SetTitle("G_{SiPM} vs V_{bias}, con G_{amp}=29dB e intensita' 2.5;V_{bias} [V];G_{SiPM} [#]");
     g1->Draw("AP");
-    TF1* f1 = new TF1("f1","pol1",15,60);
+    
+    TF1* f1 = new TF1("f1","pol1",52.5,57.5);
     g1->Fit("f1","R+","e1");
         std::cout << "Chi^2:" <<f1->GetChisquare();
     std::cout<< ", number of DoF: " << f1->GetNDF();
     std::cout << " (Probability: " << f1->GetProb() << ")." << std::endl;
     std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
-
+/*
     std::cout<<"Il termine noto è compatibile con 0\n";
     std::cout<<"Il coeff angolare va confrontato con Gsipm*e/k, con k = 40fC/CHN\n";
-    std::cout<<"uso la stima già fatta di Gsipm (con Vbias = 55V) per il coeff 'teorico'\n";
+    std::cout<<"uso la stima già fatta di Gsipm (con Vbias = 55V) per il coeff 'teorico'";
     double Gsipm = 2050000;
     double s_Gsipm = 20000;
     double e = 1.6022e-4; //fC
@@ -56,5 +53,5 @@ void fitLED_gainTOT(){
     std::cout<<"coeff sper = ("<<f1->GetParameter(1)<<" +/- "<<f1->GetParError(1)<<")CHN"<<std::endl;
     std::cout<<"coeff teo = ("<<mteo<<" +/- "<<s_mteo<<")CHN\n";
     std::cout<<"Z score = "<< (mteo-msper)/sqrt(s_mteo*s_mteo + s_msper*s_msper)<<std::endl;
-
+*/
 }
