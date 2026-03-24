@@ -10,7 +10,7 @@
 #include "TCanvas.h"
 #include "TFile.h"
 
-void fit_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt") 
+void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt") 
 {
  
   ifstream parInput(input.c_str());
@@ -163,6 +163,7 @@ void fit_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   for(int i=0;i < 9; i++){
     deltapp[i]= media[i+1]-media[i];
     errpp[i] = sqrt(pow(errM[i],2)+ pow(errM[i+1],2)); //misure indipendenti
+    std::cout<<"Deltapp "<<i+1<<"("<<deltapp[i]<<" +/- "<<errpp[i]<<")CHN\n";
   }
   //media pesata
   double a[9] = {};
