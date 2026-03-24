@@ -94,7 +94,7 @@ void Ass_carta() {
             fits[i]->Draw("same");
             //recupera parametri per grafico
             media[i]=fits[i]->GetParameter(1);
-            erroremedia[i]= fits[i]->GetParameter(2);
+            erroremedia[i]= fits[i]->GetParError(1);
             
         }
     }
@@ -108,11 +108,7 @@ void Ass_carta() {
     float Sper1= 0.05/20.0 ;//mm
     float Sp[8] = {0, Sp1*3,Sp1*6,Sp1*9,Sp1*12,Sp1*15,Sp1*18,Sp1*20};
     float Sper[8]= {Sper1,Sper1*3,Sper1*6,Sper1*9,Sper1*12,Sper1*15,Sper1*18,Sper1*20};
-    //l'errore sullo spessore èvariabile
-
-    //devo ricavare i rates, faccio media per 2? perchè al posto tau 1s ho tau 0.5? sì
-    //nel grafico uso l'errore sulla media*2 come errore oppure devo usare sigma? sigma
-    //oppure come per le slide radice di n per 2?
+    //l'errore sullo spessore è variabile
 
     //rates
 

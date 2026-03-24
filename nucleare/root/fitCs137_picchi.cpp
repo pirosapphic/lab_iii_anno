@@ -49,6 +49,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double mean1  = f1->GetParameter(1);
   double sigma1 = f1->GetParameter(2);
   double errM1     = f1->GetParError(1);
+  double ersig1 = f1->GetParError(2);
 
  //seconda gaussiana
   TF1* f2 = new TF1("f2","gaus",1570,1640);
@@ -63,6 +64,8 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double mean2  = f2->GetParameter(1);
   double sigma2 = f2->GetParameter(2);
   double errM2     = f2->GetParError(1);
+  double ersig2 = f2->GetParError(2);
+
    //terza gaussiana
   TF1* f3 = new TF1("f3","gaus",1740,1820);
   f2->SetParameters(1700, 1770, 60);
@@ -74,7 +77,8 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double mean3  = f3->GetParameter(1);
   double sigma3 = f3->GetParameter(2);
   double errM3     = f3->GetParError(1);
-   
+  double ersig3 = f3->GetParError(2);  
+
    //quarto gaussiana
   TF1* f4 = new TF1("f4","gaus",1900,2000);
   f4->SetParameters(1600, 1950, 80);
@@ -85,6 +89,8 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double mean4  = f4->GetParameter(1);
   double sigma4 = f4->GetParameter(2);
   double errM4     = f4->GetParError(1);
+  double ersig4 = f4->GetParError(2);
+
    //quinta gaussiana
   TF1* f5 = new TF1("f5","gaus", 2070,2180);
   f5->SetParameters(1400, 2140, 75);
@@ -95,6 +101,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double mean5  = f5->GetParameter(1);
   double sigma5 = f5->GetParameter(2);
   double errM5     = f5->GetParError(1);
+  double ersig5 = f5->GetParError(2);
 
    //sesta gaussiana
   TF1* f6 = new TF1("f6","gaus", 2240,2350);
@@ -106,6 +113,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double mean6  = f6->GetParameter(1);
   double sigma6 = f6->GetParameter(2);
   double errM6     = f6->GetParError(1);
+  double ersig6 = f6->GetParError(2);
 
   //settima gaussiana
   TF1* f7 = new TF1("f7","gaus", 2425,2525);
@@ -117,7 +125,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double mean7  = f7->GetParameter(1);
   double sigma7 = f7->GetParameter(2);
   double errM7     = f7->GetParError(1);
-
+  double ersig7 = f7->GetParError(2);
   //ottavo gaussiana
   TF1* f8 = new TF1("f8","gaus", 2610,2700);
   f8->SetParameters(1200, 2650, 80);
@@ -129,6 +137,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double mean8  = f8->GetParameter(1);
   double sigma8 = f8->GetParameter(2);
   double errM8     = f8->GetParError(1);
+  double ersig8 = f8->GetParError(2);
 
    //nono gaussiana
   TF1* f9 = new TF1("f9","gaus", 2780,2880);
@@ -140,7 +149,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double mean9  = f9->GetParameter(1);
   double sigma9 = f9->GetParameter(2);
   double errM9     = f9->GetParError(1);
-
+  double ersig9 = f9->GetParError(2);
    //dieci gaussiana
   TF1* f10 = new TF1("f10","gaus", 2960,3050);
   f10->SetParameters(1300, 3000, 70);
@@ -151,26 +160,29 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double mean10  = f10->GetParameter(1);
   double sigma10 = f10->GetParameter(2);
   double errM10     = f10->GetParError(1);
-
+  double ersig10 = f10->GetParError(2);
   //array 
 
   double media[10]= {mean1, mean2, mean3, mean4, mean5, mean6, mean7, mean8, mean9, mean10};
   double errM[10] ={errM1,errM2,errM3,errM4,errM5,errM6,errM7,errM8,errM9,errM10};
   double sigma[10] = {sigma1,sigma2,sigma3,sigma4,sigma5,sigma6,sigma7,sigma8,sigma9,sigma10};
+  double ersig[10] = {ersig1,ersig2,ersig3,ersig4,ersig5,ersig6,ersig7,ersig8,ersig9,ersig10};
+
+
   //delta p-p
   double deltapp[9] = {};
   double errpp[9] = {};
   for(int i=0;i < 9; i++){
     deltapp[i]= media[i+1]-media[i];
     errpp[i] = sqrt(pow(errM[i],2)+ pow(errM[i+1],2)); //misure indipendenti
-    std::cout<<"Deltapp "<<i+1<<"("<<deltapp[i]<<" +/- "<<errpp[i]<<")CHN\n";
+    
   }
   //media pesata
   double a[9] = {};
-  double n= 0;
-  double d=0;
-  double meanpp=0;
-  double error=0;
+  double n= 0.0;
+  double d=0.0;
+  double meanpp=0.0;
+  double error=0.0;
   for(int i=0; i<9; i++){
     a[i] = pow(1/errpp[i],2);
     n += a[i]*deltapp[i];
@@ -181,39 +193,40 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   meanpp= n/d;
   error= pow(1/d,1/2);
   cout << "<deltapp> vale: " << meanpp << " +/- " << error << endl;
+//sigma pesata
+   n= 0;
+   d=0;
+  double sigmap=0;
+  double ersigmap=0;
+  for(int i=0; i<9; i++){
+    a[i] = pow(1/ersig[i],2);
+    n += a[i]*sigma[i];
+    d += a[i];
 
+  }
+ sigmap = n/d;
+  ersigmap = pow(1/d,1/2);
+  cout << "<sigmap vale: " <<sigmap  << " +/- " << ersigmap  << endl;
   // Nci = CHNci/meanpp
+  //sti valori li ho presi dai fit di paolo spero siano giusti
 
-  double Nci[10] = {};
-  for (int i = 0; i < 10; i++)
-  {
-    Nci[i]= media[i]/meanpp; 
-  }
-  
-  //risoluzione sperimentale Rexp
-   double Rexp[10] = {};
-  for ( int i = 0; i < 10; i++)
-  {
-    Rexp[i]= sigma[i]/media[i]; 
-  }
+//CHNci = (19655.1 +/- 2580.22) //CHN
+//k = (2.4287e-05 +/- 5.44346e-06) //MeV/CHN
+  float CHNci= 19655.1;
+  float Nci= CHNci/meanpp;
+
   
   //risoluzione attesa Rat
 
-  double Rat[10] = {};
-  for (int i = 0; i < 10; i++)
-  {
-    Rat[i]= 1/sqrt(Nci[i])*sqrt(1+pow(sigma[i]/meanpp,2));
-  }
+  double Rat;
+  double Raterror;//devo calcolare l'errore
+
+  Rat= 1/sqrt(Nci)*sqrt(1+pow(sigmap/meanpp,2));
   
-  for (int i = 0; i < 10; i++) {
-        cout << Rexp[i]<< "  " << Rat[i]<< endl;
-  }
+
+  cout <<  " La risoluzione attesa è: " << Rat<< endl;
+
  
 }
 
- /*cose da fare:chiedere cos'è sigmap, media sigma o diversa per ogni fit?
- cercare errore R e verificare formula Rat
-  */
- /*cose da fare:chiedere cos'è sigmap, media sigma o diversa per ogni fit?
- cercare errore R e verificare formula Rat
-  */
+/*cercre errore risoluzione attesa e test Z con la risoluzione sperimentale*/
