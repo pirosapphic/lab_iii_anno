@@ -1,82 +1,154 @@
+
 #include <fstream>
 #include <math.h>   
+#include <iostream>
 
 #include "TH1F.h"
 #include "TF1.h"
-#include "TLine.h"
-#include "TRandom3.h"
-#include "TMath.h"
-#include "TGraphErrors.h"
 #include "TCanvas.h"
-#include "TFile.h"
+#include "TMath.h"
 
+using namespace std;
 
-TH1F* ReadHisto(float xMin,float xMax,float binWidth, string input, string name) {
-
+// Funzione per leggere file e creare istogramma
+TH1F* ReadHisto(float xMin, float xMax, float binWidth, string input, string name) {
     ifstream parInput(input.c_str());
+    if (!parInput.is_open()) {
+        cout << "Errore: file " << input << " non aperto!" << endl;
+        return nullptr;
+    }
 
     float x, y;
-
-
-    TH1F* h = new TH1F(name.c_str(), name.c_str(),
-                       (xMax - xMin)/binWidth, xMin, xMax);
+    TH1F* h = new TH1F(name.c_str(), name.c_str(), (xMax - xMin)/binWidth, xMin, xMax);
 
     while (parInput >> x >> y) {
         int bin = h->FindBin(x);
         h->SetBinContent(bin, y);
-        h->SetBinError(bin, sqrt(y)); 
+        h->SetBinError(bin, sqrt(y));
     }
 
+    parInput.close();
+    h->Rebin(2);
     return h;
 }
 
+// Funzione generica per fare fit gaussiano
+TF1* FitGauss(TH1F* h, double minFit, double maxFit) {
+    if (!h) return nullptr;
+
+    // funzione gaussiana
+    TF1* f = new TF1("f","gaus",minFit,maxFit);
+
+    // parametri iniziali
+    double maxBin = h->GetMaximum();
+    int binMax = h->GetMaximumBin();
+    double meanGuess = h->GetBinCenter(binMax);
+    double sigmaGuess = (maxFit - minFit)/6.; // stima sigma
+
+    f->SetParameters(maxBin, meanGuess, sigmaGuess);
+    h->Fit(f,"R"); // R = range limit
+
+    return f;
+}
+
+// Funzione principale
 void Ass_carta() {
 
+    // Array dei file
+    string files[] = {
+        "../data_sorg/A8_count_vuoto.txt",
+        "../data_sorg/A8_count_carta3.txt",
+        "../data_sorg/A8_count_carta6.txt",
+        "../data_sorg/A8_count_carta9.txt",
+        "../data_sorg/A8_count_carta12.txt",
+        "../data_sorg/A8_count_carta15.txt",
+        "../data_sorg/A8_count_carta18.txt",
+        "../data_sorg/A8_count_carta20.txt"
+    };
 
-    // avevo 20 bin, ho raddoppiato la larghezza e ora ne ho 10
-    TH1F* h0 = ReadHisto(647.275,771.725,13.1,"../data_sorg/A8_count_vuoto.txt", "h0");
-    TH1F* h3 = ReadHisto(518.925,668.075,15.7,"../data_sorg/A8_count_carta3.txt", "h3");
-    TH1F* h6 = ReadHisto(444.1,561.9,12.4,"../data_sorg/A8_count_carta6.txt", "h6");
-    TH1F* h9 = ReadHisto(365.525,499.475,14.1,"../data_sorg/A8_count_carta9.txt", "h9");
-    TH1F* h12 = ReadHisto(317.075,433.925,12.3,"../data_sorg/A8_count_carta12.txt", "h12");
-    TH1F* h15 = ReadHisto(289.6, 388.4,10.4,"../data_sorg/A8_count_carta15.txt", "h15");
-    TH1F* h18 = ReadHisto(253.325,341.675,9.3,"../data_sorg/A8_count_carta18.txt", "h18");
-    TH1F* h20 = ReadHisto(230.325,318.675,9.3,"../data_sorg/A8_count_carta20.txt", "h20");   
+    // Range dei fit e dei bin per ogni file
+    float xMin[] = {647.275,518.925,444.1,365.525,317.075,289.6,253.325,230.325};
+    float xMax[] = {771.725,668.075,561.9,499.475,433.925,388.4,341.675,318.675};
+    float binWidth[] = {6.55,7.85,6.2,7.05,6.15,5.2,4.65,4.65};
 
-    h0->SetLineColor(kCyan);
-    h3->SetLineColor(kGreen);
-    h6->SetLineColor(kBlue);
-    h9->SetLineColor(kRed);
-    h9->SetLineColor(kYellow);
-    h9->SetLineColor(kMagenta);
-    h9->SetLineColor(kOrange);
-    h9->SetLineColor(kBlack);
+    // Colori dei grafici
+    int colors[] = {kCyan,kGreen,kBlue,kRed,kYellow,kMagenta,kOrange,kBlack};
+
+    // Creazione degli istogrammi e dei fit
+    TH1F* histos[8];
+    TF1* fits[8];
+
+    for (int i=0; i<8; i++) {
+        histos[i] = ReadHisto(xMin[i], xMax[i], binWidth[i], files[i], Form("h%d",i));
+        fits[i] = FitGauss(histos[i], xMin[i], xMax[i]);
+    }
+    double media[8]= {};
+    double erroremedia[8]= {};
+    // Creazione canvas separati e disegno
+    for (int i=0; i<8; i++) {
+        TCanvas* c = new TCanvas(Form("grafico con %d fogli",i), Form("c%d",i), 800, 600);
+        histos[i]->Draw("hist");
+        if (fits[i]) {
+            fits[i]->SetLineColor(colors[i]);
+            fits[i]->Draw("same");
+            //recupera parametri per grafico
+            media[i]=fits[i]->GetParameter(1);
+            erroremedia[i]= fits[i]->GetParError(1);
+            
+        }
+    }
+
+    /*il X2 è un po' basso, controllalo, dovrei accorpare i bin con meno di 5 elementi?
+    come faccio con gli errori?
+    */
+
+    //spessore carta 2pm0.05 mm per 20 fogli 
+    float Sp1= 2.0/20.0 ;//mm
+    float Sper1= 0.05/20.0 ;//mm
+    float Sp[8] = {0, Sp1*3,Sp1*6,Sp1*9,Sp1*12,Sp1*15,Sp1*18,Sp1*20};
+    float Sper[8]= {Sper1,Sper1*3,Sper1*6,Sper1*9,Sper1*12,Sper1*15,Sper1*18,Sper1*20};
+    //l'errore sullo spessore l'ho lasciato costante perchè non so fare grafici con errore su x, va bene lo stesso?
+
+    //devo ricavare i rates, faccio media per 2? perchè al posto tau 1s ho tau 0.5?
+    //nel grafico uso l'errore sulla media*2 come errore oppure devo usare sigma?
+    //oppure come per le slide radice di n per 2?
+
+    //rates
+
+    float rates[8] = {};
+    float errrates[8]= {};
+
+    for (int i = 0; i < 8; i++)
+    {
+        rates[i]= media[i]*2;
+        errrates[i]= erroremedia[i]*2;
     
-    TCanvas* c0 = new TCanvas("c0","c0",800,600);
-    h0->Draw("hist");
+    }
+    {
+   auto c8 = new TCanvas("c8","Grafico assorbimento carta",200,10,700,500);
+   c8->SetFillColor(42);
+   c8->SetGrid();
+   c8->GetFrame()->SetFillColor(21);
+   c8->GetFrame()->SetBorderSize(12);
+   const Int_t n = 8;
+   
+   auto gr = new TGraphErrors(n,Sp,rates,Sper,errrates);
+   gr->SetTitle("TGraphErrors Example");
+   gr->SetMarkerColor(4);
+   gr->SetMarkerStyle(21);
+   gr->Draw("AP");
 
-    TCanvas* c3 = new TCanvas("c3","c3",800,600);
-    h3->Draw("hist");
+   //fit esponenziale
 
-    TCanvas* c6 = new TCanvas("c6","c6",800,600);
-    h6->Draw("hist");
+   TF1 *f = new TF1("f","[0] +[1]* exp(-[2] * x)", 0, 2);
 
-    TCanvas* c9 = new TCanvas("c9","c9",800,600);
-    h9->Draw("hist");
+   f->SetParameters(600,400,3.5); 
+   gr->Fit(f,"R");
 
-    TCanvas* c12 = new TCanvas("c12","c12",800,600);
-    h12->Draw("hist");
+    //il coefficente di assorbimento viene super basso, circa 0,8
+    //da test Z è però compatibile con quello teorico, il X2 va bene, per me si può fare
+}
+    
 
-    TCanvas* c15 = new TCanvas("c15","c15",800,600);
-    h15->Draw("hist");
-
-    TCanvas* c18 = new TCanvas("c18","c18",800,600);
-    h18->Draw("hist");
-
-    TCanvas* c20 = new TCanvas("c20","c20",800,600);
-    h20->Draw("hist");
-
-    /* in generale, il rate è definito come numero di impulsi che superano una certa
-soglia (threshold, in mV e sempre intesa come negativa, dato che si tratta di elettroni)
-in un intervallo di tempo definito (gate, in ms).*/
+    
 }
