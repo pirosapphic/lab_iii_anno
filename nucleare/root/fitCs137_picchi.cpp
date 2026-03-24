@@ -211,10 +211,9 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
  
 }
 
-<<<<<<< HEAD:nucleare/root/fit_picchi.cpp
  /*cose da fare:chiedere cos'è sigmap, media sigma o diversa per ogni fit?
  cercare errore R e verificare formula Rat
   */
-=======
- 
->>>>>>> main:nucleare/root/fitCs137_picchi.cpp
+ /*cose da fare:chiedere cos'è sigmap, media sigma o diversa per ogni fit?
+ cercare errore R e verificare formula Rat
+  */

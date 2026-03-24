@@ -1,4 +1,3 @@
-Number of pulses received - @ Low	carta 18 500ms	
 253.325	2	
 257.975	4	
 262.625	5	
@@ -19,3 +18,4 @@ Number of pulses received - @ Low	carta 18 500ms
 332.375	2	
 337.025	5	
 341.675	1	
+Number of pulses received - @ Low	carta 18 500ms	

@@ -1,4 +1,3 @@
-Number of pulses received - @ Low histo vuoto (spessori) GATE 500MS!!!!!!!!!!!!
 647.275	5	
 653.825	5	
 660.375	9	
@@ -19,3 +18,4 @@ Number of pulses received - @ Low histo vuoto (spessori) GATE 500MS!!!!!!!!!!!!
 758.625	2	
 765.175	2	
 771.725	2	
+Number of pulses received - @ Low histo vuoto (spessori) GATE 500MS!!!!!!!!!!!!
