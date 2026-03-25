@@ -6,7 +6,7 @@ Parte 1: caratt. SiPM
 - Spettri LED:
     - Gain variabile			Paolo		OK!
     - Vbias variabile			Paolo		OK!
-    - Int. luminosa variabile		Paolo
+    - Int. luminosa variabile		Paolo		fatto ma non funziona
 
 Parte 2: sorgenti radioattive
 - Picco di conversione interna Cs137	Paolo 		OK!
@@ -14,7 +14,7 @@ Parte 2: sorgenti radioattive
 - Picchi Cs137				Anna
 - Tmax Sr90				Paolo		OK!
 - k di calibrazione da Sr90		Paolo		OK! 	
-- k_eq di calibrazione da Sr90		Sofi
+- k_eq di calibrazione da Sr90		Sofi		OK!
 - Assorbimento carta			Anna
 - Assorbimento Al			Anna
 - Verifica Bethe-bloch con cosmici	Anna
