@@ -19,21 +19,21 @@
 TH1D* histo_filler(string name, string title, string path); //general purpose
 std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
-void fitLED_I2_5(string input = "../../data_SiPM/LED/I/A8_LED5529"){    
+void fitLED_I2_8(string input = "../../data_SiPM/LED/I/A8_LED5529"){    
     //firstly, we draw and fit the histograms, then we calculate <deltapp>;
 //--------------------------------------------------------------------------------
     
-    string Int = "2-5.txt";
+    string Int = "2-8.txt";
     string path = input+Int;
     //path = "../../data_SiPM/LED/gain/A8_LED55252-5.txt";
-    TH1D* histo27 = histo_filler("histo27","Energy Spectrum, G=29dB, V_{bias}=55V, LED 2.5",path);
+    TH1D* histo27 = histo_filler("histo27","Energy Spectrum, G=29dB, V_{bias}=55V, LED 2.8",path);
     TCanvas* c27 = new TCanvas("c27","c27",20,20,800,600);
     c27->SetGrid();
     gStyle->SetOptStat(0);
     histo27->SetLineColor(kBlack);
     //histo27->Rebin(2);
     histo27->Draw("e1");
-    int npeaks = 4;
+    int npeaks = 6;
     double xMin = -49.5;
     double xMax = 1000;
     
@@ -103,7 +103,7 @@ void fitLED_I2_5(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     s_peak[3] = gaus3->GetParError(1);
     sigma[3] = gaus3->GetParameter(2); 
     s_sigma[3] = gaus3->GetParError(2);
-/*  
+  
     //PICCO 4
     TF1* gaus4 = new TF1("gaus4","gaus",870,973);
     gaus4->SetLineColor(kBlue);
@@ -134,7 +134,7 @@ void fitLED_I2_5(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     s_peak[5] = gaus5->GetParError(1);
     sigma[5] = gaus5->GetParameter(2); 
     s_sigma[5] = gaus5->GetParError(2);
-*/
+
     std::vector<double>deltapp(npeaks-1);
     std::vector<double>s_deltapp(npeaks-1);
     std::cout<<"Stime di Delta_pp:\n";
@@ -183,7 +183,7 @@ void fitLED_I2_5(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     g1->SetTitle("Varianze vs N. di picco;N[#];#sigma_{N}^{2} [CHN^{2}]");
     g1->Draw("AP");
     //g1->GetXaxis()->SetRange(-1,100);
-    TF1* f1 = new TF1("f1","pol1",1,4);
+    TF1* f1 = new TF1("f1","pol1",1,5);
     g1->Fit("f1","R+");
     std::cout << "Chi^2:" <<f1->GetChisquare();
     std::cout<< ", number of DoF: " << f1->GetNDF();

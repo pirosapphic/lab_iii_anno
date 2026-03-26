@@ -19,14 +19,14 @@
 TH1D* histo_filler(string name, string title, string path); //general purpose
 std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
-void fitLED_I2_5(string input = "../../data_SiPM/LED/I/A8_LED5529"){    
+void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){    
     //firstly, we draw and fit the histograms, then we calculate <deltapp>;
 //--------------------------------------------------------------------------------
     
-    string Int = "2-5.txt";
+    string Int = "2-0.txt";
     string path = input+Int;
     //path = "../../data_SiPM/LED/gain/A8_LED55252-5.txt";
-    TH1D* histo27 = histo_filler("histo27","Energy Spectrum, G=29dB, V_{bias}=55V, LED 2.5",path);
+    TH1D* histo27 = histo_filler("histo27","Energy Spectrum, G=29dB, V_{bias}=55V, LED 2.0",path);
     TCanvas* c27 = new TCanvas("c27","c27",20,20,800,600);
     c27->SetGrid();
     gStyle->SetOptStat(0);

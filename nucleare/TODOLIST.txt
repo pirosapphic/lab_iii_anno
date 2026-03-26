@@ -3,10 +3,10 @@ Parte 1: caratt. SiPM
 - DCR					Sofi
 - OCT (easy)				Anna
 - DCR a temp variabile			Sofi
-- Spettri LED:
+- Spettri LED:						OK!!!!
     - Gain variabile			Paolo		OK!
     - Vbias variabile			Paolo		OK!
-    - Int. luminosa variabile		Paolo		fatto ma non funziona
+    - Int. luminosa variabile		Paolo		OK! 
 
 Parte 2: sorgenti radioattive
 - Picco di conversione interna Cs137	Paolo 		OK!
