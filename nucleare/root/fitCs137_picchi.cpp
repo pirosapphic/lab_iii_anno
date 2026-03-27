@@ -191,7 +191,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   }
 
   meanpp= n/d;
-  error= pow(1/d,1/2);
+  error= pow(1/d,1/2); //errore su deltapp
   cout << "<deltapp> vale: " << meanpp << " +/- " << error << endl;
 //sigma pesata
    n= 0;
@@ -213,18 +213,32 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
 //CHNci = (19655.1 +/- 2580.22) //CHN
 //k = (2.4287e-05 +/- 5.44346e-06) //MeV/CHN
   float CHNci= 19655.1;
+  float eCHNci= 2580.22;
   float Nci= CHNci/meanpp;
 
-  
+  float eNci= pow(pow(eCHNci/meanpp,2)+pow(CHNci*error/pow(meanpp,2),2),1/2);
+  cout << "Nci: " <<Nci << " +/- " << eNci << endl;
   //risoluzione attesa Rat
 
   double Rat;
-  double Raterror;//devo calcolare l'errore
+  double erat;//devo calcolare l'errore
 
   Rat= 1/sqrt(Nci)*sqrt(1+pow(sigmap/meanpp,2));
-  
+  float parteB= pow(Nci,-1/2);
+  float parteA = 1 + pow(sigmap/meanpp,2);
 
-  cout <<  " La risoluzione attesa è: " << Rat<< endl;
+
+  double dR_dN = -0.5 * pow(Nci,-1.5) * sqrt(parteA);
+  double dR_dsigma = parteB * (sigmap / (pow(meanpp,2)*sqrt(parteA)));
+  double dR_dmean = -parteB * (pow(sigmap,2) / (pow(meanpp,3)*sqrt(parteA)));
+
+  erat = sqrt(
+    pow(dR_dN * eNci, 2) +
+    pow(dR_dsigma * ersigmap, 2) +
+    pow(dR_dmean * error, 2)
+  );
+
+  cout <<  " La risoluzione attesa è: " << Rat<< " +/- " << erat<< endl;
 
  
 }

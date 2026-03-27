@@ -132,6 +132,7 @@ void ass_all(){
     c8->SetGrid();
     c8->GetFrame()->SetFillColor(21);
     c8->GetFrame()->SetBorderSize(12);
+    
     const Int_t n = 8;
    
     //x del grafico
@@ -140,9 +141,11 @@ void ass_all(){
 
 
     auto gr = new TGraphErrors(n,ascissa,rates,errorex,errrates);
-    gr->SetTitle("Assorbimento carta");
+    gr->SetTitle("Assorbimento alluminio");
     gr->SetMarkerColor(4);
     gr->SetMarkerStyle(21);
+    gr->GetXaxis()->SetTitle("Numero di fogli");    // asse X
+    gr->GetYaxis()->SetTitle("Rates"); 
     gr->Draw("AP");
 
    //fit esponenziale

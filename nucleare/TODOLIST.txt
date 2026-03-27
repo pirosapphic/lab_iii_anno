@@ -11,10 +11,10 @@ Parte 1: caratt. SiPM
 Parte 2: sorgenti radioattive
 - Picco di conversione interna Cs137	Paolo 		OK!
 - Tmax Cs137				Paolo		OK!
-- Picchi Cs137				Anna
+- Picchi Cs137				Anna    OK (non capisco perchè alcuni errori sono interi)
 - Tmax Sr90				Paolo		OK!
 - k di calibrazione da Sr90		Paolo		OK! 	
 - k_eq di calibrazione da Sr90		Sofi
 - Assorbimento carta			Anna    OK!
-- Assorbimento Al			Anna
+- Assorbimento Al			Anna    ok (il fit torna solo se uso sigma come errore)
 - Verifica Bethe-bloch con cosmici	Anna
