@@ -121,9 +121,7 @@ void Ass_carta() {
             }
     }
 
-    /*il X2 è un po' basso, controllalo, dovrei accorpare i bin con meno di 5 elementi?
-    come faccio con gli errori?
-    */
+    
 
     //spessore carta 2pm0.05 mm per 20 fogli 
     float Sp1= 2.0/20.0 ;//mm

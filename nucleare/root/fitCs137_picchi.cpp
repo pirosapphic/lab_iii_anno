@@ -243,4 +243,5 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
  
 }
 
-/*cercre errore risoluzione attesa e test Z con la risoluzione sperimentale*/
+/*cercre errore risoluzione sperimentale e fare test Z con la risoluzione sperimentale*/
+/*c'è differenza tra questo e fit picchi?*/
