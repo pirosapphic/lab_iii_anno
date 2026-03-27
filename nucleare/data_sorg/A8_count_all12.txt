@@ -1,4 +1,3 @@
-Number of pulses received - @ Low	Alluminio 12 500ms	
 478.625	3	
 483.875	3	
 489.125	8	
@@ -19,3 +18,4 @@ Number of pulses received - @ Low	Alluminio 12 500ms
 567.875	9	
 573.125	4	
 578.375	6	
+Number of pulses received - @ Low	Alluminio 12 500ms	

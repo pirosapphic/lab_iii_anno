@@ -120,7 +120,7 @@ void Ass_carta() {
         rates[i]= media[i]*2;
         errrates[i]= erroremedia[i]*2;
     }
-    {
+    
    auto c8 = new TCanvas("c8","Grafico assorbimento carta",200,10,700,500);
    c8->SetFillColor(42);
    c8->SetGrid();
@@ -129,7 +129,7 @@ void Ass_carta() {
    const Int_t n = 8;
    
    auto gr = new TGraphErrors(n,Sp,rates,Sper,errrates);
-   gr->SetTitle("TGraphErrors Example");
+   gr->SetTitle("Assorbimento carta");
    gr->SetMarkerColor(4);
    gr->SetMarkerStyle(21);
    gr->Draw("AP");
@@ -143,7 +143,7 @@ void Ass_carta() {
    cout<< endl<< "p-value"<< f->GetProb() << endl;
     //il coefficente di assorbimento viene super basso, circa 0,8
     //da test Z è però compatibile con quello teorico, il X2 va bene, per me si può fare
-}
+    
     
 
     
