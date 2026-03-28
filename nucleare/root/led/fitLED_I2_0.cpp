@@ -247,7 +247,7 @@ TH1D* histo_filler(string name, string title, string path){ //general purpose
 	int theBin = theHisto->FindBin(xvec[i]);
         theHisto->SetBinContent(theBin,yvec[i]);
         theHisto->SetBinError(theBin,s_y);
-	//std::cout<<i<<" "<<xvec[i]<<" "<<yvec[i]<<std::endl; //debug!
+	std::cout<<i<<" "<<xvec[i]<<" "<<yvec[i]<<std::endl; //debug!
     }
     return theHisto;
 }

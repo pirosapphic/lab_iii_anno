@@ -1,4 +1,3 @@
-Number of pulses received - @ Low gain 35dB, gate 500ms Vbias 55V thr -17mV
 25111.5	3	
 25142.5	2	
 25173.4	7	
@@ -29,3 +28,4 @@ Number of pulses received - @ Low gain 35dB, gate 500ms Vbias 55V thr -17mV
 25947.6	3	
 25978.5	1	
 26009.5	1	
+Number of pulses received - @ Low gain 35dB, gate 500ms Vbias 55V thr -17mV

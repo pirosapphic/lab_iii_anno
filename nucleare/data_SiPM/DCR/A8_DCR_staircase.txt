@@ -1,5 +1,3 @@
-Number of pulses received - @ Low 
-Threshold [mV] - Frequency  [kHz] - gain 35dB Vbias 55V staircase
 -10	51.72	
 -12	51.94	
 -14	51.448	
@@ -35,3 +33,4 @@ Threshold [mV] - Frequency  [kHz] - gain 35dB Vbias 55V staircase
 -74	0.028	
 -76	0.016	
 -78	0.016	
+#Threshold [mV] - Frequency  [kHz] - gain 35dB Vbias 55V staircase	0.001
