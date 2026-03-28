@@ -184,14 +184,14 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double meanpp=0.0;
   double error=0.0;
   for(int i=0; i<9; i++){
-    a[i] = pow(1/errpp[i],2);
+    a[i] = pow(1./errpp[i],2);
     n += a[i]*deltapp[i];
     d += a[i];
 
   }
 
   meanpp= n/d;
-  error= pow(1/d,1/2); //errore su deltapp
+  error= pow(1./d,0.5); //errore su deltapp
   cout << "<deltapp> vale: " << meanpp << " +/- " << error << endl;
 //sigma pesata
    n= 0;
@@ -205,7 +205,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
 
   }
  sigmap = n/d;
-  ersigmap = pow(1/d,1/2);
+  ersigmap = pow(1/d,0.5);
   cout << "<sigmap vale: " <<sigmap  << " +/- " << ersigmap  << endl;
   // Nci = CHNci/meanpp
   //sti valori li ho presi dai fit di paolo spero siano giusti
@@ -216,7 +216,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   float eCHNci= 2580.22;
   float Nci= CHNci/meanpp;
 
-  float eNci= pow(pow(eCHNci/meanpp,2)+pow(CHNci*error/pow(meanpp,2),2),1/2);
+  float eNci= pow(pow(eCHNci/meanpp,2)+pow(CHNci*error/pow(meanpp,2),2),0.5);
   cout << "Nci: " <<Nci << " +/- " << eNci << endl;
   //risoluzione attesa Rat
 
@@ -224,7 +224,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double erat;//devo calcolare l'errore
 
   Rat= 1/sqrt(Nci)*sqrt(1+pow(sigmap/meanpp,2));
-  float parteB= pow(Nci,-1/2);
+  float parteB= pow(Nci,-0.5);
   float parteA = 1 + pow(sigmap/meanpp,2);
 
 
