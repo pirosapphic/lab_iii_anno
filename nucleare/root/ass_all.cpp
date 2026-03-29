@@ -110,7 +110,7 @@ void ass_all(){
             fits[i]->Draw("same");
             //recupera parametri per grafico
             media[i]=fits[i]->GetParameter(1);
-            erroremedia[i]= fits[i]->GetParError(1);// l'errore sulla media è troppo piccolo, ma con sigma il x^2 è troppo piccolo
+            erroremedia[i]= fits[i]->GetParameter(2);// l'errore sulla media è troppo piccolo, ma con sigma il x^2 è troppo piccolo
             
         }
     }
@@ -136,7 +136,7 @@ void ass_all(){
     const Int_t n = 8;
    
     //x del grafico
-    float ascissa[8] = {0,3,6,9,12,15,18,20};
+    float ascissa[8] = {0.,3.,6.,9.,12.,15.,18.,20.};
     float errorex[8] = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0}; //non credo ci sia errore
 
 
@@ -152,7 +152,7 @@ void ass_all(){
 
     TF1 *f = new TF1("f","[0] +[1]* exp(-x*[2])", 0, 20); 
 
-    f->SetParameters(900,500,1); 
+    f->SetParameters(1000,500,0.2); 
 
 
     gr->Fit(f,"R");

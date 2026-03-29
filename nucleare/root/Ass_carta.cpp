@@ -124,16 +124,16 @@ void Ass_carta() {
     
 
     //spessore carta 2pm0.05 mm per 20 fogli 
-    float Sp1= 2.0/20.0 ;//mm
-    float Sper1= 0.05/20.0 ;//mm
-    float Sp[8] = {0, Sp1*3,Sp1*6,Sp1*9,Sp1*12,Sp1*15,Sp1*18,Sp1*20};
-    float Sper[8]= {Sper1,Sper1*3,Sper1*6,Sper1*9,Sper1*12,Sper1*15,Sper1*18,Sper1*20};
+    double Sp1= 2.0/20.0 ;//mm
+    double Sper1= 0.05/20.0 ;//mm
+    double Sp[8] = {0, Sp1*3.,Sp1*6.,Sp1*9.,Sp1*12.,Sp1*15.,Sp1*18.,Sp1*20.};
+    double Sper[8]= {Sper1,Sper1*3.,Sper1*6.,Sper1*9.,Sper1*12.,Sper1*15.,Sper1*18.,Sper1*20.};
     //l'errore sullo spessore è variabile
 
     //rates
 
-    float rates[8] = {};
-    float errrates[8] = {};
+    double rates[8] = {};
+    double errrates[8] = {};
 
     for (int i = 0; i < 8; i++)
     {
