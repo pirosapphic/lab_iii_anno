@@ -19,12 +19,14 @@ std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
 void fit_DCR23_9(){
     string temp = "23_9";
+    string T = "(23.9#pm0.1)";
     string stairpath = "../../data_SiPM/DCR_temp/stair";
     string DCR = "../../data_SiPM/DCR_temp/dcr";
 
     TCanvas* cst = new TCanvas("cst","cst",20,20,800,600);
     cst->SetGrid();
-    TGraph* gst = graph_filler("Staircase plot, G_{ampl}=35dB, V_{BIAS}=55V, T=23.9^{o}C;V_{thr}[mV];#nu[kHz]",stairpath+temp+"c.txt");
+    TGraph* gst = graph_filler("Staircase plot, G_{ampl}=28dB, V_{BIAS}=55V, T="+T+"^{o}C;V_{thr}[mV];#nu[kHz]",stairpath+temp+"c.txt");
+
     cst->SetLogy();
     gst->SetMarkerStyle(21);
     gst->Draw("APRX");
@@ -34,7 +36,8 @@ void fit_DCR23_9(){
     TCanvas* c17 = new TCanvas("c17","c17",20,20,800,600);
     c17->SetGrid();
     c17->cd();
-    TH1D* h17 = histo_filler("h17","Impulsi ricevuti a ??V_{thr}=-17mV con gate = 500ms, T=23.9^{o}C;N. impulsi/gate [x500 ms^{-1}];Conteggi [#]",DCR+"low_"+temp+"C.txt");
+    TH1D* h17 = histo_filler("h17","Impulsi ricevuti a V_{thr}=-10mV con gate = 500ms, T="+T+"^{o}C;N. impulsi/gate [x500 ms^{-1}];Conteggi [#]",DCR+"low_"+temp+"C.txt");
+
     gStyle->SetOptStat(0);
     gStyle->SetErrorX(0);
     h17->Draw("HIST E1");
@@ -52,7 +55,8 @@ void fit_DCR23_9(){
     TCanvas* c44 = new TCanvas("c44","c4",20,20,800,600);
     c44->SetGrid();
     c44->cd();
-    TH1D* h44 = histo_filler("h44","Impulsi ricevuti a V_{thr}=-44mV con gate = 500ms, T=23.9^{o}C;N. impulsi/gate [x500 ms^{-1}];Conteggi [#]",DCR+"high_"+temp+"C.txt");
+    TH1D* h44 = histo_filler("h44","Impulsi ricevuti a V_{thr}=-24mV con gate = 500ms, T="+T+"^{o}C;N. impulsi/gate [x500 ms^{-1}];Conteggi [#]",DCR+"high_"+temp+"C.txt");
+
     gStyle->SetOptStat(0);
     gStyle->SetErrorX(0);
     h44->Draw("HIST E1");

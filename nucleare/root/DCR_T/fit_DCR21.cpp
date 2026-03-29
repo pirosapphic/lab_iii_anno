@@ -17,16 +17,15 @@ TH1D* histo_filler(string name, string title, string path); //general purpose
 TGraph* graph_filler(string title, string path); //general purpose
 std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
-void fit_DCR23(){
-    string temp = "23";
-    string T = "(23.0#pm0.1)";
+void fit_DCR21(){
+    string temp = "21";
+    string T = "(22.1#pm0.3)";
     string stairpath = "../../data_SiPM/DCR_temp/stair";
     string DCR = "../../data_SiPM/DCR_temp/dcr";
 
     TCanvas* cst = new TCanvas("cst","cst",20,20,800,600);
     cst->SetGrid();
     TGraph* gst = graph_filler("Staircase plot, G_{ampl}=28dB, V_{BIAS}=55V, T="+T+"^{o}C;V_{thr}[mV];#nu[kHz]",stairpath+temp+"c.txt");
-
     cst->SetLogy();
     gst->SetMarkerStyle(21);
     gst->Draw("APRX");
@@ -37,10 +36,11 @@ void fit_DCR23(){
     c17->SetGrid();
     c17->cd();
     TH1D* h17 = histo_filler("h17","Impulsi ricevuti a V_{thr}=-10mV con gate = 500ms, T="+T+"^{o}C;N. impulsi/gate [x500 ms^{-1}];Conteggi [#]",DCR+"low_"+temp+"C.txt");
+
     gStyle->SetOptStat(0);
     gStyle->SetErrorX(0);
     h17->Draw("HIST E1");
-    TF1* gaus1 = new TF1("gaus1","gaus",9300,9800);
+    TF1* gaus1 = new TF1("gaus1","gaus",8600,9100);
     h17->Fit("gaus1","R+","e1");
     gaus1->Draw("same");
     std::cout << "Chi^2:" <<gaus1->GetChisquare();
@@ -55,7 +55,6 @@ void fit_DCR23(){
     c44->SetGrid();
     c44->cd();
     TH1D* h44 = histo_filler("h44","Impulsi ricevuti a V_{thr}=-24mV con gate = 500ms, T="+T+"^{o}C;N. impulsi/gate [x500 ms^{-1}];Conteggi [#]",DCR+"high_"+temp+"C.txt");
-
     gStyle->SetOptStat(0);
     gStyle->SetErrorX(0);
     h44->Draw("HIST E1");
