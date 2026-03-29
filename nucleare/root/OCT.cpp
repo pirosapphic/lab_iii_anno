@@ -93,11 +93,16 @@ void OCT(){
     float R2= f2->GetParameter(1);
     float er2= f2->GetParError(1);
     cout << "p-value del fit: " << f2->GetProb() << endl;
+    //correzzione per gate 500ms
 
+    R2= R2*2.;
+    R1=R1*2.;
+    er1=er1*2.;
+    er2=er2*2.;
     //OCT
 
-    float oct= R1/R2;
-    double eoct= pow(pow(er1/R2,2)+pow(R1*(float)er2/pow(R2,2),2),1/2);
+    float oct= R2/R1;
+    double eoct= pow(pow(er2/R1,2)+pow(R2*er1/pow(R1,2),2),0.5);
     cout << "OCT: " <<oct << " +/- " << eoct << endl;
     cout<< R1 <<R2 << er1<< er2 <<endl;
 }
