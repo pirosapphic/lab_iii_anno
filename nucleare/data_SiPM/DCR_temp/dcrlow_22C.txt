@@ -1,4 +1,3 @@
-Number of pulses received - @ Low	Counts - @ Low	22C
 9080.4	5	
 9125.2	6	
 9170	6	
@@ -9,3 +8,4 @@ Number of pulses received - @ Low	Counts - @ Low	22C
 9394	3	
 9438.8	1	
 9483.6	2	
+Number of pulses received - @ Low	Counts - @ Low	22C
