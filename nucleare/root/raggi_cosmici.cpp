@@ -47,16 +47,16 @@ void raggi_cosmici(){
     TCanvas* c1 = new TCanvas("c1","h",800,600);
     h->Draw("hist");
 
-    TH1F*hz= istogramma("../data_sorg/A8_cosmici_zoom.txt","isto",124);
+    /*TH1F*hz= istogramma("../data_sorg/A8_cosmici_zoom.txt","isto",124);
     hz->Rebin(4);
     TCanvas* c2 = new TCanvas("c2","hz",800,600);
     hz->Draw("hist");
-
-    TH1F*hs= istogramma("../data_sorg/A8_cosmici_zoom.txt","isto",93);
-    hs->Rebin(2);
+*/
+    TH1F*hs= istogramma("../data_sorg/A8_cosmici_zoom.txt","isto",124);
+    hs->Rebin(4);
     TCanvas* c3 = new TCanvas("c3","hs",800,600);
     hs->Draw("HIST E1");
-    TF1*f1= new TF1("f1", "gaus", 1250., 47250.);
+    TF1*f1= new TF1("f1", "gaus", 15250., 47250.);
     f1->SetParameters(9,30750,20000);
     hs->Fit(f1,"R+","e1");
     f1->Draw("same");
