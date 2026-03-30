@@ -56,7 +56,7 @@ void raggi_cosmici(){
     hs->Rebin(4);
     TCanvas* c3 = new TCanvas("c3","hs",800,600);
     hs->Draw("HIST E1");
-    TF1*f1= new TF1("f1", "gaus", 15250., 47250.);
+    TF1*f1= new TF1("f1", "gaus", 15250., 39250.);
     f1->SetParameters(9,30750,20000);
     hs->Fit(f1,"R+","e1");
     f1->Draw("same");
