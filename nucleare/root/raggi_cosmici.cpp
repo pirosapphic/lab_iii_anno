@@ -81,5 +81,13 @@ void raggi_cosmici(){
   segnali che colpiscono con eguale probabilità qualsiasi punto della lastra ovvero 
   quello misurato per un segnale concentrato a req = 0.3826 l dal centro.
   */
+ /*Non si usa il DOUT del PSAU perché quello scatta ogni volta che un singolo segnale 
+ supera la soglia, quindi include anche rumore, dark counts e segnali casuali che non 
+ corrispondono a vere particelle. Nel caso dei raggi cosmici, invece, interessa selezionare 
+ solo eventi fisici reali, cioè muoni che attraversano entrambi gli scintillatori. 
+ Questo si ottiene con il segnale di coincidenza della Cosmic Box, che richiede che i due 
+ rivelatori vedano un segnale nello stesso momento. In questo modo si elimina gran parte 
+ del rumore e si ottiene un trigger molto più pulito e significativo dal punto di vista 
+ fisico.*/
 
 }
