@@ -34,8 +34,8 @@ TH1F* istogramma(string input,string name,const int nBins) {
     myHisto->SetBinError(j+1, sqrt(y[j]));
   }
   // imposta titoli degli assi
-    myHisto->GetXaxis()->SetTitle("ADC channels");
-    myHisto->GetYaxis()->SetTitle("Conteggi");
+    myHisto->GetXaxis()->SetTitle("ADC channels [CHN]");
+    myHisto->GetYaxis()->SetTitle("Conteggi [#]");
     myHisto->SetTitle("Spettro raggi cosmici");
     return myHisto;
 
@@ -44,7 +44,7 @@ TH1F* istogramma(string input,string name,const int nBins) {
 void raggi_cosmici(){
 
     TH1F*h= istogramma("../data_sorg/A8_cosmici.txt","isto",128);
-    TCanvas* c1 = new TCanvas("c1","h",800,600);
+    TCanvas* c1 = new TCanvas("c1","h",20,20,800,600);
     h->Draw("hist");
 
     /*TH1F*hz= istogramma("../data_sorg/A8_cosmici_zoom.txt","isto",124);

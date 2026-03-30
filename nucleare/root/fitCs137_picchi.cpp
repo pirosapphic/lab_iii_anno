@@ -35,6 +35,10 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
     parInput.close();
   }
 
+    // imposta titoli degli assi
+   theHisto->GetXaxis()->SetTitle("ADC channels [CHN]");
+   theHisto->GetYaxis()->SetTitle("Conteggi [#]");
+   theHisto->SetTitle("Spettro a bassi canali del ^{137}Cs");
   double A[10] = {};
 
   //prima gaussiana

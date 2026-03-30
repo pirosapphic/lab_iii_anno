@@ -97,13 +97,13 @@ void ass_all(){
     for (int i=0; i<8; i++) {
         TCanvas* c = new TCanvas(Form("c%d",i), Form("c%d",i), 800, 600);
 
-        histos[i]->SetTitle(Form("Spettro Sr90 con %d fogli ", i*3)); 
+        histos[i]->SetTitle(Form("Spettro ^{90}Sr con %d fogli ", i*3)); 
         if (i == 7) {   
-            histos[i]->SetTitle("Count Rate Sr90 20"); 
+            histos[i]->SetTitle("Count Rate ^{90}Sr 20"); 
         }
           // titolo
-        histos[i]->GetXaxis()->SetTitle("Number of pulses");    // asse X
-        histos[i]->GetYaxis()->SetTitle("Conteggi");         // asse Y
+        histos[i]->GetXaxis()->SetTitle("Number of pulses/gate [x500 ms^{-1}]");    // asse X
+        histos[i]->GetYaxis()->SetTitle("Conteggi [#]");         // asse Y
         histos[i]->Draw("e1");
         if (fits[i]) {
             fits[i]->SetLineColor(colors[i]);
