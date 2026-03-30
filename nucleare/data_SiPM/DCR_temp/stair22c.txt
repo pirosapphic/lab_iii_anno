@@ -1,4 +1,3 @@
-Threshold [mV] - Staircase(s)-Multicolor	Frequency  [kHz] - Staircase(s)-Multicolor	
 -6	45.556	
 -8	44.668	
 -10	45.556	
@@ -18,3 +17,4 @@ Threshold [mV] - Staircase(s)-Multicolor	Frequency  [kHz] - Staircase(s)-Multico
 -38	0.024	
 -40	0.012	
 -48	0.004	
+Threshold [mV] - Staircase(s)-Multicolor	Frequency  [kHz] - Staircase(s)-Multicolor	

@@ -1,4 +1,3 @@
-Number of pulses received - @ High	Counts - @ High	
 123.45	1	
 128.35	1	
 133.25	4	
@@ -9,3 +8,4 @@ Number of pulses received - @ High	Counts - @ High
 157.75	7	
 162.65	8	
 167.55	4	
+umber of pulses received - @ High	Counts - @ High	

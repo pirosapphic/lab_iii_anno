@@ -1,4 +1,3 @@
-ADC Channel - Charge distribution	LED bias55V, G33dB,I2.5	
 -49.5	0	
 -48.5	0	
 -47.5	0	
@@ -2047,3 +2046,4 @@ ADC Channel - Charge distribution	LED bias55V, G33dB,I2.5
 1995.5	21	
 1996.5	18	
 1997.5	18	
+ADC Channel - Charge distribution	LED bias55V, G33dB,I2.5	

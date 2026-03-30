@@ -1,4 +1,3 @@
-Threshold [mV] - Staircase(s)-Multicolor	Frequency  [kHz] - Staircase(s)-Multicolor 21C st	
 -6	42.572	
 -8	43.98	
 -10	44.116	
@@ -17,3 +16,4 @@ Threshold [mV] - Staircase(s)-Multicolor	Frequency  [kHz] - Staircase(s)-Multico
 -36	0.028	
 -38	0.004	
 -40	0.02	
+Threshold [mV] - Staircase(s)-Multicolor	Frequency  [kHz] - Staircase(s)-Multicolor 21C st	

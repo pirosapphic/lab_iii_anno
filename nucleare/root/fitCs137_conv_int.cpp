@@ -77,7 +77,9 @@ void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt")
     
     //getting the gaussian peak
     double peak = ffit->GetParameter(1);  //mean
-    double s_peak = ffit->GetParameter(2);//std dev
+    double s_peak = ffit->GetParError(1);
+    double sigma = ffit->GetParameter(2);//std dev
+    double s_sigma = ffit->GetParError(2);
     std::cout << "Picco gamma = ("<<peak<<" +/- "<<s_peak<<")CHN\n";
     double k = 2.4e-5;		double s_k = 5e-6; //MeV/CHN
     double T_gamma = k*peak;
@@ -88,6 +90,7 @@ void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt")
     std::cout << "E_teorica = ("<<T_teo*1000<<" +/- "<<s_T_teo*1000<<")keV\n";
     double z = (T_teo - T_gamma)/(sqrt(pow(s_T_teo,2)+pow(s_T_gamma,2)));
     std::cout << "z-score = "<<z<<std::endl;
-    double R_exp = s_peak/peak; //risoluzione sperimentiale
-    std::cout << "Risoluzione sperimentale = "<<R_exp<<std::endl;
+    double R_exp = sigma/peak; //risoluzione sperimentiale
+    double s_R_exp = R_exp*sqrt(pow(s_sigma/sigma,2)+pow(s_peak/peak,2));
+    std::cout << "Risoluzione sperimentale = "<<R_exp<<" +/- "<<s_R_exp<<std::endl;
 }

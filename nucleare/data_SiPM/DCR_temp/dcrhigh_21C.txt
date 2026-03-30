@@ -1,4 +1,3 @@
-Number of pulses received - @ High	21 high
 123.35	4	
 128.05	2	
 132.75	5	
@@ -9,3 +8,4 @@ Number of pulses received - @ High	21 high
 156.25	2	
 160.95	7	
 165.65	4	
+Number of pulses received - @ High	21 high

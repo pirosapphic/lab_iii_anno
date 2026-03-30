@@ -1,20 +1,22 @@
     COSE DA FARE			CHI LE FA	PROGRESSO
 Parte 1: caratt. SiPM
-- DCR					Sofi
-- OCT (easy)				Anna
-- DCR a temp variabile			Sofi
-- Spettri LED:
-    - Gain variabile			Paolo
-    - Vbias variabile			Paolo
-    - Int. luminosa variabile		Paolo
+- DCR					Sofi		OK!
+- OCT (easy)				Anna		OK!
+- DCR/OCT a temp variabile		Sofi		OK!
+- Spettri LED:						OK!!!!
+    - Gain variabile			Paolo		OK!
+    - Vbias variabile			Paolo		OK!
+    - Int. luminosa variabile		Paolo		OK! 
 
 Parte 2: sorgenti radioattive
 - Picco di conversione interna Cs137	Paolo 		OK!
 - Tmax Cs137				Paolo		OK!
-- Picchi Cs137				Anna    OK (non capisco perchè alcuni errori sono interi)
+- Picchi Cs137				Anna		OK!
 - Tmax Sr90				Paolo		OK!
 - k di calibrazione da Sr90		Paolo		OK! 	
-- k_eq di calibrazione da Sr90		Sofi
-- Assorbimento carta			Anna    OK!
-- Assorbimento Al			Anna    ok (il fit torna solo se uso sigma come errore)
+- k_eq di calibrazione da Sr90		Sofi		OK!
+- Assorbimento carta			Anna		OK!
+- Assorbimento Al			Anna		OK!
 - Verifica Bethe-bloch con cosmici	Anna
+IN GENERALE
+- Vedere se usare sigma o errore sul parametro \mu nel caso di fit Gaussiani
