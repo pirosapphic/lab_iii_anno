@@ -144,8 +144,8 @@ void ass_all(){
     gr->SetTitle("Assorbimento alluminio");
     gr->SetMarkerColor(4);
     gr->SetMarkerStyle(21);
-    gr->GetXaxis()->SetTitle("Numero di fogli");    // asse X
-    gr->GetYaxis()->SetTitle("Rates"); 
+    gr->GetXaxis()->SetTitle("Numero di fogli [#]");    // asse X
+    gr->GetYaxis()->SetTitle("Rates [Hz]"); 
     gr->Draw("AP");
 
    //fit esponenziale
