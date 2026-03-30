@@ -2,7 +2,7 @@
 Parte 1: caratt. SiPM
 - DCR					Sofi		OK!
 - OCT (easy)				Anna		OK!
-- DCR a temp variabile			Sofi		OK!
+- DCR/OCT a temp variabile		Sofi		OK!
 - Spettri LED:						OK!!!!
     - Gain variabile			Paolo		OK!
     - Vbias variabile			Paolo		OK!
@@ -18,3 +18,5 @@ Parte 2: sorgenti radioattive
 - Assorbimento carta			Anna		OK!
 - Assorbimento Al			Anna		OK!
 - Verifica Bethe-bloch con cosmici	Anna
+IN GENERALE
+- Vedere se usare sigma o errore sul parametro \mu nel caso di fit Gaussiani
