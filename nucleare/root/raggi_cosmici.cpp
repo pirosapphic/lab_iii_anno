@@ -15,7 +15,7 @@ TH1F* istogramma(string input,string name,const int nBins) {
   
  
   //static const int nBins = 128;
-  float x[nBins];  int y[nBins]; 
+  double x[nBins];  int y[nBins]; 
   ifstream parInput(input.c_str());
   int i = 0;
 
@@ -52,18 +52,34 @@ void raggi_cosmici(){
     TCanvas* c2 = new TCanvas("c2","hz",800,600);
     hz->Draw("hist");
 
-    TH1F*hs= istogramma("../data_sorg/A8_cosmici_sinistra.txt","isto",60);
+    TH1F*hs= istogramma("../data_sorg/A8_cosmici_zoom.txt","isto",93);
     hs->Rebin(2);
     TCanvas* c3 = new TCanvas("c3","hs",800,600);
-    hs->Draw("e1");
-    TF1*f1= new TF1("f1", "gaus", 1250., 30750.);
+    hs->Draw("HIST E1");
+    TF1*f1= new TF1("f1", "gaus", 1250., 47250.);
     f1->SetParameters(9,30750,20000);
-    hs->Fit(f1,"R");
-    float media= f1->GetParameter(1);
-    float emedia= f1->GetParError(1);
+    hs->Fit(f1,"R+","e1");
+    f1->Draw("same");
+    double media= f1->GetParameter(1);
+    double emedia= f1->GetParError(1);
     cout << "p-value del fit: " << f1->GetProb() << endl;
 
     double energia= media*4.96766e-05;
-    cout<<energia<<endl;
+    double eenergia = energia*sqrt(pow(emedia/media,2)+pow(1./5.,2));
+    cout<<energia<<" +/- "<<eenergia<<endl;
+
+    double penergia= 2.06*1.; //spessore dello scintillatore piccolo
+    // 2.06 MeV/cm e 1 sono dati senza errore, allora prendo come costante senza errore penergia
+
+    //test Z
+
+    double Z= (penergia-energia)/eenergia;
+    cout<< Z<< endl;
+  /* uso keq invece che k perchè i raggi cosmici non cadono sempre perpenicolari alla 
+  superficie e nel suo centro, ma possono passare per vari punti dello scintillatore,
+  siccome k aumenta linearmente si usa keq che rappresenta il valore medio di k  per 
+  segnali che colpiscono con eguale probabilità qualsiasi punto della lastra ovvero 
+  quello misurato per un segnale concentrato a req = 0.3826 l dal centro.
+  */
 
 }
