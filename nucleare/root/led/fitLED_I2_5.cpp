@@ -26,8 +26,8 @@ void fitLED_I2_5(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     string Int = "2-5.txt";
     string path = input+Int;
     //path = "../../data_SiPM/LED/gain/A8_LED55252-5.txt";
-    TH1D* histo27 = histo_filler("histo27","Energy Spectrum, G=29dB, V_{bias}=55V, LED 2.5",path);
-    TCanvas* c27 = new TCanvas("c27","c27",20,20,800,600);
+    TH1D* histo27 = histo_filler("histo27","Spettro Energetico, G=29dB, V_{bias}=55V, LED 2.5; ADC channels[CHN];Conteggi[#]",path);
+    TCanvas* c27 = new TCanvas("c27","c27",20,20,1098,732);
     c27->SetGrid();
     gStyle->SetOptStat(0);
     histo27->SetLineColor(kBlack);

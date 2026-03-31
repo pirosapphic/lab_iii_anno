@@ -30,7 +30,7 @@ void fitLED_gainTOT(){
     std::vector<double> delta = {151.28,185.90,231.68,293.53,369.89,469.58}; //CHN
     std::vector<double> s_delta = {0.04,0.04,0.04,0.05,0.05,0.07};
     
-    TCanvas* c1 = new TCanvas("c1","c1",20,20,800,600);
+    TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();
     TGraphErrors * g1 = new TGraphErrors(n,G.data(),delta.data(),s_G.data(),s_delta.data());
     g1->SetTitle("<#Delta_{pp}> vs G_{ampl}, con V_{bias}=55V e intensita' 2.5;G_{ampl} [#];<#Delta_{pp}> [CHN]");

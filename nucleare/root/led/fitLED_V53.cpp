@@ -28,8 +28,8 @@ void fitLED_V53(string input = "../../data_SiPM/LED/Vbias/A8_LED"){
     //33 dB
     string V = "53";
     string path = input+V+"292-5.txt";
-    TH1D* histo27 = histo_filler("histo27","Energy Spectrum, G=29dB, V_{bias}=53V, LED 2.5",path);
-    TCanvas* c27 = new TCanvas("c27","c27",20,20,800,600);
+    TH1D* histo27 = histo_filler("histo27","Spettro Energetico, G=29dB, V_{bias}=53V, LED 2.5;ADC channels [CHN];Conteggi[#]",path);
+    TCanvas* c27 = new TCanvas("c27","c27",20,20,1098,732);
     c27->SetGrid();
     gStyle->SetOptStat(0);
     histo27->SetLineColor(kBlack);

@@ -22,17 +22,17 @@ void fit_DCR(){
     string DCR17 = "../data_SiPM/DCR/A8_DCR_17mV.txt";
     string DCR44 = "../data_SiPM/DCR/A8_DCR_44mV.txt";
 
-    TCanvas* cst = new TCanvas("cs","cs",20,20,800,600);
+    TCanvas* cst = new TCanvas("cs","cs",20,20,1000,800);
     cst->SetGrid();
     TGraph* gst = graph_filler("Staircase plot, G_{ampl}=35dB, V_{BIAS}=55V;V_{thr}[mV];#nu[kHz]",stairpath);
     cst->SetLogy();
     gst->SetMarkerStyle(21);
     gst->Draw("APRX");
 
-    TCanvas* c17 = new TCanvas("c17","c17",20,20,800,600);
+    TCanvas* c17 = new TCanvas("c17","c17",20,20,1098,732);
     c17->SetGrid();
     c17->cd();
-    TH1D* h17 = histo_filler("h17","Impulsi ricevuti a V_{thr}=-17mV con gate = 500ms;N. impulsi/gate [x500 ms^{-1}];Conteggi [#]",DCR17);
+    TH1D* h17 = histo_filler("h17","Impulsi ricevuti a V_{thr}=-17mV con gate = 500ms;N. impulsi/gate [x(500 ms)^{-1}];Conteggi [#]",DCR17);
     gStyle->SetOptStat(0);
     gStyle->SetErrorX(0);
     h17->Draw("HIST E1");
@@ -47,10 +47,10 @@ void fit_DCR(){
 
 
 
-    TCanvas* c44 = new TCanvas("c44","c4",20,20,800,600);
+    TCanvas* c44 = new TCanvas("c44","c4",20,20,1098,732);
     c44->SetGrid();
     c44->cd();
-    TH1D* h44 = histo_filler("h44","Impulsi ricevuti a V_{thr}=-44mV con gate = 500ms;N. impulsi/gate [x500 ms^{-1}];Conteggi [#]",DCR44);
+    TH1D* h44 = histo_filler("h44","Impulsi ricevuti a V_{thr}=-44mV con gate = 500ms;N. impulsi/gate [x(500 ms)^{-1}];Conteggi [#]",DCR44);
     gStyle->SetOptStat(0);
     gStyle->SetErrorX(0);
     h44->Draw("HIST E1");

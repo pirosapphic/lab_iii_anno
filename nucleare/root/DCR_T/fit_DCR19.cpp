@@ -32,7 +32,7 @@ void fit_DCR19(){
 
 //------------------------------------------------------------------------------- 
 //			LOW
-    TCanvas* c17 = new TCanvas("c17","c17",20,20,800,600);
+    TCanvas* c17 = new TCanvas("c17","c17",20,20,1098,732);
     c17->SetGrid();
     c17->cd();
     TH1D* h17 = histo_filler("h17","Impulsi ricevuti a V_{thr}=-10mV con gate = 500ms, T="+T+"^{o}C;N. impulsi/gate [x500 ms^{-1}];Conteggi [#]",DCR+"low_"+temp+"C.txt");
@@ -50,7 +50,7 @@ void fit_DCR19(){
 
 //------------------------------------------------------------------------------- 
 //			HIGH
-    TCanvas* c44 = new TCanvas("c44","c4",20,20,800,600);
+    TCanvas* c44 = new TCanvas("c44","c4",20,20,1098,732);
     c44->SetGrid();
     c44->cd();
     TH1D* h44 = histo_filler("h44","Impulsi ricevuti a V_{thr}=-24mV con gate = 500ms, T="+T+"^{o}C;N. impulsi/gate [x500 ms^{-1}];Conteggi [#]",DCR+"high_"+temp+"C.txt");

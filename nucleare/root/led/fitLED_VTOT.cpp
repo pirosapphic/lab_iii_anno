@@ -26,7 +26,7 @@ void fitLED_VTOT(){
     std::vector<double> V = {53.07,53.97,55.00,56.03,57.06}; //V
     std::vector<double> s_V ={0.03,0.03,0.03,0.03,0.03};
     
-    TCanvas* c1 = new TCanvas("c1","c1",20,20,800,600);
+    TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();
     TGraphErrors * g1 = new TGraphErrors(n,V.data(),Gsipm.data(),s_V.data(),s_Gsipm.data());
     g1->SetTitle("G_{SiPM} vs V_{bias}, con G_{amp}=29dB e intensita' 2.5;V_{bias} [V];G_{SiPM} [#]");

@@ -31,8 +31,8 @@ void fitLED_gain25(string input = "../../data_SiPM/LED/gain/A8_LED55"){
     //25 dB
     string gain = "25";
     string path = input+gain+"2-5.txt";
-    TH1D* histo25 = histo_filler("histo25","Energy Spectrum, G=25dB, V_{bias}=55V, LED 2.5",path);
-    TCanvas* c25 = new TCanvas("c25","c25",20,20,800,600);
+    TH1D* histo25 = histo_filler("histo25","Spettro Energetico, G=25dB, V_{bias}=55V, LED 2.5;ADC channels [CHN];Conteggi[#]",path);
+    TCanvas* c25 = new TCanvas("c25","c25",20,20,1098,732);
     c25->SetGrid();
     gStyle->SetOptStat(0);
     histo25->SetLineColor(kBlack);

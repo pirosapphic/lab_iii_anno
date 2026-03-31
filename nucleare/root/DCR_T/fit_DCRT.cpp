@@ -38,7 +38,7 @@ void fit_DCRT(){
 	oct[i] = dcrh[i]/dcrl[i]*100; //%
 	s_oct[i] = oct[i]*sqrt(pow(s_dcrh[i]/dcrh[i],2)+pow(s_dcrl[i]/dcrl[i],2));
     }
-    TCanvas* cl = new TCanvas("cl","cl",20,20,800,600);
+    TCanvas* cl = new TCanvas("cl","cl",20,20,1098,732);
     cl->SetGrid();
     cl->cd();
     TGraphErrors* gl = new TGraphErrors(dcrl.size(),T.data(),dcrl.data(),s_T.data(),s_dcrl.data());
@@ -52,7 +52,7 @@ void fit_DCRT(){
     std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
 
 
-    TCanvas* ch = new TCanvas("ch","ch",20,20,800,600);
+    TCanvas* ch = new TCanvas("ch","ch",20,20,1098,732);
     ch->SetGrid();
     ch->cd();
     TGraphErrors* gh = new TGraphErrors(dcrh.size(),T.data(),dcrh.data(),s_T.data(),s_dcrh.data());
@@ -65,7 +65,7 @@ void fit_DCRT(){
     std::cout << " (Probability: " << f2->GetProb() << ")." << std::endl;
     std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
     
-    TCanvas* co = new TCanvas("co","co",20,20,800,600);
+    TCanvas* co = new TCanvas("co","co",20,20,1098,732);
     co->SetGrid();
     co->cd();
     TGraphErrors* go = new TGraphErrors(oct.size(),T.data(),oct.data(),s_T.data(),s_oct.data());

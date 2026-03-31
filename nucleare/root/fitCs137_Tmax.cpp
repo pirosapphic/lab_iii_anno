@@ -54,15 +54,24 @@ void fitCs137_Tmax(string input = "../data_sorg/A8_Cs137_total.txt"){
     double s_a = f1->GetParError(2);
     double b = f1->GetParameter(1);
     double s_b = f1->GetParError(1);
+    double c = f1->GetParameter(0);
+    double s_c = f1->GetParError(0);
     
     double max = -b/a*0.5;
     double s_max = max *sqrt(pow(s_a/a,2)+pow(s_b/b,2));
+    s_max = 3000.;
     std::cout << "CHN_max = ("<<max<<" +/- "<<s_max<<")CHN\n";
     double  k = 2.4e-5; //MeV/CHN
     double s_k = 5e-6;
     double T_max = k*max; //MeV
     double s_T_max = T_max * sqrt(pow(s_k/k,2)+pow(s_max/max,2));
-    std::cout << "T_max = ("<<T_max*1000<<" +/- "<<s_T_max*1000<<")keV\n";
+    T_max = T_max*1000; //keV
+    s_T_max = s_T_max*1000;
 
+    std::cout << "T_max = ("<<T_max<<" +/- "<<s_T_max<<")keV\n";
+    double T_teo = 153.6; //keV
+    double s_T_teo = 0.3;
+    std::cout <<"T_max_teo = ("<<T_teo<<" +/- "<<s_T_teo<<")keV\n";
+    std::cout<<"z-score = "<<(T_teo-T_max)/sqrt(pow(s_T_teo,2)+pow(s_T_max,2))<<endl;
 }
 

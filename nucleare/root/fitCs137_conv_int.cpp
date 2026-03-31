@@ -19,10 +19,10 @@ void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt")
     // in ADC counts
     float xMin = 532.5; float xMax = 35567.5;  float binWidth = 65.;
 
-    TCanvas* c1 = new TCanvas("c1","c1",20,20,800,600);
+    TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();
     float x;  float y; string parName; 
-    TH1F* theHisto = new TH1F("Energy Spectrum", "Electron energy ^{137}Cs", (int)((xMax-xMin)/binWidth), xMin, xMax);
+    TH1F* theHisto = new TH1F("Energy Spectrum", "Spettro Energetico ^{137}Cs;ADC channels [CHN];Conteggi[#]", (int)((xMax-xMin)/binWidth), xMin, xMax);
     //theHisto->Sumw2();
 
     if (parInput.is_open()) {

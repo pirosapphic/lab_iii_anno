@@ -22,8 +22,8 @@ std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
 void fitLED_GSiPM(string input = "../../data_SiPM/LED/I/A8_LED55292-8.txt"){    
 
-    TH1D* histoTot = histo_filler("histotot","Energy Spectrum, G=29dB, V_{bias}=55V, LED 2.8",input);
-    TCanvas* ctot = new TCanvas("c1","c1",20,20,800,600);
+    TH1D* histoTot = histo_filler("histotot","Spettro Energetico, G=29dB, V_{bias}=55V, LED 2.8; ADC channels [CHN];Conteggi[#]",input);
+    TCanvas* ctot = new TCanvas("c1","c1",20,20,1098,732);
     ctot->SetGrid();
     //histoTot->Rebin(8);
     gStyle->SetOptStat(0);
