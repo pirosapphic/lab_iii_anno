@@ -116,7 +116,7 @@ void Ass_carta() {
                 fits[i]->Draw("same");
                 //recupera parametri per grafico
                 media[i]=fits[i]->GetParameter(1);
-                erroremedia[i]= fits[i]->GetParError(1);
+                erroremedia[i]= fits[i]->GetParameter(2);
             
             }
     }

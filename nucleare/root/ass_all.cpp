@@ -158,4 +158,13 @@ void ass_all(){
     gr->Fit(f,"R");
     cout<< endl<< "p-value"<< f->GetProb() << endl;
 
+    float mu_d= f-> GetParameter(2); //il parametro è moltiplicazione del coefficente per lo spessore del singolo foglietto
+    float emu_d= f-> GetParError(2);
+    float mu= 14.5;
+    float emu= 0.5;
+    float d= mu_d/mu;
+    float ed= d*sqrt(pow(emu/mu,2)+pow(emu_d/mu_d,2));
+    cout<< "d : "<<d<<"+/-"<<ed<<endl;
+    
+
 }
