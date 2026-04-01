@@ -45,8 +45,8 @@ void fitLED_gainTOT(){
     std::cout<<"Il termine noto è compatibile con 0\n";
     std::cout<<"Il coeff angolare va confrontato con Gsipm*e/k, con k = 40fC/CHN\n";
     std::cout<<"uso la stima già fatta di Gsipm (con Vbias = 55V) per il coeff 'teorico'\n";
-    double Gsipm = 2050000;
-    double s_Gsipm = 20000;
+    double Gsipm = 2.05e6;
+    double s_Gsipm = 0.01e6;
     double e = 1.6022e-4; //fC
     double k = 40; //fC/CHN
     double mteo = Gsipm*e/k;

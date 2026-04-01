@@ -25,7 +25,7 @@ void fitCs137_Tmax(string input = "../data_sorg/A8_Cs137_total.txt"){
     double x;
     double y;
     string parName; 
-    TH1D* histoTot = new TH1D("Energy Spectrum", "Electron energy ^{137}Cs;ADC [CHN];Counts [#]",nbins, xMin, xMax);
+    TH1D* histoTot = new TH1D("Energy Spectrum", "Spettro Energetico ^{137}Cs;ADC [CHN];Conteggi [#]",nbins, xMin, xMax);
 
     if (parInput.is_open()) {
 	while ( parInput.good() ) {
@@ -59,7 +59,7 @@ void fitCs137_Tmax(string input = "../data_sorg/A8_Cs137_total.txt"){
     
     double max = -b/a*0.5;
     double s_max = max *sqrt(pow(s_a/a,2)+pow(s_b/b,2));
-    s_max = 3000.;
+   
     std::cout << "CHN_max = ("<<max<<" +/- "<<s_max<<")CHN\n";
     double  k = 2.4e-5; //MeV/CHN
     double s_k = 5e-6;

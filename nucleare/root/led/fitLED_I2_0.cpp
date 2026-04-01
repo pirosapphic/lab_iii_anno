@@ -210,6 +210,8 @@ void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     for(int i = 0; i<npeaks; i++){
 	I[i] = norm[i]*sigma[i]*sqrt(2*3.1415926);
 	s_I[i] = I[i]*sqrt(pow(s_norm[i]/norm[i],2)+pow(s_sigma[i]/sigma[i],2));
+	s_I[i] = I[i]*(s_norm[i]/norm[i]+s_sigma[i]/sigma[i]);
+//	std::cout<<"I"<<i<<" "<<I[i]<<" +/- "<<s_I[i]<<std::endl;
     }
     
     TCanvas *c2 = new TCanvas("c2","c2",20,20,800,600);
@@ -219,10 +221,10 @@ void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     TH1D *h1 = new TH1D("h1", "h1 title", 8, -0.5, 7.5);
     for(int i = 0; i<npeaks; i++){
 	int theBin = h1->FindBin(i);
-	h1->SetBinContent(theBin,norm[i]);
-	h1->SetBinError(theBin,s_norm[i]);
+	h1->SetBinContent(theBin,I[i]);
+	h1->SetBinError(theBin,s_I[i]);
     }
-    h1->Draw("e1");
+    h1->Draw("HIST E1");
     
     TF1* f2 = new TF1("f2","[0]*TMath::Poisson(x,[1])",0,4.5);
     f2->SetNpx(10000);
@@ -230,6 +232,7 @@ void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     f2->SetParameter(1,0.8);
     //f1->Draw("same");
     h1->Fit("f2","R+","e1");
+    f2->Draw("same");
     std::cout << "Chi^2:" <<f2->GetChisquare();
     std::cout<< ", number of DoF: " << f2->GetNDF();
     std::cout << " (Probability: " << f2->GetProb() << ")." << std::endl;

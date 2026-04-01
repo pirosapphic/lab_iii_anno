@@ -44,7 +44,7 @@ void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt")
     double min = 11000;
     double max = 30000;
 
-    TF1* ffit = new TF1("ffit","gaus(0)+gaus(3)+[6]",0.,50000.);
+    TF1* ffit = new TF1("ffit","gaus(0)+gaus(3)",0.,50000.);
     ffit->SetParameter(0,700); //norm
     ffit->SetParameter(1,20000);//media
     ffit->SetParameter(2,2000);//sigma
@@ -54,7 +54,7 @@ void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt")
     ffit->SetParameter(5,4000);
 
 
-    ffit->SetParameter(6,0);
+    //ffit->SetParameter(6,0);
     
     theHisto->Draw("e1");
     theHisto->Fit("ffit","","e1",min,max);
@@ -80,6 +80,9 @@ void fitCs137_conv_int(string input = "../data_sorg/A8_Cs137_total.txt")
     double s_peak = ffit->GetParError(1);
     double sigma = ffit->GetParameter(2);//std dev
     double s_sigma = ffit->GetParError(2);
+
+    s_peak = sigma; 
+
     std::cout << "Picco gamma = ("<<peak<<" +/- "<<s_peak<<")CHN\n";
     double k = 2.4e-5;		double s_k = 5e-6; //MeV/CHN
     double T_gamma = k*peak;
