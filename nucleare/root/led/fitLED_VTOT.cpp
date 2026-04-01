@@ -20,8 +20,8 @@
 
 void fitLED_VTOT(){ 
     int n = 5;
-    std::vector<double> Gsipm = {715.e3,1.393e6,2.05e6,2.71e6,3.36e6};
-    std::vector<double> s_Gsipm = {8.e3,1.5e4,2e4,3e4,4e4};
+    std::vector<double> Gsipm = {710.e3,1.39e6,2.05e6,2.71e6,3.36e6};
+    std::vector<double> s_Gsipm = {90.e3,8.e4,10.e4,11.e4,13e4};
 
     std::vector<double> V = {53.07,53.97,55.00,56.03,57.06}; //V
     std::vector<double> s_V ={0.03,0.03,0.03,0.03,0.03};

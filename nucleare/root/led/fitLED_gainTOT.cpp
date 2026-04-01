@@ -27,8 +27,8 @@ void fitLED_gainTOT(){
 	s_G[i] = 20/log(10)/G[i]*1;
 	G[i] = pow(10,G[i]/20);
     }
-    std::vector<double> delta = {151.28,185.90,231.68,293.53,369.89,469.58}; //CHN
-    std::vector<double> s_delta = {0.04,0.04,0.04,0.05,0.05,0.07};
+    std::vector<double> delta = {150.,190.,232.,293.,370.,470.}; //CHN
+    std::vector<double> s_delta = {8.,9.,11.,12.,15.,18.};
     
     TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();

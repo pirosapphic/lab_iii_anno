@@ -135,6 +135,10 @@ void fitLED_I2_5(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     sigma[5] = gaus5->GetParameter(2); 
     s_sigma[5] = gaus5->GetParError(2);
 */
+    for(int i = 0; i<npeaks ;i++){
+	s_peak[i] = sigma[i];
+    }
+
     std::vector<double>deltapp(npeaks-1);
     std::vector<double>s_deltapp(npeaks-1);
     std::cout<<"Stime di Delta_pp:\n";

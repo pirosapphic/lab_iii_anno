@@ -122,6 +122,10 @@ void fitLED_gain25(string input = "../../data_SiPM/LED/gain/A8_LED55"){
     s_peak[5] = gaus5->GetParError(1);
     sigma[5] = gaus5->GetParameter(2); 
     s_sigma[5] = gaus5->GetParError(2);
+
+    for(int i = 0; i<6; i++){
+	s_peak[i] = sigma[i];
+    }
     
 
     std::vector<double>deltapp(5);

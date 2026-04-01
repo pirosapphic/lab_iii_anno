@@ -116,6 +116,9 @@ void fitLED_GSiPM(string input = "../../data_SiPM/LED/I/A8_LED55292-8.txt"){
     sigma[5] = gaus5->GetParameter(2); 
     s_sigma[5] = gaus5->GetParError(2);
     
+    for(int i = 0; i<6 ;i++){
+	s_peak[i] = sigma[i];
+    }
 
     std::vector<double>deltapp(5);
     std::vector<double>s_deltapp(5);

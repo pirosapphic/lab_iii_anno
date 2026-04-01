@@ -107,6 +107,9 @@ void fitLED_V54(string input = "../../data_SiPM/LED/Vbias/A8_LED"){
     s_peak[4] = gaus4->GetParError(1);
     sigma[4] = gaus4->GetParameter(2); 
     s_sigma[4] = gaus4->GetParError(2);
+    for(int i = 0; i<npeaks ;i++){
+	s_peak[i] = sigma[i];
+    }
 
 
     std::vector<double>deltapp(npeaks-1);

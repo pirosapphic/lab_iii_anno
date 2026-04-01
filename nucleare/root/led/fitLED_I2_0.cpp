@@ -135,6 +135,10 @@ void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     sigma[5] = gaus5->GetParameter(2); 
     s_sigma[5] = gaus5->GetParError(2);
 */
+    for(int i = 0; i<npeaks ;i++){
+	s_peak[i] = sigma[i];
+    }
+
     std::vector<double>deltapp(npeaks-1);
     std::vector<double>s_deltapp(npeaks-1);
     std::cout<<"Stime di Delta_pp:\n";
@@ -148,9 +152,10 @@ void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     std::vector<double> respp = w_mean(deltapp,s_deltapp);
     double meanpp = respp[0];
     double s_meanpp = respp[1];
-    std::cout<<"Media pesata Deltapp = ("<<meanpp<<" +/- "<<s_meanpp<<")CHN\n";
-    std::cout<<"Calcolo del numero di fotoni incidenti\n";
+    std::cout<<"Media pesata Deltapp = ("<<meanpp<<" +/- "<<s_meanpp<<")CHN\n\n";
 
+    std::cout<<"Calcolo del numero di fotoni incidenti\n";
+    
     std::cout<<"I) Metodo approssimativo \\mu_ph = <CH>/<deltapp>\n";
     double meanh = histo27->GetMean();
     double s_meanh = histo27->GetMeanError();
@@ -165,10 +170,18 @@ void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){
 
     std::cout<<"verifica dell'andamento lineare tra Npicco e la sua varianza\n";
     std::cout<<"non viene, ma non viene nemmeno agli altri: si puo dire che i primi dati sono circa lineari\n";
-    std::vector<double> var(npeaks-1);
-    std::vector<double> s_var(npeaks-1);
-    std::vector<double> N(npeaks-1);
-    std::vector<double> s_N(npeaks-1);
+    std::vector<double> var(npeaks);
+    std::vector<double> s_var(npeaks);
+    std::vector<double> N(npeaks);
+    std::vector<double> s_N(npeaks);
+    
+    for(int i = 0; i < npeaks; i++){
+	var[i] = pow(sigma[i],2);
+	s_var[i] = 2*sigma[i]*s_sigma[i];
+	N[i] = i;
+	s_N[i] = 0;
+    }
+/*
     for(int i = 1; i < npeaks; i++){
 	int j = i-1;
 	var[j] = pow(sigma[i],2);
@@ -176,21 +189,22 @@ void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){
 	N[j] = i;
 	s_N[j] = 0;
     }
-    TCanvas *c1 = new TCanvas("c1","c1",20,20,800,600);
+*/
+    TCanvas *c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->cd();
     c1->SetGrid();
     TGraphErrors* g1 = new TGraphErrors(npeaks,N.data(),var.data(),s_N.data(),s_var.data());
-    g1->SetTitle("Varianze vs N. di picco;N[#];#sigma_{N}^{2} [CHN^{2}]");
+    g1->SetTitle("Varianze vs N. di picco, G=29dB, V_{bias}=55V, LED 2.0;N[#];#sigma_{N}^{2} [CHN^{2}]");
     g1->Draw("AP");
     //g1->GetXaxis()->SetRange(-1,100);
-    TF1* f1 = new TF1("f1","pol1",1,4);
+    TF1* f1 = new TF1("f1","pol1",0,4);
     g1->Fit("f1","R+");
     std::cout << "Chi^2:" <<f1->GetChisquare();
     std::cout<< ", number of DoF: " << f1->GetNDF();
     std::cout << " (Probability: " << f1->GetProb() << ")." << std::endl;
     std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
     
-/* //qui c'è metodo integrale che non funziona
+ //qui c'è metodo integrale che non funziona
     std::vector<double> I(npeaks);
     std::vector<double> s_I(npeaks);
     for(int i = 0; i<npeaks; i++){
@@ -198,9 +212,9 @@ void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){
 	s_I[i] = I[i]*sqrt(pow(s_norm[i]/norm[i],2)+pow(s_sigma[i]/sigma[i],2));
     }
     
-    TCanvas *c1 = new TCanvas("c1","c1",20,20,800,600);
-    c1->cd();
-    c1->SetGrid();
+    TCanvas *c2 = new TCanvas("c2","c2",20,20,800,600);
+    c2->cd();
+    c2->SetGrid();
 
     TH1D *h1 = new TH1D("h1", "h1 title", 8, -0.5, 7.5);
     for(int i = 0; i<npeaks; i++){
@@ -210,17 +224,17 @@ void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     }
     h1->Draw("e1");
     
-    TF1* f1 = new TF1("f1","[0]*TMath::Poisson(x,[1])",0,4.5);
-    f1->SetNpx(10000);
-    f1->SetParameter(0,40000);
-    f1->SetParameter(1,0.8);
+    TF1* f2 = new TF1("f2","[0]*TMath::Poisson(x,[1])",0,4.5);
+    f2->SetNpx(10000);
+    f2->SetParameter(0,40000);
+    f2->SetParameter(1,0.8);
     //f1->Draw("same");
-    h1->Fit("f1","R+","e1");
-    std::cout << "Chi^2:" <<f1->GetChisquare();
-    std::cout<< ", number of DoF: " << f1->GetNDF();
-    std::cout << " (Probability: " << f1->GetProb() << ")." << std::endl;
+    h1->Fit("f2","R+","e1");
+    std::cout << "Chi^2:" <<f2->GetChisquare();
+    std::cout<< ", number of DoF: " << f2->GetNDF();
+    std::cout << " (Probability: " << f2->GetProb() << ")." << std::endl;
     std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
-*/
+
 }
 
 TH1D* histo_filler(string name, string title, string path){ //general purpose
