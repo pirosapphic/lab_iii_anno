@@ -96,7 +96,7 @@ void ass_all(){
     // Creazione canvas separati e disegno
     for (int i=0; i<8; i++) {
         TCanvas* c = new TCanvas(Form("c%d",i), Form("c%d",i), 800, 600);
-
+        c ->SetGrid();
         histos[i]->SetTitle(Form("Spettro ^{90}Sr con %d fogli ", i*3)); 
         if (i == 7) {   
             histos[i]->SetTitle("Count Rate ^{90}Sr 20"); 
@@ -147,6 +147,7 @@ void ass_all(){
     gr->GetXaxis()->SetTitle("Numero di fogli [#]");    // asse X
     gr->GetYaxis()->SetTitle("Rates [Hz]"); 
     gr->Draw("AP");
+
 
    //fit esponenziale
 

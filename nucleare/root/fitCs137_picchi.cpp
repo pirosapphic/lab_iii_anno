@@ -19,6 +19,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   float xMin = 505.; float xMax = 5615.;  float binWidth = 10.;
 
   TCanvas* c1 = new TCanvas("c1","c1",20,20,800,600);
+  c1->SetGrid();
   float x;  float y; string parName; 
   TH1F* theHisto = new TH1F("theHisto", "Electron energy", (int)((xMax-xMin)/binWidth), xMin, xMax);
 
@@ -152,7 +153,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   A[8]   = f9->GetParameter(0);
   double mean9  = f9->GetParameter(1);
   double sigma9 = f9->GetParameter(2);
-  double errM9     = f9->GetParError(1);
+  double errM9     = f9->GetParError(1); 
   double ersig9 = f9->GetParError(2);
    //dieci gaussiana
   TF1* f10 = new TF1("f10","gaus", 2960,3050);
@@ -168,7 +169,8 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   //array 
 
   double media[10]= {mean1, mean2, mean3, mean4, mean5, mean6, mean7, mean8, mean9, mean10};
-  double errM[10] ={errM1,errM2,errM3,errM4,errM5,errM6,errM7,errM8,errM9,errM10};
+  //uso sigma come errore
+  //double errM[10] ={errM1,errM2,errM3,errM4,errM5,errM6,errM7,errM8,errM9,errM10};
   double sigma[10] = {sigma1,sigma2,sigma3,sigma4,sigma5,sigma6,sigma7,sigma8,sigma9,sigma10};
   double ersig[10] = {ersig1,ersig2,ersig3,ersig4,ersig5,ersig6,ersig7,ersig8,ersig9,ersig10};
 
@@ -178,7 +180,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double errpp[9] = {};
   for(int i=0;i < 9; i++){
     deltapp[i]= media[i+1]-media[i];
-    errpp[i] = sqrt(pow(errM[i],2)+ pow(errM[i+1],2)); //misure indipendenti
+    errpp[i] = sqrt(pow(sigma[i],2)+ pow(sigma[i+1],2)); //misure indipendenti
     
   }
   //media pesata
@@ -244,8 +246,28 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
 
   cout <<  " La risoluzione attesa è: " << Rat<< " +/- " << erat<< endl;
 
+  //test Z picchi
+ double Zpp;
+  for (int i = 0; i < 8; i++)
+  {
+    for (int j= i+1; j < 8; j++)
+    {
+      Zpp= (deltapp[i]-deltapp[j])/sqrt(pow(sigma[i],2)+pow(sigma[j],2));
+      cout<< i << " " <<j <<"Z "<< Zpp <<endl;
+      if (1.96 >Zpp && -1.96 < Zpp)
+      {
+       cout<< "buono"<<endl;
+      }
+      
+    }
+    
+  }
+  
+  //test Z risoluzione
+  double Zr= (0.131275-0.098653)/sqrt(pow(0.00104718,2)+pow(0.00997424,2));
+  cout<< "Zr: "<< Zr<< endl;
+
  
 }
 
-/*cercre errore risoluzione sperimentale e fare test Z con la risoluzione sperimentale*/
-/*c'è differenza tra questo e fit picchi?*/
+
