@@ -25,7 +25,7 @@ void fitCs137_Tmax(string input = "../data_sorg/A8_Cs137_total.txt"){
     double x;
     double y;
     string parName; 
-    TH1D* histoTot = new TH1D("Energy Spectrum", "Spettro Energetico ^{137}Cs;ADC [CHN];Conteggi [#]",nbins, xMin, xMax);
+    TH1D* histoTot = new TH1D("Energy Spectrum", "Spettro Energetico ^{137}Cs;ADC channels[CHN];Conteggi [#]",nbins, xMin, xMax);
 
     if (parInput.is_open()) {
 	while ( parInput.good() ) {

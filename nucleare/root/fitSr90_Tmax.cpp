@@ -28,7 +28,7 @@ void fitSr90_Tmax(string input = "../data_sorg/A8_Sr90_centrato.txt"){
     double x;
     double y;
     string parName; 
-    TH1D* histoTot = new TH1D("Energy Spectrum", "Spettro energetico ^{90}Sr;ADC [CHN];Conteggi [#]",nbinstot, xMin, xMax);
+    TH1D* histoTot = new TH1D("Energy Spectrum", "Spettro energetico ^{90}Sr;ADC channels [CHN];Conteggi [#]",nbinstot, xMin, xMax);
 
     if (parInput.is_open()) {
 	while ( parInput.good() ) {

@@ -76,6 +76,8 @@ void fit_DCR23_9(){
     double oct = nu2/nu1 *100;//%
     double s_oct = oct*sqrt(pow(s_nu1/nu1,2)+pow(s_nu2/nu2,2));
     std::cout<<"Optical cross talk = nu2/nu1 = ("<<oct<<" +/- "<<s_oct<<")%"<<std::endl;
+    c44->SaveAs(("./dcr_h"+temp+".png").c_str());
+    c17->SaveAs(("./dcr_l"+temp+".png").c_str());
 
 
 }
