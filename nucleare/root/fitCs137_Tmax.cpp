@@ -37,7 +37,7 @@ void fitCs137_Tmax(string input = "../data_sorg/A8_Cs137_total.txt"){
 	}
 	parInput.close();
     }
-    TCanvas* ctot = new TCanvas("c1","c1",20,20,800,600);
+    TCanvas* ctot = new TCanvas("c1","c1",20,20,1098,732);
     ctot->SetGrid();
     histoTot->Rebin(8);
     gStyle->SetOptStat(0);

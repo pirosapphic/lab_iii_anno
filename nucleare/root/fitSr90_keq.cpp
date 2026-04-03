@@ -15,14 +15,14 @@ TH1D* histo_filler(string name, string title, string path); //general purpose
 std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
 void fitSr90_keq(string input = "../data_sorg/A8_Sr90_decentrato.txt"){    
-    TH1D* histoTot = histo_filler("histoTot","Energy Spectrum ^{90}Sr, decentrato;ADC [CHN];Counts[#]",input);
-    TCanvas* ctot = new TCanvas("c1","c1",20,20,800,600);
+    TH1D* histoTot = histo_filler("histoTot","Spettro energetico ^{90}Sr, decentrato;ADC channels [CHN];Conteggi[#]",input);
+    TCanvas* ctot = new TCanvas("c1","c1",20,20,1098,732);
     gStyle->SetOptStat(0);
     ctot->SetGrid();
     histoTot->Draw("e1");
     TH1D *histoEp = (TH1D*)histoTot->Clone("histoEp");
     histoEp->Rebin(16);
-    histoEp->SetTitle("Kurie Plot;ADC[CHN];#frac{#sqrt{counts}}{CHN} [#frac{#}{CHN}]");
+    histoEp->SetTitle("Plot di Kurie, ^{90}Sr decentrato;ADC[CHN];#frac{#sqrt{counts}}{CHN} [#frac{#}{CHN}]");
     double xMinep = 37000;
     double xMaxep = 43000;
     int nbins = histoEp->GetNbinsX();
@@ -46,7 +46,7 @@ void fitSr90_keq(string input = "../data_sorg/A8_Sr90_decentrato.txt"){
 	}
     }
     histoEp->SetAxisRange(xMinep,xMaxep+1000);
-    TCanvas* cep = new TCanvas("c2","c2",20,20,800,600);
+    TCanvas* cep = new TCanvas("c2","c2",20,20,1098,732);
     cep->cd();
     gStyle->SetOptStat(0);
     cep->SetGrid();
