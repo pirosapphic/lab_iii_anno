@@ -28,7 +28,7 @@ void fitSr90_Tmax(string input = "../data_sorg/A8_Sr90_centrato.txt"){
     double x;
     double y;
     string parName; 
-    TH1D* histoTot = new TH1D("Energy Spectrum", "Electron energy ^{90}Sr;ADC [CHN];Counts [#]",nbinstot, xMin, xMax);
+    TH1D* histoTot = new TH1D("Energy Spectrum", "Spettro energetico ^{90}Sr;ADC [CHN];Conteggi [#]",nbinstot, xMin, xMax);
 
     if (parInput.is_open()) {
 	while ( parInput.good() ) {
@@ -40,12 +40,12 @@ void fitSr90_Tmax(string input = "../data_sorg/A8_Sr90_centrato.txt"){
 	}
 	parInput.close();
     }
-    TCanvas* ctot = new TCanvas("c1","c1",20,20,800,600);
+    TCanvas* ctot = new TCanvas("c1","c1",20,20,1098,732);
     ctot->SetGrid();
     gStyle->SetOptStat(0);
     histoTot->Rebin(4);
     histoTot->Draw("e1");
-   
+  
     double minfit = 4000;
     double maxfit = 10500;
     TF1* f1 = new TF1("f1","pol2",minfit,maxfit);
@@ -66,4 +66,5 @@ void fitSr90_Tmax(string input = "../data_sorg/A8_Sr90_centrato.txt"){
     double T_max = k*max; //MeV
     double s_T_max = T_max * sqrt(pow(s_k/k,2)+pow(s_max/max,2));
     std::cout << "T_max = ("<<T_max<<" +/- "<<s_T_max<<")MeV\n";
+
 }

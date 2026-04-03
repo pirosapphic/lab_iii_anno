@@ -179,10 +179,10 @@ void fitLED_I2_8(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     c1->cd();
     c1->SetGrid();
     TGraphErrors* g1 = new TGraphErrors(npeaks,N.data(),var.data(),s_N.data(),s_var.data());
-    g1->SetTitle("Varianze vs N. di picco;N[#];#sigma_{N}^{2} [CHN^{2}]");
+    g1->SetTitle("Varianze vs N. di picco, I_{LED} = 2.8;N[#];#sigma_{N}^{2} [CHN^{2}]");
     g1->Draw("AP");
     //g1->GetXaxis()->SetRange(-1,100);
-    TF1* f1 = new TF1("f1","pol1",0,5);
+    TF1* f1 = new TF1("f1","pol1",0,7);
     g1->Fit("f1","R+");
     std::cout << "Chi^2:" <<f1->GetChisquare();
     std::cout<< ", number of DoF: " << f1->GetNDF();
@@ -196,32 +196,33 @@ void fitLED_I2_8(string input = "../../data_SiPM/LED/I/A8_LED5529"){
 	I[i] = norm[i]*sigma[i]*sqrt(2*3.1415926);
 	s_I[i] = I[i]*sqrt(pow(s_norm[i]/norm[i],2)+pow(s_sigma[i]/sigma[i],2));
 	s_I[i] = I[i]*(s_norm[i]/norm[i]+s_sigma[i]/sigma[i]);
-	std::cout<<"I"<<i<<" "<<I[i]<<" +/- "<<s_I[i]<<std::endl;
+//	std::cout<<"I"<<i<<" "<<I[i]<<" +/- "<<s_I[i]<<std::endl;
     }
     
-    TCanvas *c2 = new TCanvas("c2","c2",20,20,800,600);
+    TCanvas *c2 = new TCanvas("c2","c2",20,20,1098,732);
     c2->cd();
     c2->SetGrid();
 
-    TH1D *h2 = new TH1D("h2", "h2 title", 8, -0.5, 7.5);
+    TH1D *h1 = new TH1D("h1", "Aree sottese alle gaussiane vs N. di picco I_{LED} = 2.8; N. picco [#];A_{N} [CHN]", 8, -0.5, 7.5);
     for(int i = 0; i<npeaks; i++){
-	int theBin = h2->FindBin(i);
-	h2->SetBinContent(theBin,I[i]);
-	h2->SetBinError(theBin,s_I[i]);
+	int theBin = h1->FindBin(i);
+	h1->SetBinContent(theBin,I[i]);
+	h1->SetBinError(theBin,s_I[i]);
     }
-    h2->Draw("HISTO E1");
+    h1->Draw("HIST E1");
     
     TF1* f2 = new TF1("f2","[0]*TMath::Poisson(x,[1])",0,5.5);
     f2->SetNpx(10000);
     f2->SetParameter(0,40000);
     f2->SetParameter(1,0.8);
     //f1->Draw("same");
-    h2->Fit("f2","R+","e1");
+    h1->Fit("f2","R+","e1");
     f2->Draw("same");
     std::cout << "Chi^2:" <<f2->GetChisquare();
     std::cout<< ", number of DoF: " << f2->GetNDF();
     std::cout << " (Probability: " << f2->GetProb() << ")." << std::endl;
     std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
+
 
 }
 

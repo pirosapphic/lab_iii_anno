@@ -1,4 +1,3 @@
-Threshold [mV] - Staircase(s) impostazioni pt 2	
 -5	0.00666667	
 -6	0.00333333	
 -7	0.00666667	
@@ -32,3 +31,4 @@ Threshold [mV] - Staircase(s) impostazioni pt 2
 -49	0.00333333	
 -50	0.00666667	
 -52	0.00666667	
+Threshold [mV] - Staircase(s) impostazioni pt 2	

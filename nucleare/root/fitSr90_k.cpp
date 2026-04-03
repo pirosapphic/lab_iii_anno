@@ -29,7 +29,7 @@ void fitSr90_k(string input = "../data_sorg/A8_Sr90_centrato.txt"){
     double y;
     string parName; 
    // TH1D* histoTot = new TH1D("Energy Spectrum", "Electron energy ^{90}Sr;ADC [CHN];Counts [#]",nbinstot, xMin, xMax);
-    TH1D* histoEp = new TH1D("Endopint", "Kurie fit, ^{90}Sr;ADC [CHN];#frac{#sqrt{counts}}{CHN} [#frac{#}{CHN}]",nbinsep, xMinep, xMaxep);
+    TH1D* histoEp = new TH1D("Endopint", "Plot di Kurie, ^{90}Sr centrato;ADC [CHN];#frac{#sqrt{conteggi}}{CHN} [#frac{#}{CHN}]",nbinsep, xMinep, xMaxep);
 
     if (parInput.is_open()) {
 	while ( parInput.good() ) {
@@ -53,7 +53,7 @@ void fitSr90_k(string input = "../data_sorg/A8_Sr90_centrato.txt"){
    // histoTot->Draw("e1");
     
     //endpoint
-    TCanvas* cep = new TCanvas("c2","c2",20,20,800,600);
+    TCanvas* cep = new TCanvas("c2","c2",20,20,1098,732);
     cep->SetGrid();
     cep->cd();
     histoEp->Rebin(31);

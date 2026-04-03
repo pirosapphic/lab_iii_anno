@@ -169,25 +169,24 @@ void fitLED_I2_5(string input = "../../data_SiPM/LED/I/A8_LED5529"){
 
     std::cout<<"verifica dell'andamento lineare tra Npicco e la sua varianza\n";
     std::cout<<"non viene, ma non viene nemmeno agli altri: si puo dire che i primi dati sono circa lineari\n";
-    std::vector<double> var(npeaks-1);
-    std::vector<double> s_var(npeaks-1);
-    std::vector<double> N(npeaks-1);
-    std::vector<double> s_N(npeaks-1);
-    for(int i = 1; i < npeaks; i++){
-	int j = i-1;
-	var[j] = pow(sigma[i],2);
-	s_var[j] = 2*sigma[i]*s_sigma[i];
-	N[j] = i;
-	s_N[j] = 0;
+    std::vector<double> var(npeaks);
+    std::vector<double> s_var(npeaks);
+    std::vector<double> N(npeaks);
+    std::vector<double> s_N(npeaks);
+    for(int i = 0; i < npeaks; i++){
+	var[i] = pow(sigma[i],2);
+	s_var[i] = 2*sigma[i]*s_sigma[i];
+	N[i] = i;
+	s_N[i] = 0;
     }
     TCanvas *c1 = new TCanvas("c1","c1",20,20,800,600);
     c1->cd();
     c1->SetGrid();
     TGraphErrors* g1 = new TGraphErrors(npeaks,N.data(),var.data(),s_N.data(),s_var.data());
-    g1->SetTitle("Varianze vs N. di picco;N[#];#sigma_{N}^{2} [CHN^{2}]");
+    g1->SetTitle("Varianze vs N. di picco, I_{LED} = 2.5;N[#];#sigma_{N}^{2} [CHN^{2}]");
     g1->Draw("AP");
     //g1->GetXaxis()->SetRange(-1,100);
-    TF1* f1 = new TF1("f1","pol1",1,4);
+    TF1* f1 = new TF1("f1","pol1",0,4);
     g1->Fit("f1","R+");
     std::cout << "Chi^2:" <<f1->GetChisquare();
     std::cout<< ", number of DoF: " << f1->GetNDF();
@@ -195,7 +194,7 @@ void fitLED_I2_5(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
     
 
-    //qui c'è metodo integrale che non funziona
+ //qui c'è metodo integrale che non funziona
     std::vector<double> I(npeaks);
     std::vector<double> s_I(npeaks);
     for(int i = 0; i<npeaks; i++){
@@ -205,17 +204,17 @@ void fitLED_I2_5(string input = "../../data_SiPM/LED/I/A8_LED5529"){
 //	std::cout<<"I"<<i<<" "<<I[i]<<" +/- "<<s_I[i]<<std::endl;
     }
     
-    TCanvas *c2 = new TCanvas("c2","c2",20,20,800,600);
+    TCanvas *c2 = new TCanvas("c2","c2",20,20,1098,732);
     c2->cd();
     c2->SetGrid();
 
-    TH1D *h1 = new TH1D("h1", "h1 title", 8, -0.5, 7.5);
+    TH1D *h1 = new TH1D("h1", "Aree sottese alle gaussiane vs N. di picco, I_{LED} = 2.5; N. picco [#];A_{N} [CHN]", 8, -0.5, 7.5);
     for(int i = 0; i<npeaks; i++){
 	int theBin = h1->FindBin(i);
 	h1->SetBinContent(theBin,I[i]);
 	h1->SetBinError(theBin,s_I[i]);
     }
-    h1->Draw("e1");
+    h1->Draw("HIST E1");
     
     TF1* f2 = new TF1("f2","[0]*TMath::Poisson(x,[1])",0,4.5);
     f2->SetNpx(10000);
@@ -223,12 +222,13 @@ void fitLED_I2_5(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     f2->SetParameter(1,0.8);
     //f1->Draw("same");
     h1->Fit("f2","R+","e1");
+    f2->Draw("same");
     std::cout << "Chi^2:" <<f2->GetChisquare();
     std::cout<< ", number of DoF: " << f2->GetNDF();
     std::cout << " (Probability: " << f2->GetProb() << ")." << std::endl;
     std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
 
- 
+
 }
 
 TH1D* histo_filler(string name, string title, string path){ //general purpose

@@ -194,7 +194,7 @@ void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){
     c1->cd();
     c1->SetGrid();
     TGraphErrors* g1 = new TGraphErrors(npeaks,N.data(),var.data(),s_N.data(),s_var.data());
-    g1->SetTitle("Varianze vs N. di picco, G=29dB, V_{bias}=55V, LED 2.0;N[#];#sigma_{N}^{2} [CHN^{2}]");
+    g1->SetTitle("Varianze vs N. di picco, I_{LED} = 2.0;N[#];#sigma_{N}^{2} [CHN^{2}]");
     g1->Draw("AP");
     //g1->GetXaxis()->SetRange(-1,100);
     TF1* f1 = new TF1("f1","pol1",0,4);
@@ -214,11 +214,11 @@ void fitLED_I2_0(string input = "../../data_SiPM/LED/I/A8_LED5529"){
 //	std::cout<<"I"<<i<<" "<<I[i]<<" +/- "<<s_I[i]<<std::endl;
     }
     
-    TCanvas *c2 = new TCanvas("c2","c2",20,20,800,600);
+    TCanvas *c2 = new TCanvas("c2","c2",20,20,1098,732);
     c2->cd();
     c2->SetGrid();
 
-    TH1D *h1 = new TH1D("h1", "h1 title", 8, -0.5, 7.5);
+    TH1D *h1 = new TH1D("h1", "Aree sottese alle gaussiane vs N. di picco I_{LED} = 2.0; N. picco [#];A_{N} [CHN]", 8, -0.5, 7.5);
     for(int i = 0; i<npeaks; i++){
 	int theBin = h1->FindBin(i);
 	h1->SetBinContent(theBin,I[i]);
