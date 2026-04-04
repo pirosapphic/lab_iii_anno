@@ -22,7 +22,7 @@ void fitSr90_keq(string input = "../data_sorg/A8_Sr90_decentrato.txt"){
     histoTot->Draw("e1");
     TH1D *histoEp = (TH1D*)histoTot->Clone("histoEp");
     histoEp->Rebin(16);
-    histoEp->SetTitle("Plot di Kurie, ^{90}Sr decentrato;ADC[CHN];#frac{#sqrt{counts}}{CHN} [#frac{#}{CHN}]");
+    histoEp->SetTitle("Plot di Kurie, ^{90}Sr decentrato;ADC channels [CHN];#frac{#sqrt{counts}}{CHN} [#frac{#}{CHN}]");
     double xMinep = 37000;
     double xMaxep = 43000;
     int nbins = histoEp->GetNbinsX();

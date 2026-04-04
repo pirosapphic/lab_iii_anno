@@ -29,7 +29,7 @@ void fitSr90_k(string input = "../data_sorg/A8_Sr90_centrato.txt"){
     double y;
     string parName; 
    // TH1D* histoTot = new TH1D("Energy Spectrum", "Electron energy ^{90}Sr;ADC [CHN];Counts [#]",nbinstot, xMin, xMax);
-    TH1D* histoEp = new TH1D("Endopint", "Plot di Kurie, ^{90}Sr centrato;ADC [CHN];#frac{#sqrt{conteggi}}{CHN} [#frac{#}{CHN}]",nbinsep, xMinep, xMaxep);
+    TH1D* histoEp = new TH1D("Endopint", "Plot di Kurie, ^{90}Sr centrato;ADC channels [CHN];#frac{#sqrt{conteggi}}{CHN} [#frac{#}{CHN}]",nbinsep, xMinep, xMaxep);
 
     if (parInput.is_open()) {
 	while ( parInput.good() ) {
