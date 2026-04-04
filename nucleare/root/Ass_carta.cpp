@@ -101,7 +101,7 @@ void Ass_carta() {
     // Creazione canvas separati e disegno
 
     for (int i=0; i<8; i++) {
-            TCanvas* c = new TCanvas(Form("c%d",i), Form("c%d",i), 800, 600);
+            TCanvas* c = new TCanvas(Form("c%d",i), Form("c%d",i),20,20,1098,732);
             c->SetGrid();
             histos[i]->SetTitle(Form("Spettro ^{90}Sr con %d fogli di carta ", i*3)); 
             if (i == 7) {   
@@ -143,7 +143,7 @@ void Ass_carta() {
         cout<< "spessore"<< Sp[i] <<"+- "<<Sper[i]<<endl;
     }
     
-   auto c8 = new TCanvas("c8","Grafico assorbimento carta",200,10,700,500);
+   auto c8 = new TCanvas("c8","Grafico assorbimento carta",20,20,1098,732);
 
    c8->SetGrid();
    c8->GetFrame()->SetFillColor(21);
