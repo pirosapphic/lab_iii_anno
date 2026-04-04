@@ -18,7 +18,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   // in ADC counts
   float xMin = 505.; float xMax = 5615.;  float binWidth = 10.;
 
-  TCanvas* c1 = new TCanvas("c1","c1",20,20,800,600);
+  TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
   c1->SetGrid();
   float x;  float y; string parName; 
   TH1F* theHisto = new TH1F("theHisto", "Electron energy", (int)((xMax-xMin)/binWidth), xMin, xMax);
@@ -181,7 +181,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   for(int i=0;i < 9; i++){
     deltapp[i]= media[i+1]-media[i];
     errpp[i] = sqrt(pow(sigma[i],2)+ pow(sigma[i+1],2)); //misure indipendenti
-    
+    cout<<"deltapp "<< i<<" "<<deltapp<<"+/-"<<errpp<<endl;
   }
   //media pesata
   double a[9] = {};
@@ -264,7 +264,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   }
   
   //test Z risoluzione
-  double Zr= (0.131275-0.098653)/sqrt(pow(0.00104718,2)+pow(0.00997424,2));
+  double Zr= (Rat-0.128)/sqrt(pow(erat,2)+pow(0.016,2));
   cout<< "Zr: "<< Zr<< endl;
 
  

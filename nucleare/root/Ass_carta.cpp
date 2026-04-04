@@ -108,7 +108,7 @@ void Ass_carta() {
                 histos[i]->SetTitle("Count Rate ^{90}Sr 20"); 
             }
           // titolo
-            histos[i]->GetXaxis()->SetTitle("Number of pulses/gate [x500 ms^{-1}]");    // asse X
+            histos[i]->GetXaxis()->SetTitle("N. impulsi/gate [x(500 ms)^{-1}]");    // asse X
             histos[i]->GetYaxis()->SetTitle("Conteggi [#]");         // asse Y
             histos[i]->Draw("e1");
             if (fits[i]) {
@@ -124,8 +124,8 @@ void Ass_carta() {
     
 
     //spessore carta 2pm0.05 mm per 20 fogli 
-    double Sp1= 2.0/20.0 ;//mm
-    double Sper1= 0.05/20.0 ;//mm
+    double Sp1= 2.0/20.0 *1./10.;//cm
+    double Sper1= 0.05/20.0 *1./10;//mm
     double Sp[8] = {0, Sp1*3.,Sp1*6.,Sp1*9.,Sp1*12.,Sp1*15.,Sp1*18.,Sp1*20.};
     double Sper[8]= {Sper1,Sper1*3.,Sper1*6.,Sper1*9.,Sper1*12.,Sper1*15.,Sper1*18.,Sper1*20.};
     //l'errore sullo spessore è variabile
@@ -139,17 +139,19 @@ void Ass_carta() {
     {
         rates[i]= media[i]*2;
         errrates[i]= erroremedia[i]*2;
+        cout<< "rates"<< rates[i] <<"+- "<<errrates[i]<<endl;
+        cout<< "spessore"<< Sp[i] <<"+- "<<Sper[i]<<endl;
     }
     
    auto c8 = new TCanvas("c8","Grafico assorbimento carta",200,10,700,500);
-   c8->SetFillColor(42);
+
    c8->SetGrid();
    c8->GetFrame()->SetFillColor(21);
    c8->GetFrame()->SetBorderSize(12);
    const Int_t n = 8;
    
    auto gr = new TGraphErrors(n,Sp,rates,Sper,errrates);
-   gr->SetTitle("Grafico assorbimento carta");
+   gr->SetTitle("Assorbimento carta");
    gr->SetMarkerColor(4);
    gr->SetMarkerStyle(21);
    gr->GetXaxis()->SetTitle("Spessore [mm]");    // asse X
@@ -160,7 +162,7 @@ void Ass_carta() {
 
    TF1 *f = new TF1("f","[0] +[1]* exp(-[2] * x)", 0, 2);
 
-   f->SetParameters(1000,400,1); 
+   f->SetParameters(200,1000,7); 
    gr->Fit(f,"R");
    cout<< endl<< "p-value"<< f->GetProb() << endl;
     //il coefficente di assorbimento viene super basso, circa 0,8
