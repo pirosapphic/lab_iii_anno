@@ -25,13 +25,13 @@ void fit_DCRT(){
 
 
 
-    std::vector<double> T = {22.1,22.7,23.0,23.4,23.7,23.9};
+    std::vector<double> T = {20.4,22.1,22.7,23.0,23.4,23.7,23.9};
     int n = T.size();
-    std::vector<double> s_T = {0.3,0.2,0.1,0.1,0.1,0.1}; //RIVEDI CHIEDI A MAGDA
-    std::vector<double> dcrl = {17600.,18400.,19100.,19700.,20200.,20750.};	//-10mV
-    std::vector<double> s_dcrl = {200,300.,200.,200.,190.,160.};
-    std::vector<double> dcrh = {290.,276.,290.,290.,300.,293.};		//-24mV
-    std::vector<double> s_dcrh = {50.,12.,20.,20.,30.,19.};
+    std::vector<double> s_T = {0.5,0.3,0.2,0.1,0.1,0.1,0.1}; //RIVEDI CHIEDI A MAGDA
+    std::vector<double> dcrl = {16600.,17600.,18400.,19100.,19700.,20200.,20750.};	//-10mV
+    std::vector<double> s_dcrl = {200.,200.,300.,200.,200.,190.,160.};
+    std::vector<double> dcrh = {270.,290.,276.,290.,290.,300.,293.};		//-24mV
+    std::vector<double> s_dcrh = {20.,50.,12.,20.,20.,30.,19.};
     std::vector<double> oct(n);
     std::vector<double> s_oct(n);
     for(int i = 0; i < n; i++){

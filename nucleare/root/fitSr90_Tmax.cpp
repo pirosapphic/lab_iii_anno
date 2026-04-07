@@ -43,7 +43,7 @@ void fitSr90_Tmax(string input = "../data_sorg/A8_Sr90_centrato.txt"){
     TCanvas* ctot = new TCanvas("c1","c1",20,20,1098,732);
     ctot->SetGrid();
     gStyle->SetOptStat(0);
-    histoTot->Rebin(4);
+    //histoTot->Rebin(4);
     histoTot->Draw("e1");
   
     double minfit = 4000;
