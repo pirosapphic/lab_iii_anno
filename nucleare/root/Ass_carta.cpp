@@ -101,22 +101,22 @@ void Ass_carta() {
     // Creazione canvas separati e disegno
 
     for (int i=0; i<8; i++) {
-            TCanvas* c = new TCanvas(Form("c%d",i), Form("c%d",i), 800, 600);
-
-            histos[i]->SetTitle(Form("Spettro Sr90 con %d fogli di carta ", i*3)); 
+            TCanvas* c = new TCanvas(Form("c%d",i), Form("c%d",i),20,20,1098,732);
+            c->SetGrid();
+            histos[i]->SetTitle(Form("Spettro ^{90}Sr con %d fogli di carta ", i*3)); 
             if (i == 7) {   
-                histos[i]->SetTitle("Count Rate Sr90 20"); 
+                histos[i]->SetTitle("Count Rate ^{90}Sr 20"); 
             }
           // titolo
-            histos[i]->GetXaxis()->SetTitle("Number of pulses");    // asse X
-            histos[i]->GetYaxis()->SetTitle("Conteggi");         // asse Y
+            histos[i]->GetXaxis()->SetTitle("N. impulsi/gate [x(500 ms)^{-1}]");    // asse X
+            histos[i]->GetYaxis()->SetTitle("Conteggi [#]");         // asse Y
             histos[i]->Draw("e1");
             if (fits[i]) {
                 fits[i]->SetLineColor(colors[i]);
                 fits[i]->Draw("same");
                 //recupera parametri per grafico
                 media[i]=fits[i]->GetParameter(1);
-                erroremedia[i]= fits[i]->GetParError(1);
+                erroremedia[i]= fits[i]->GetParameter(2);
             
             }
     }
@@ -124,8 +124,8 @@ void Ass_carta() {
     
 
     //spessore carta 2pm0.05 mm per 20 fogli 
-    double Sp1= 2.0/20.0 ;//mm
-    double Sper1= 0.05/20.0 ;//mm
+    double Sp1= 2.0/20.0 *1./10.;//cm
+    double Sper1= 0.05/20.0 *1./10;//mm
     double Sp[8] = {0, Sp1*3.,Sp1*6.,Sp1*9.,Sp1*12.,Sp1*15.,Sp1*18.,Sp1*20.};
     double Sper[8]= {Sper1,Sper1*3.,Sper1*6.,Sper1*9.,Sper1*12.,Sper1*15.,Sper1*18.,Sper1*20.};
     //l'errore sullo spessore è variabile
@@ -139,10 +139,12 @@ void Ass_carta() {
     {
         rates[i]= media[i]*2;
         errrates[i]= erroremedia[i]*2;
+        cout<< "rates"<< rates[i] <<"+- "<<errrates[i]<<endl;
+        cout<< "spessore"<< Sp[i] <<"+- "<<Sper[i]<<endl;
     }
     
-   auto c8 = new TCanvas("c8","Grafico assorbimento carta",200,10,700,500);
-   c8->SetFillColor(42);
+   auto c8 = new TCanvas("c8","Grafico assorbimento carta",20,20,1098,732);
+
    c8->SetGrid();
    c8->GetFrame()->SetFillColor(21);
    c8->GetFrame()->SetBorderSize(12);
@@ -153,14 +155,14 @@ void Ass_carta() {
    gr->SetMarkerColor(4);
    gr->SetMarkerStyle(21);
    gr->GetXaxis()->SetTitle("Spessore [mm]");    // asse X
-   gr->GetYaxis()->SetTitle("Rates"); 
+   gr->GetYaxis()->SetTitle("Rates [Hz]"); 
    gr->Draw("AP");
 
    //fit esponenziale
 
    TF1 *f = new TF1("f","[0] +[1]* exp(-[2] * x)", 0, 2);
 
-   f->SetParameters(1000,400,1); 
+   f->SetParameters(200,1000,7); 
    gr->Fit(f,"R");
    cout<< endl<< "p-value"<< f->GetProb() << endl;
     //il coefficente di assorbimento viene super basso, circa 0,8

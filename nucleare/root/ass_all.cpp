@@ -95,8 +95,8 @@ void ass_all(){
     double erroremedia[8]= {};
     // Creazione canvas separati e disegno
     for (int i=0; i<8; i++) {
-        TCanvas* c = new TCanvas(Form("c%d",i), Form("c%d",i), 800, 600);
-
+        TCanvas* c = new TCanvas(Form("c%d",i), Form("c%d",i),20,20,1098,732);
+        c ->SetGrid();
         histos[i]->SetTitle(Form("Spettro ^{90}Sr con %d fogli ", i*3)); 
         if (i == 7) {   
             histos[i]->SetTitle("Count Rate ^{90}Sr 20"); 
@@ -125,10 +125,10 @@ void ass_all(){
     {
         rates[i]= media[i]*2;
         errrates[i]= erroremedia[i]*2;
+        cout<< "rates"<< rates[i] <<"+- "<<errrates[i]<<endl;
     }
 
-    auto c8 = new TCanvas("c8","Grafico assorbimento alluminio",200,10,700,500);
-    c8->SetFillColor(42);
+    auto c8 = new TCanvas("c8","Grafico assorbimento alluminio",20,20,1098,732);
     c8->SetGrid();
     c8->GetFrame()->SetFillColor(21);
     c8->GetFrame()->SetBorderSize(12);
@@ -142,11 +142,13 @@ void ass_all(){
 
     auto gr = new TGraphErrors(n,ascissa,rates,errorex,errrates);
     gr->SetTitle("Assorbimento alluminio");
-    gr->SetMarkerColor(4);
+    gr->SetMarkerColor(42);
+    gr->GetXaxis()->SetLimits(-2, 22); 
     gr->SetMarkerStyle(21);
-    gr->GetXaxis()->SetTitle("Numero di fogli");    // asse X
-    gr->GetYaxis()->SetTitle("Rates"); 
+    gr->GetXaxis()->SetTitle("Numero di fogli [#]");    // asse X
+    gr->GetYaxis()->SetTitle("Rates [Hz]"); 
     gr->Draw("AP");
+
 
    //fit esponenziale
 
@@ -157,5 +159,14 @@ void ass_all(){
 
     gr->Fit(f,"R");
     cout<< endl<< "p-value"<< f->GetProb() << endl;
+
+    float mu_d= f-> GetParameter(2); //il parametro è moltiplicazione del coefficente per lo spessore del singolo foglietto
+    float emu_d= f-> GetParError(2);
+    float mu= 14.5;
+    float emu= 0.5;
+    float d= mu_d/mu;
+    float ed= d*sqrt(pow(emu/mu,2)+pow(emu_d/mu_d,2));
+    cout<< "d : "<<d<<"+/-"<<ed<<endl;
+    
 
 }
