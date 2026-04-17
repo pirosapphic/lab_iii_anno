@@ -1,0 +1,15 @@
+Conf long
+I	n.
+0	1164
+1.96	1166 sigma+
+	1168 sigma-
+3.78	1170 sigma+
+	1171 sigma-
+4.67	1172 sigma+
+	1173 sigma-
+6.20	1174 sigma+
+	1175 sigma-
+7.51	1176 sigma+
+	1177 sigma-
+8.94	1178 sigma+
+	1179 sigma-

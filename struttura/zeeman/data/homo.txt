@@ -1,0 +1,18 @@
+		lato laser					centro						lato rotaia
+
+		2.36A,174.78					2.32A,149.42					2.36A,177.52
+2.39A,174.54	2.43A,145.85	2.37A,175.51	2.31A,150.43	2.40A,168.49	2.31A,142.42	2.31A,183.74	2.44A,138.31	2.31A,178.55
+		2.40A,172.30					2.42A,155.11					2.41A,186.71
+
+
+Incertezza dello strumento (5%rdg + 10 dgt)
+
+1. IN TUTTO:			max = 178.55,	min = 138.31,	semidiff = 20.12mT	14% di min, 11% di max	VS strumento ~5%
+
+2. SENZA ESTERNI LATERALI:	max = 168.49,	min = 138.31,	semidiff = 15.1mT 	10% di min, 8% di max	VS strumento ~5%
+
+3. SOLO VERTICALE:		max = 168.49,	min = 149.42,	semidiff = 9.5mT	7% di min, 6% di max	VS strumento ~5%
+
+4. SOLO CROCE CENTRALE:		max = 168.49,	min = 142.42,	semidiff = 13mT		IDEM COME SOPRA
+
+Ipotesi di lavoro: faccio incertezza strumento e scelgo il maggiore tra quella e 15mT (considerando hp 2)
