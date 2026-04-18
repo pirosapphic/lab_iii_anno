@@ -16,7 +16,7 @@ TGraphErrors* graph_errors_filler(string title, string path); //general purpose
 std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
 void B_salita2(){
-    string path = "../data/";
+    string path = "../../data/";
     path += "salita2.txt";
     string title = "salita 2";
     title = "B vs I, "+title+";I[A];B[mT]";

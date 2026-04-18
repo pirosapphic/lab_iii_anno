@@ -17,6 +17,43 @@ TGraphErrors* graph_errors_filler(string title, string path); //general purpose
 std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
 void B_tot(){
+//faccio le medie dei parametri estratti dai fit lineari
+
+//SALITA 
+//1 m=64pm2, q=8pm11
+//2 m=63pm2, q=10pm10
+    double msal = w_mean({63.69,64.47},{2.38,2.38})[0];
+    double s_msal = w_mean({63.69,64.47},{2.38,2.38})[1];
+    double qsal = w_mean({8.41,9.52},{10.51,10.46})[0];
+    double s_qsal = w_mean({8.41,9.52},{10.51,10.46})[1];
+    std::cout<<"Fit medio salita: B = ("<<msal<<" +/- "<<s_msal<<")I +";
+    std::cout<<"("<<qsal<<" +/- "<<s_qsal<<")\n";
+
+
+//DISCESA 
+//1 m=63pm2, q=15pm11
+//2 m=64pm2, q=14pm10
+    double mdis = w_mean({63.45,63.87},{2.38,2.36})[0];
+    double s_mdis = w_mean({63.45,63.87},{2.38,2.36})[1];
+    double qdis = w_mean({15.31,14.43},{10.63,10.35})[0];
+    double s_qdis = w_mean({15.31,14.43},{10.63,10.35})[1];
+    std::cout<<"Fit medio discesa: B = ("<<mdis<<" +/- "<<s_mdis<<")I +";
+    std::cout<<"("<<qdis<<" +/- "<<s_qdis<<")\n";
+    std::cout<<std::endl<<"Z_calc tra m = "<<(msal-mdis)/sqrt(s_msal*s_msal+s_mdis*s_mdis)<<std::endl;
+    std::cout<<std::endl<<"Z_calc tra q = "<<(qsal-qdis)/sqrt(s_qsal*s_qsal+s_qdis*s_qdis)<<std::endl;
+    double q_medio = (qsal+qdis)/2;
+    double s_q_medio = abs(qsal-qdis)/2;
+    std::cout<<"q semidiff = ("<<q_medio<<" +/- "<<s_q_medio<<")\n";
+    q_medio = w_mean({qsal,qdis},{s_qsal,s_qdis})[0];
+    s_q_medio = w_mean({qsal,qdis},{s_qsal,s_qdis})[1];
+    std::cout<<"q media pesata = ("<<q_medio<<" +/- "<<s_q_medio<<")\n";
+    std::cout<<"Uso la media pesata anche per q!\n";
+    double m_medio = w_mean({mdis,msal},{s_mdis,s_msal})[0];
+    double s_m_medio = w_mean({mdis,msal},{s_mdis,s_msal})[1];
+
+    std::cout<<"Curva di calibrazione:\n";
+    std::cout<<"B(I) = ("<<m_medio<<" +/- "<<s_m_medio<<")mT/A * I + ("<<q_medio<<" +/- "<<s_q_medio<<")mT\n";
+/*
 TMultiGraph* gtot = new TMultiGraph();
 //salita 1
     string path = "../data/";
@@ -55,6 +92,7 @@ TMultiGraph* gtot = new TMultiGraph();
     gtot->Add(g4);
     
     gtot->Draw("AP");
+*/
 }
 
 

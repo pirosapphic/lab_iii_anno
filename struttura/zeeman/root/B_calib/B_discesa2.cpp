@@ -15,10 +15,10 @@
 TGraphErrors* graph_errors_filler(string title, string path); //general purpose
 std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
-void B_salita1(){
-    string path = "../data/";
-    path += "salita1.txt";
-    string title = "salita 1";
+void B_discesa2(){
+    string path = "../../data/";
+    path += "discesa2.txt";
+    string title = "discesa 2";
     title = "B vs I, "+title+";I[A];B[mT]";
     TGraphErrors* g = graph_errors_filler(title,path);
     g->SetMarkerStyle(7);
