@@ -42,6 +42,7 @@ void gate40(){
     fitres = h1->Fit("gaus","RS+","e1",1666.,1669.);
     std::cout<<"p-value "<<fitres->Prob()<<std::endl;
     cout<< "stima picco 19 (non viene): " << fitres->Parameter(1) << " pm " <<  fitres->Parameter(2)*2.355 <<endl;
+    //miao
 }
 
 
