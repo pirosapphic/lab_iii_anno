@@ -17,36 +17,22 @@ TH1D* histo_filler(string name, string title, string path); //funzione che cre o
 TGraphErrors* graph_errors_filler(string title, string path); //general purpose
 std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
-void gate40(){
-    string path = "../../data_fc/calib_spettr/gate40.txt";
-    TH1D* h1 = histo_filler("h1","titolo;assex;assey",path); // oggetto istogramma da graficare
-    TFitResultPtr fitres; 
-    TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
-    c1->SetGrid();
-    gStyle->SetOptStat(""); //toglie statistiche dell'istogramma dal grafico
-    //gStyle->SetOptFit(1);
-    h1->Draw("e1"); //e1-> errori sui punti;   histo-> disegna come un istogramma
-    //nono picco
-    fitres = h1->Fit("gaus","RS+","e1",693.,697.);
+void cal_monoc() {
+    //grafico
+    string path = "./cal_monoc.txt";
+
+    TCanvas* c_cal = new TCanvas("c1","c1",20,20,1098,732);
+    c_cal->SetGrid();
+    TGraphErrors* g_cal = graph_errors_filler("titolo;asseX;asseY", path);
+    TFitResultPtr fitres;
+
+    g_cal->Draw("AP");
+
+    //fit
+    TF1* f1 =new TF1("f1","pol2",500.,740.);
+    fitres = g_cal->Fit("f1","RS+","e1",500.,740.); 
     std::cout<<"p-value "<<fitres->Prob()<<std::endl;
-    cout<< "stima picco 9 (venuto): " << fitres->Parameter(1) << " pm " <<  fitres->Parameter(2)*2.355 <<endl;
-    //sesto picco
-    fitres = h1->Fit("gaus","RS+","e1",498.,502.);
-    std::cout<<"p-value "<<fitres->Prob()<<std::endl;
-    cout<< "stima picco 6 (venuto): " << fitres->Parameter(1) << " pm " <<  fitres->Parameter(2)*2.355 <<endl;
-    //decimo picco
-    fitres = h1->Fit("gaus","RS+","e1",1007.,1010.);
-    std::cout<<"p-value "<<fitres->Prob()<<std::endl;
-    cout<< "stima picco 10 (venuto): " << fitres->Parameter(1) << " pm " <<  fitres->Parameter(2)*2.355 <<endl;
-    //19-esimo picco
-    fitres = h1->Fit("gaus","RS+","e1",1666.,1669.);
-    std::cout<<"p-value "<<fitres->Prob()<<std::endl;
-    cout<< "stima picco 19 (non viene): " << fitres->Parameter(1) << " pm " <<  fitres->Parameter(2)*2.355 <<endl;
-    //miao
 }
-
-
-
 
 
 
@@ -79,6 +65,7 @@ TH1D* histo_filler(string name, string title, string path){ //general purpose
     }
     return theHisto;
 }
+
 
 TGraphErrors* graph_errors_filler(string title, string path){ //general purpose
     //fills grapherrors with title title with data from path.
