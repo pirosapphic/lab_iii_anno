@@ -1,0 +1,5 @@
+14620	150	14620	150	
+31600	100	31600	100	
+49550	60	49550	60	
+A_int	s_A_i	A_ext	s_A_e
+le righe rappresentano il numero di doppietto
