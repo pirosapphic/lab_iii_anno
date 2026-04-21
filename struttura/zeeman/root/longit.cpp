@@ -327,12 +327,14 @@ void longit(){
     }
     s_d_D[0]=0.003; //dividing by zero!
     TGraphErrors* g = new TGraphErrors(n,B.data(),d_D.data(),s_B.data(),s_d_D.data());
-    g->SetTitle("#frac{#delta}{#Delta} vs B, #Delta m_{L} = 2;B[T];#frac{#delta}{#Delta}[#]");
+    g->SetTitle("#delta/#Delta vs B, #Delta m_{L} = 2;B[T];#frac{#delta}{#Delta}[#]");
+    g->SetMarkerStyle(7);
     TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();
     g->Draw("AP");
     TF1* f1=new TF1("f1","pol1",0,0.6);
     g->Fit("f1","R+","",0,0.6);
+    std::cout<<"p-value = "<<f1->GetProb()<<std::endl;
     double mu = 1.4560; //indice di rifr
     double hc = 6.62607015e-34*299792458; //SI units
     double t = 0.003; //m, spessore

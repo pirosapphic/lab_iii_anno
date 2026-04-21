@@ -262,25 +262,27 @@ void trasv_down(){
     Delta.shrink_to_fit();
     s_Delta.shrink_to_fit();
     for(int i = 0;i<n;i++){
-	d_D[i] = delta[i]/Delta[i];
-	s_d_D[i] = d_D[i]*sqrt(pow(s_delta[i]/delta[i],2)+pow(s_Delta[i]/Delta[i],2));
-        std::cout<<"B = ("<<B[i]*1000.<<"+/-"<<s_B[i]*1000.<<")mT, d/D = "<<d_D[i]<<"+/-"<<s_d_D[i]<<std::endl;
+	d_D[i] = -delta[i]/Delta[i];
+	s_d_D[i] = abs(d_D[i])*sqrt(pow(s_delta[i]/delta[i],2)+pow(s_Delta[i]/Delta[i],2));
+        //std::cout<<"B = ("<<B[i]*1000.<<"+/-"<<s_B[i]*1000.<<")mT, d/D = "<<d_D[i]<<"+/-"<<s_d_D[i]<<std::endl;
     }
     s_d_D[0]=0.003; //dividing by zero!
     TGraphErrors* g = new TGraphErrors(n,B.data(),d_D.data(),s_B.data(),s_d_D.data());
-    g->SetTitle("#frac{#delta}{#Delta} vs B, #Delta m_{L} = 1;B[T];#frac{#delta}{#Delta}[#]");
+    g->SetMarkerStyle(7);
+    g->SetTitle("#delta/#Delta vs B, #Delta m_{L} = -1;B[T];#frac{#delta}{#Delta}[#]");
     TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();
     g->Draw("AP");
     TF1* f1=new TF1("f1","pol1",0,0.7);
     f1->SetParameter(0,0);
-    f1->SetParameter(1,0.4);
+    f1->SetParameter(1,-0.4);
     //f1->Draw("same");    
     g->Fit("f1","R+","",0,0.7);
+    std::cout<<"p-value = "<<f1->GetProb()<<std::endl;
     double mu = 1.4560; //indice di rifr
     double hc = 6.62607015e-34*299792458; //SI units
     double t = 0.003; //m, spessore
-    double muB = f1->GetParameter(1)*hc/2/mu/t;
+    double muB = -f1->GetParameter(1)*hc/2/mu/t;
     double s_muB = f1->GetParError(1)*hc/2/mu/t;
     std::cout<<"Stima magnetone mu_B = ("<<muB<<" +/- "<<s_muB<<")J/T\n";
     double truemuB = 9.2740100657e-24;
