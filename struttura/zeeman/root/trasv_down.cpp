@@ -68,7 +68,7 @@ void trasv_down(){
     
     double mDelta = w_mean({Delta1,Delta2,Delta3},{s_Delta1,s_Delta2,s_Delta3})[0];
     double s_mDelta = w_mean({Delta1,Delta2,Delta3,Delta4},{s_Delta1,s_Delta2,s_Delta3,s_Delta4})[1];
-    std::cout<<"File "+path+": delta = "<<mdelta<<" +/- "<<s_mdelta<<"\tDelta = "<<mDelta<<" +/- "<<s_mDelta<<std::endl;
+    std::cout<<"File "+path+": delta = "<<mdelta<<" +/- "<<s_mdelta<<"\t\tDelta = "<<mDelta<<" +/- "<<s_mDelta<<std::endl;
     delta.push_back(mdelta);
     s_delta.push_back(s_mdelta);
     Delta.push_back(mDelta);
@@ -261,15 +261,17 @@ void trasv_down(){
     s_delta.shrink_to_fit();
     Delta.shrink_to_fit();
     s_Delta.shrink_to_fit();
+    delta[0]=1.e-12; //to avoid dividing by 0
+    std::cout<<"Punti del fit\n";
     for(int i = 0;i<n;i++){
 	d_D[i] = -delta[i]/Delta[i];
 	s_d_D[i] = abs(d_D[i])*sqrt(pow(s_delta[i]/delta[i],2)+pow(s_Delta[i]/Delta[i],2));
-        //std::cout<<"B = ("<<B[i]*1000.<<"+/-"<<s_B[i]*1000.<<")mT, d/D = "<<d_D[i]<<"+/-"<<s_d_D[i]<<std::endl;
+	d_D[0]=0.;
+        std::cout<<"B = ("<<B[i]*1000.<<"+/-"<<s_B[i]*1000.<<")mT,\t d/D = "<<d_D[i]<<"+/-"<<s_d_D[i]<<std::endl;
     }
-    s_d_D[0]=0.003; //dividing by zero!
     TGraphErrors* g = new TGraphErrors(n,B.data(),d_D.data(),s_B.data(),s_d_D.data());
     g->SetMarkerStyle(7);
-    g->SetTitle("#delta/#Delta vs B, #Delta m_{L} = -1;B[T];#frac{#delta}{#Delta}[#]");
+    g->SetTitle("<#delta>/<#Delta> vs B, #Delta m_{L} = -1;B[T];#frac{<#delta>}{<#Delta>}[#]");
     TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();
     g->Draw("AP");
@@ -288,9 +290,15 @@ void trasv_down(){
     double truemuB = 9.2740100657e-24;
     std::cout<<"Migliore stima mu_B = "<<truemuB<<", Z = "<<(muB-truemuB)/s_muB<<"\n";
     std::cout<<"Compatibile !\n";
-    double muBfinale = w_mean({9.5e-24,9.7e-24,10.0e-24},{3.e-25,3.e-25,3.e-25})[0];
-    double s_muBfinale = w_mean({9.5e-24,9.7e-24,10.0e-24},{3.e-25,3.e-25,3.e-25})[1];
-    std::cout<<"Stima finale mu_B = ("<<muBfinale<<" +/- "<<s_muBfinale<<")J/T, Z = "<<(muBfinale-truemuB)/s_muBfinale<<"\n";
+    double muup = 9.6e-24;
+    double s_muup = 4.e-25;
+    double mudown = muB;
+    double s_mudown = s_muB;
+    double mul=10.e-24;
+    double s_mul = 3.e-25;
+    std::vector<double> muBfinale = w_mean({muup,mudown,mul},{s_muup,s_mudown,s_mul});
+    double s_muBfinale = w_mean({muup,mudown,mul},{s_muup,s_mudown,s_mul})[1];
+    std::cout<<"Stima finale mu_B = ("<<muBfinale[0]<<" +/- "<<muBfinale[1]<<")J/T, Z = "<<(muBfinale[0]-truemuB)/muBfinale[1]<<"\n";
 ;
     
 }

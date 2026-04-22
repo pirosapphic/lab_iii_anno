@@ -67,7 +67,7 @@ void longit(){
     
     double mDelta = w_mean({Delta1,Delta2,Delta3},{s_Delta1,s_Delta2,s_Delta3})[0];
     double s_mDelta = w_mean({Delta1,Delta2,Delta3,Delta4},{s_Delta1,s_Delta2,s_Delta3,s_Delta4})[1];
-    std::cout<<"File "+path+": delta = "<<mdelta<<" +/- "<<s_mdelta<<"\tDelta = "<<mDelta<<" +/- "<<s_mDelta<<std::endl;
+    std::cout<<"File "+path+": delta = "<<mdelta<<" +/- "<<s_mdelta<<"\t\tDelta = "<<mDelta<<" +/- "<<s_mDelta<<std::endl;
     delta.push_back(mdelta);
     s_delta.push_back(s_mdelta);
     Delta.push_back(mDelta);
@@ -320,14 +320,18 @@ void longit(){
     s_delta.shrink_to_fit();
     Delta.shrink_to_fit();
     s_Delta.shrink_to_fit();
+    delta[0]=1.e-25; //to avoid dividing by 0
+    std::cout<<"Punti del fit\n";
     for(int i = 0;i<n;i++){
 	d_D[i] = delta[i]/Delta[i];
 	s_d_D[i] = d_D[i]*sqrt(pow(s_delta[i]/delta[i],2)+pow(s_Delta[i]/Delta[i],2));
-        std::cout<<"B = ("<<B[i]*1000.<<"+/-"<<s_B[i]*1000.<<")mT, d/D = "<<d_D[i]<<"+/-"<<s_d_D[i]<<std::endl;
+	d_D[0]=0.;
+        std::cout<<"B = ("<<B[i]*1000.<<"+/-"<<s_B[i]*1000.<<")mT,\td/D = "<<d_D[i]<<"+/-"<<s_d_D[i]<<std::endl;
     }
-    s_d_D[0]=0.003; //dividing by zero!
-    TGraphErrors* g = new TGraphErrors(n,B.data(),d_D.data(),s_B.data(),s_d_D.data());
-    g->SetTitle("#delta/#Delta vs B, #Delta m_{L} = 2;B[T];#frac{#delta}{#Delta}[#]");
+    //B.pop_back();B.shrink_to_fit();d_D.pop_back();d_D.shrink_to_fit();
+    //s_B.pop_back();s_B.shrink_to_fit();s_d_D.pop_back(); s_d_D.shrink_to_fit();
+    TGraphErrors* g = new TGraphErrors(B.size(),B.data(),d_D.data(),s_B.data(),s_d_D.data());
+    g->SetTitle("<#delta>/<#Delta> vs B, #Delta m_{L} = 2;B[T];#frac{<#delta>}{<#Delta>}[#]");
     g->SetMarkerStyle(7);
     TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();
