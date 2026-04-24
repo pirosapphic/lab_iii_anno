@@ -19,6 +19,7 @@ void calibrazione(){
     auto [ua,s_ua,V_0,s_V_0]= lettura(path);
     vector<double> pixel,s_pixel;
     double x,s_x, cov;
+    /*
     double p0=-417;
     double s_p0=400;
     double p1=2.2;
@@ -27,12 +28,21 @@ void calibrazione(){
     double s_p2= 0.0009;
     double s_p01=-418.8; //bisogna tenere conto del segno nella covarianza
     double s_p02=-0.3287;
-    double s_p21=0.001044;
+    double s_p21=-0.001044;//inserito -
+    */
+    double p0 = -661.75;
+    double s_0 = 29.6799;
+    double p1 = 2.99511;
+    double s_1 = 0.04654;
+    double s01 = -1.376;
     for (int i = 0; i < ua.size(); i++)
     {
-        x= p0 + ua[i]*p1+pow(ua[i],2)*p2; //passo da ua a pixel relazione polinomiale calib_monocromatore
+        /*x= p0 + ua[i]*p1+pow(ua[i],2)*p2; //passo da ua a pixel relazione polinomiale calib_monocromatore
         cov= 2*ua[i]*s_p01 +2*pow(ua[i],2)*s_p02+ 2*pow(ua[i],3)*s_p21;
-        s_x= sqrt(pow(s_p0,2)+pow(ua[i]*s_p1,2)+pow(pow(ua[i],2)*s_p2,2)+pow(p1+2.*ua[i]*p2,2)*pow(s_ua[i],2)+cov);
+        s_x= sqrt(pow(s_p0,2)+pow(ua[i]*s_p1,2)+pow(pow(ua[i],2)*s_p2,2)+pow(p1+2.*ua[i]*p2,2)*pow(s_ua[i],2)+cov);*/
+	x = p0 + ua[i]*p1;
+	cov = 2*ua[i]*s01;
+	s_x = sqrt(s_0*s_0 + pow(ua[i]*s_1,2)+cov);
         pixel.push_back(x);
         s_pixel.push_back(s_x);
        // cout<< pixel[i] <<" pm "<< s_x <<endl;
@@ -41,7 +51,7 @@ void calibrazione(){
 
 
     vector<double> lambda,s_lambda;
-    double f0=178.;
+    double f0=177.; //178->177
     double s_f0=3.;
     double f1=0.388;
     double s_f1=0.006;
