@@ -1,0 +1,12 @@
+Cose da fare
+1) Fotoconducibilità
+- Calibrazione spettrometro	sofi
+- Calibrazione monocromatore	sofi
+- Trasmittanza
+- Fotocorrente
+
+2) Zeeman
+- Calibrazione magnete		paolo
+- Configurazione longitudinale
+- Configurazione trasversale
+- ? Studio con i polarizzatori

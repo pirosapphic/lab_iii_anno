@@ -2055,8 +2055,8 @@ Dark Spectrum Present: Yes
 Reference Spectrum Present: No
 Number of Sampled Component Spectra: 1
 Spectrometers: USB2G16606
-Integration Time (usec): 10000 (USB2G16606)
-Spectra Averaged: 100 (USB2G16606)
+Integration Time (usec): 10000 (USB2G16606) !!!!!!!!!!!
+Spectra Averaged: 100 (USB2G16606) !!!!!!!!
 Boxcar Smoothing: 0 (USB2G16606)
 Correct for Electrical Dark: No (USB2G16606)
 Strobe/Lamp Enabled: No (USB2G16606)
