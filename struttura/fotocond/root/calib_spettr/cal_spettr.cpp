@@ -48,7 +48,7 @@ void cal_spettr() {
     //f1->Draw("same");
     fitres = g_cal->Fit("f1","RS+","e1",300.,1700.); 
     std::cout<<"p-value "<<fitres->Prob()<<std::endl;
-
+    fitres->GetCovarianceMatrix().Print();
 }
 
 
