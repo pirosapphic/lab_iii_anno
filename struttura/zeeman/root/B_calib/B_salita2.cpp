@@ -25,7 +25,9 @@ void B_salita2(){
     TCanvas* c = new TCanvas("c1","c1",20,20,1098,732);
     c->SetGrid();
     g->Draw("AP");
-    g->Fit("pol1","R+","",-0.5,10.);
+    TFitResultPtr r = g->Fit("pol1","SR+","",-0.5,10.);
+    r->GetCovarianceMatrix().Print();
+    std::cout<<"Covariance sigma_01 = "<<r->CovMatrix(0,1)<<std::endl;
 }
 
 

@@ -30,9 +30,11 @@ void trasv_up(){
     double s_m = 1.1875;
     double q = 11.91;
     double s_q = 5.24303;
+   double cov = -19.32;
     for(int i = 0; i<n; i++){
 	B[i] = (m*I[i]+q)/1000.; //convert to Tesla
-	s_B[i] = sqrt(pow(I[i]*s_m,2)+pow(m*s_I[i],2)+pow(s_q,2))/1000.;
+	s_B[i] = sqrt(pow(I[i]*s_m,2)+pow(m*s_I[i],2)+pow(s_q,2)+2.*I[i]*1.*cov)/1000.;
+	//if(s_B[i]<0.015) s_B[i] = 0.015;
     }
     std::vector<double> delta;
     std::vector<double> s_delta;

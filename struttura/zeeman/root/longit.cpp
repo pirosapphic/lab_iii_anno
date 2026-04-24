@@ -30,9 +30,11 @@ void longit(){
     double s_m = 1.1875;
     double q = 11.91;
     double s_q = 5.24303;
+    double cov = -19.32;
     for(int i = 0; i<n; i++){
 	B[i] = (m*I[i]+q)/1000.; //convert to Tesla
-	s_B[i] = sqrt(pow(I[i]*s_m,2)+pow(m*s_I[i],2)+pow(s_q,2))/1000.;
+	s_B[i] = sqrt(pow(I[i]*s_m,2)+pow(m*s_I[i],2)+pow(s_q,2)+2.*I[i]*1.*cov)/1000.;
+//	if(s_B[i]<0.015) s_B[i] = 0.015;
     }
     std::vector<double> delta;
     std::vector<double> s_delta;
@@ -326,6 +328,7 @@ void longit(){
 	d_D[i] = delta[i]/Delta[i];
 	s_d_D[i] = d_D[i]*sqrt(pow(s_delta[i]/delta[i],2)+pow(s_Delta[i]/Delta[i],2));
 	d_D[0]=0.;
+	std::cout<<"I = ("<<I[i]<<"+/-"<<s_I[i]<<")A,\t";
         std::cout<<"B = ("<<B[i]*1000.<<"+/-"<<s_B[i]*1000.<<")mT,\td/D = "<<d_D[i]<<"+/-"<<s_d_D[i]<<std::endl;
     }
     //B.pop_back();B.shrink_to_fit();d_D.pop_back();d_D.shrink_to_fit();

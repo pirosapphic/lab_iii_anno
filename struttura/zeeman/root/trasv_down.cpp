@@ -31,9 +31,11 @@ void trasv_down(){
     double s_m = 1.1875;
     double q = 11.91;
     double s_q = 5.24303;
+   double cov = -19.32;
     for(int i = 0; i<n; i++){
 	B[i] = (m*I[i]+q)/1000.; //convert to Tesla
-	s_B[i] = sqrt(pow(I[i]*s_m,2)+pow(m*s_I[i],2)+pow(s_q,2))/1000.;
+	s_B[i] = sqrt(pow(I[i]*s_m,2)+pow(m*s_I[i],2)+pow(s_q,2)+2.*I[i]*1.*cov)/1000.;
+	//if(s_B[i]<0.015) s_B[i] = 0.015;
     }
     std::vector<double> delta;
     std::vector<double> s_delta;
@@ -291,16 +293,14 @@ void trasv_down(){
     std::cout<<"Migliore stima mu_B = "<<truemuB<<", Z = "<<(muB-truemuB)/s_muB<<"\n";
     std::cout<<"Compatibile !\n";
     double muup = 9.6e-24;
-    double s_muup = 4.e-25;
-    double mudown = muB;
-    double s_mudown = s_muB;
-    double mul=10.e-24;
-    double s_mul = 3.e-25;
+    double s_muup = 3.e-25;
+    double mudown = muB;//9.5
+    double s_mudown = s_muB;//0.3
+    double mul=9.9e-24;
+    double s_mul = 2.e-25;
     std::vector<double> muBfinale = w_mean({muup,mudown,mul},{s_muup,s_mudown,s_mul});
     double s_muBfinale = w_mean({muup,mudown,mul},{s_muup,s_mudown,s_mul})[1];
-    std::cout<<"Stima finale mu_B = ("<<muBfinale[0]<<" +/- "<<muBfinale[1]<<")J/T, Z = "<<(muBfinale[0]-truemuB)/muBfinale[1]<<"\n";
-;
-    
+    std::cout<<"\nStima finale mu_B = ("<<muBfinale[0]<<" +/- "<<muBfinale[1]<<")J/T, Z = "<<(muBfinale[0]-truemuB)/muBfinale[1]<<"\n";
 }
 
 std::vector<std::vector<double>> tsvreader(string path, const int ncols){
