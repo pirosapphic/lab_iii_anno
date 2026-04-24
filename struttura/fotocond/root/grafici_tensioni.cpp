@@ -15,23 +15,36 @@
 #include "TFile.h"
 
 TGraphErrors* graph_errors_fillers(string title, string path); //general purpose
-void prova_cazzo(){
-    string path_1="../data_fc/data_V_0.txt";
-    TGraphErrors*e1 = graph_errors_fillers("Tensione di fondo;lunghezza d'onda [ua];V_{0,pp} [mV]",path_1);
+void grafici_tensioni(){
+    string path_1="../data_fc/dati_V0_calib.txt";
+    TGraphErrors*e1 = graph_errors_fillers("Tensione di fondo;lunghezza d'onda [nm];V_{0,pp} [mV]",path_1);
     TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();
     e1->SetMarkerStyle(20);
     e1->SetMarkerSize(1.2);
+    e1->SetMarkerColor(kRed);
     e1->Draw("APE");
     c1->Update();
-    string path_2="../data_fc/data_V_trasm.txt";
-    TGraphErrors*e2 = graph_errors_fillers("Tensione trasmessa;lunghezza d'onda [ua];V_{pp} [mV]",path_2);
+
+    string path_2="../data_fc/dati_Vt_calib.txt";
+    TGraphErrors*e2 = graph_errors_fillers("Tensione trasmessa;lunghezza d'onda [nm];V_{pp} [mV]",path_2);
     TCanvas* c2 = new TCanvas("c2","c2",20,20,1098,732);
     c2->SetGrid();
     e2->SetMarkerStyle(20);
     e2->SetMarkerSize(1.2);
+    e2->SetMarkerColor(kGreen);
     e2->Draw("APE");
     c2->Update();
+
+    string path_3="../data_fc/dati_I_calib.txt";
+    TGraphErrors*e3 = graph_errors_fillers("Fotocorrente;lunghezza d'onda [nm];I_f [mA]",path_3);
+    TCanvas* c3 = new TCanvas("c3","c3",20,20,1098,732);
+    c3->SetGrid();
+    e3->SetMarkerStyle(20);
+    e3->SetMarkerSize(1.2);
+    e3->SetMarkerColor(kBlue);
+    e3->Draw("APE");
+    c3->Update();
 
     //trasmittanza
     
