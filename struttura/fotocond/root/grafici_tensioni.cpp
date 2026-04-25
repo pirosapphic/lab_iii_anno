@@ -16,7 +16,7 @@
 
 TGraphErrors* graph_errors_fillers(string title, string path); //general purpose
 void grafici_tensioni(){
-    string path_1="../data_fc/dati_V0_calib.txt";
+    string path_1="../data_fc/dati_V0_norm.txt";
     TGraphErrors*e1 = graph_errors_fillers("Tensione di fondo;lunghezza d'onda [nm];V_{0,pp} [mV]",path_1);
     TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();

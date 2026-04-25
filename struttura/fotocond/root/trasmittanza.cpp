@@ -1,142 +1,263 @@
-/*Non ho capito cosè I? Devo dividere vpp per R?
- nel dubbio io faccio come il gruppo D che i grafici li ha fati con V0 */
-
- #include <iostream>
+#include <iostream>
 #include <fstream>
 #include <vector>
-#include <math.h>   
+#include <tuple>
+#include <cmath>
 
-#include "TH1F.h"
-#include "TF1.h"
-#include "TLine.h"
-#include "TRandom3.h"
-#include "TMath.h"
 #include "TGraphErrors.h"
 #include "TCanvas.h"
-#include "TFile.h"
+#include "TPad.h"
+#include "TGaxis.h"
+#include "TLegend.h"
+#include "TMath.h"
 
-//Vbias = 55V
-//Gampl = 29dB
-//I = 2.8
+using namespace std;
 
-
-
-TGraphErrors* graph_errors_fillers(string title, string path);
 tuple<
 vector<double>,
 vector<double>,
 vector<double>,
 vector<double>
->lettura(string path);
+> lettura(string path);
+
+
+TGraphErrors* graph_errors_fillers(string title,string path);
+
 
 void trasmittanza(){
 
-    string path1= "../data_fc/dati_V0_calib.txt";
-    string path2= "../data_fc/dati_Vt_calib.txt";
-    auto [a,s_a, V_0,sV_0]= lettura(path1);
-    auto [b, s_b,V,sV]= lettura(path2);
-    vector<double> trasm, s_trasm;
-    double x,s_x;
-    for (int i = 0; i < a.size(); i++)
-    {
-        x = V[i]/V_0[i];
-        s_x= x*sqrt(pow(sV_0[i]/V_0[i] ,2)+pow(sV[i]/V_0[i],2));
-        trasm.push_back(x);
-        s_trasm.push_back(s_x);
-        cout<<trasm[i] << "pm" <<s_trasm[i] << endl;
-        
+    //-----------------------------------
+    // LETTURA DATI TRASMITTANZA
+    //-----------------------------------
+
+    string path1="../data_fc/dati_V0_calib.txt";
+    string path2="../data_fc/dati_Vt_calib.txt";
+
+    auto [lambda,s_lambda,V0,sV0]=lettura(path1);
+    auto [dummy1,dummy2,Vt,sVt]=lettura(path2);
+
+    vector<double> T;
+    vector<double> sT;
+
+    for(int i=0;i<lambda.size();i++){
+
+        double t = Vt[i]/V0[i];
+
+        // propagazione errori corretta
+        double st =
+        t*sqrt(
+          pow(sVt[i]/Vt[i],2)
+        + pow(sV0[i]/V0[i],2)
+        );
+
+        T.push_back(t);
+        sT.push_back(st);
     }
 
-    
-    //auto c1 = new TCanvas("c1","A Simple Graph with error bars",200,10,700,500);
-    //c1->SetGrid();
 
-    /*const int n= a.size();
-    auto gr = new TGraphErrors(n,a.data(),trasm.data(),s_a.data(),s_trasm.data());
-    gr->SetTitle("Trasmittanza;lunghezza d'onda [nm],T[#]");
-    gr->SetMarkerColor(4);
-    gr->SetMarkerStyle(21);*/
-    
-    const int n= a.size();
-    string path_3="../data_fc/dati_I_calib.txt";
-    TGraphErrors*g2 = graph_errors_fillers("Fotocorrente;lunghezza d'onda [nm];I_f [mA]",path_3);
-    TGraphErrors *g1 = new TGraphErrors(n,a.data(),trasm.data(),s_a.data(),s_trasm.data());
+    //-----------------------------------
+    // GRAFICI
+    //-----------------------------------
+
+    int n=lambda.size();
+
+    // g1 = trasmittanza
+    TGraphErrors *g1 =
+    new TGraphErrors(
+      n,
+      lambda.data(),
+      T.data(),
+      s_lambda.data(),
+      sT.data()
+    );
+
+    // g2 = fotocorrente
+    TGraphErrors *g2=
+    graph_errors_fillers(
+      "Fotocorrente",
+      "../data_fc/dati_I_norm.txt"
+    );
 
 
-    TCanvas *c = new TCanvas("c","comp",200,10,700,500);
+    //-----------------------------------
+    // CANVAS + PAD
+    //-----------------------------------
 
-    TPad *p1 = new TPad("p1","",0,0,1,1);
+    TCanvas *c =
+    new TCanvas("c","Trasmittanza",900,600);
+
+    TPad *p1=
+    new TPad("p1","",0,0,1,1);
+
+    TPad *p2=
+    new TPad("p2","",0,0,1,1);
+
     p1->SetGrid();
+    p2->SetFillStyle(4000); // trasparente
+
+
+    //-----------------------------------
+    // PRIMO GRAFICO
+    //-----------------------------------
+
     p1->Draw();
     p1->cd();
 
-    g1->SetMarkerStyle(7);
-    g1->SetMarkerColor(kBlack);
-    g1->Draw("ALP");
+    g1->SetTitle(
+    "Trasmittanza e Fotocorrente;#lambda [nm];T [#]"
+    );
 
+    g1->SetMarkerStyle(20);
+    g1->SetMarkerColor(kBlue);
+    g1->SetLineColor(kBlue);
+    TF1 *fT = new TF1("fT","[0] + [1]/(1+exp((x-[2])/[3]))",600,650);
+
+    fT->SetParameters(0.0,0.18,630,5);
+    fT->SetLineColor(kBlue);
+    // b, A, lambda0, DeltaLambda
+
+    g1->Fit(fT,"R"); // R = usa solo il range dato
+    g1->Draw("AP");
+    fT->Draw("same");
+    double probT= fT->GetProb();
+    cout<< probT<<endl;
+   
     gPad->Update();
 
-    // range asse X
-    double xmin = g1->GetXaxis()->GetXmin();
-    double xmax = g1->GetXaxis()->GetXmax();
 
-    // range Y seconda curva
-    double ymin = TMath::MinElement(n, trasm.data());
-    double ymax = TMath::MaxElement(n, trasm.data());
+    //-----------------------------------
+    // FONT ASSI
+    //-----------------------------------
 
-    TPad *p2 = new TPad("p2","",0,0,1,1);
-    p2->SetFillStyle(4000);
+    Style_t tfont=
+    g1->GetHistogram()->GetYaxis()->GetTitleFont();
+
+    Float_t tsize=
+    g1->GetHistogram()->GetYaxis()->GetTitleSize();
+
+    Style_t lfont=
+    g1->GetHistogram()->GetYaxis()->GetLabelFont();
+
+    Float_t lsize=
+    g1->GetHistogram()->GetYaxis()->GetLabelSize();
+
+
+    //-----------------------------------
+    // RANGE PER ASSE DESTRO
+    //-----------------------------------
+
+    Double_t xmin=p1->GetUxmin();
+    Double_t xmax=p1->GetUxmax();
+
+    Double_t dx=(xmax-xmin)/0.8;
+
+    Double_t ymin=
+    g2->GetHistogram()->GetMinimum();
+
+    Double_t ymax=
+    g2->GetHistogram()->GetMaximum();
+
+    Double_t dy=(ymax-ymin)/0.8;
+
+
+    //-----------------------------------
+    // SECONDO PAD
+    //-----------------------------------
+
+    p2->Range(
+      xmin-0.1*dx,
+      ymin-0.1*dy,
+      xmax+0.1*dx,
+      ymax+0.1*dy
+    );
+
     p2->Draw();
     p2->cd();
 
-    g2->SetMarkerStyle(7);
+    g2->SetMarkerStyle(21);
     g2->SetMarkerColor(kRed);
-    g2->Draw("LP");
+    g2->SetLineColor(kRed);
+    
+    TF1 *fI = new TF1("fI","[0] + [1]/(1+exp((x-[2])/[3]))",620,680);
+    fI->SetParameters(0.1,5,650,10);
 
-    TGaxis *axis = new TGaxis(xmax, ymin, xmax, ymax,
-                          ymin, ymax, 510, "+L");
+    g2->Fit(fI,"R");
+    g2->Draw("P");
+    fI->SetLineColor(kRed);
+    fI->Draw("same");
+    double probI= fI->GetProb();
+    cout<< probI<<endl;
 
-    axis->SetLineColor(kRed);
+
+    //-----------------------------------
+    // ASSE DESTRO
+    //-----------------------------------
+
+    TGaxis *axis=
+    new TGaxis(
+      xmax,ymin,
+      xmax,ymax,
+      ymin,ymax,
+      510,"+L"
+    );
+
+    axis->SetTitle("Fotocorrente [mA]");
+
+    axis->SetTitleFont(tfont);
+    axis->SetTitleSize(tsize);
+    axis->SetLabelFont(lfont);
+    axis->SetLabelSize(lsize);
+
+    axis->SetTitleColor(kRed);
     axis->SetLabelColor(kRed);
+    axis->SetLineColor(kRed);
+
     axis->Draw();
 
-    TLegend *leg = new TLegend(0.75,0.75,0.9,0.9);
-    leg->AddEntry(g1,"gr1","lp");
-    leg->AddEntry(g2,"gr2","lp");
-    leg->Draw();
+
+    //-----------------------------------
+    // LEGENDA
+    //-----------------------------------
 
     c->cd();
+
+    TLegend *leg=
+    new TLegend(0.55,0.75,0.85,0.88);
+
+    leg->AddEntry(g1,"Trasmittanza","lp");
+    leg->AddEntry(g2,"Fotocorrente","lp");
+
+    leg->Draw();
 }
 
-TGraphErrors* graph_errors_fillers(string title, string path){
 
-    ifstream in_file(path.c_str());
 
-    if(!in_file.is_open()){
-        std::cout << "ERRORE: file non aperto\n";
-        return nullptr;
+TGraphErrors*
+graph_errors_fillers(string title,string path){
+
+    ifstream in(path);
+
+    double x,sx,y,sy;
+
+    vector<double> xv,sxv,yv,syv;
+
+    while(in>>x>>sx>>y>>sy){
+
+        xv.push_back(x);
+        sxv.push_back(sx);
+
+        yv.push_back(y);
+        syv.push_back(sy);
     }
 
-    double x,y,s_x,s_y;
-
-    vector<double> xvec, yvec, s_xvec, s_yvec;
-
-    while(in_file >> x >> s_x >> y >> s_y){
-
-        xvec.push_back(x);
-        s_xvec.push_back(s_x);
-        yvec.push_back(y);
-        s_yvec.push_back(s_y);
-    }
-
-    TGraphErrors* g =
-        new TGraphErrors(
-            xvec.size(),
-            xvec.data(),
-            yvec.data(),
-            s_xvec.data(),
-            s_yvec.data()
-        );
+    auto g=
+    new TGraphErrors(
+       xv.size(),
+       xv.data(),
+       yv.data(),
+       sxv.data(),
+       syv.data()
+    );
 
     g->SetTitle(title.c_str());
 
@@ -153,18 +274,22 @@ vector<double>
 >
 lettura(string path){
 
-    ifstream in_file(path);
+    ifstream in(path);
 
-    double x,y,s_x,s_y;
+    double x,sx,y,sy;
 
-    vector<double> xvec,yvec,s_xvec,s_yvec;
+    vector<double> xv,sxv,yv,syv;
 
-    while(in_file >> x >> s_x >> y >> s_y){
-        xvec.push_back(x);
-        s_xvec.push_back(s_x);
-        yvec.push_back(y);
-        s_yvec.push_back(s_y);
+    while(in>>x>>sx>>y>>sy){
+
+        xv.push_back(x);
+        sxv.push_back(sx);
+
+        yv.push_back(y);
+        syv.push_back(sy);
     }
 
-    return make_tuple(xvec,s_xvec,yvec,s_yvec);
+    return make_tuple(
+      xv,sxv,yv,syv
+    );
 }

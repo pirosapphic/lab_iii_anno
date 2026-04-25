@@ -16,7 +16,7 @@ tuple<vector<double>,vector<double>,vector<double>,vector<double>>lettura(string
 
 void calibrazione(){ 
     string path= "../data_fc/data_fotocorr.txt";
-    auto [ua,s_ua,V_0,s_V_0]= lettura(path);
+    auto [ua,s_ua,V0,s_V0]= lettura(path);
     vector<double> pixel,s_pixel;
     double x,s_x, cov;
     /*
@@ -60,15 +60,21 @@ void calibrazione(){
     double s_f01=-0.01515 ; //bisogna tenere conto del segno nella covarianza
     double s_f02=7.e-06;
     double s_f21=-1.8e-08;
+
+
     for (int i = 0; i < ua.size(); i++)
-    {
+    {   
+
         x= f0 + pixel[i]*f1+pow(pixel[i],2)*f2; //passo da pixel a nm relazione polinomiale calib_monocromatore
         cov= 2*pixel[i]*s_f01 +2*pow(pixel[i],2)*s_f02+ 2*pow(pixel[i],3)*s_f21;
         s_x= sqrt(pow(s_f0,2)+pow(pixel[i]*s_f1,2)+pow(pow(pixel[i],2)*s_f2,2)+pow(f1+2.*pixel[i]*f2,2)*pow(s_pixel[i],2)+cov);
         lambda.push_back(x);
         s_lambda.push_back(s_x);
-        cout<< lambda[i] <<" "<< s_lambda[i] <<" "<< V_0[i] <<" "<<s_V_0[i]<<endl;
+        cout<< lambda[i] <<" "<< s_lambda[i] <<" "<< V0[i] <<" "<<s_V0[i]<<endl;
     }
+
+    
+
     
 
 
