@@ -75,7 +75,7 @@ void trasmittanza(){
     TGraphErrors *g2=
     graph_errors_fillers(
       "Fotocorrente",
-      "../data_fc/dati_I_norm.txt"
+      "../data_fc/dati_I_calib.txt"
     );
 
 
@@ -112,7 +112,7 @@ void trasmittanza(){
     g1->SetLineColor(kBlue);
     TF1 *fT = new TF1("fT","[0] + [1]/(1+exp((x-[2])/[3]))",600,650);
 
-    fT->SetParameters(0.0,0.18,630,5);
+    fT->SetParameters(0.0,0.18,630,5); //0.0,0.18,630,5
     fT->SetLineColor(kBlue);
     // b, A, lambda0, DeltaLambda
 
@@ -121,6 +121,13 @@ void trasmittanza(){
     fT->Draw("same");
     double probT= fT->GetProb();
     cout<< probT<<endl;
+    //calcolo energy gap 
+
+    double lambda0T= fT-> GetParameter(2);
+    double s_lambda0T= fT-> GetParameter(3);
+    double EgT  = 1240./lambda0T;
+    double s_EgT = 1240.*s_lambda0T/pow(lambda0T,2);
+    cout << EgT << " +/- " << s_EgT << " eV" << endl;
    
     gPad->Update();
 
@@ -178,8 +185,8 @@ void trasmittanza(){
     g2->SetMarkerColor(kRed);
     g2->SetLineColor(kRed);
     
-    TF1 *fI = new TF1("fI","[0] + [1]/(1+exp((x-[2])/[3]))",620,680);
-    fI->SetParameters(0.1,5,650,10);
+    TF1 *fI = new TF1("fI","[0] + [1]/(1+exp((x-[2])/[3]))",625,680);
+    fI->SetParameters(0.1,6,650,10); //0.1,5,650,10
 
     g2->Fit(fI,"R");
     g2->Draw("P");
@@ -187,6 +194,15 @@ void trasmittanza(){
     fI->Draw("same");
     double probI= fI->GetProb();
     cout<< probI<<endl;
+
+    //calcolo energy gap
+    double lambda0I= fI-> GetParameter(2);
+    double s_lambda0I= fI-> GetParameter(3);
+    double EgI  = 1240./lambda0I;
+    double s_EgI = 1240.*s_lambda0I/pow(lambda0I,2);
+    
+    cout << EgI << " +/- " << s_EgI << " eV" << endl;
+    
 
 
     //-----------------------------------
@@ -219,7 +235,7 @@ void trasmittanza(){
     // LEGENDA
     //-----------------------------------
 
-    c->cd();
+    p2->cd();
 
     TLegend *leg=
     new TLegend(0.55,0.75,0.85,0.88);
@@ -227,7 +243,19 @@ void trasmittanza(){
     leg->AddEntry(g1,"Trasmittanza","lp");
     leg->AddEntry(g2,"Fotocorrente","lp");
 
-    leg->Draw();
+    leg->Draw("same");
+
+
+    //test Z
+
+    double Z= (EgI-EgT)/sqrt(pow(s_EgI,2)+pow(s_EgT,2));
+    cout<<"Z: "<< Z<<endl;
+
+    //media pesata
+
+    double Eg=(EgI/pow(s_EgI,2)+EgT/pow(s_EgT,2))/(1./pow(s_EgT,2)+1./pow(s_EgI,2));
+    double s_Eg=pow(1./pow(s_EgT,2)+1./pow(s_EgI,2),-0.5);
+    cout<<"Eg medio: "<< Eg<< "pm "<< s_Eg<<endl;
 }
 
 
