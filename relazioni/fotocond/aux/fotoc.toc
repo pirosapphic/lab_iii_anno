@@ -1,0 +1,23 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Introduzione all'apparato sperimentale}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Apparato sperimentale}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Calibrazione del monocromatore}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Calibrazione dello spettrometro}{3}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Relazione polinomiale per la calibrazione del monocromatore}{4}{subsubsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.2}Calibrazione del monocromatore}{5}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Relazione lineare per la calibrazione del monocromatore}{5}{subsubsection.2.2.1}%
+\contentsline {section}{\numberline {3}Determinazione dell'\textit {energy gap} del semiconduttore}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Spettro di emissione della lampada alogena}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Determinazione dell'\textit {energy gap} $E_{g,SeGa}$.}{7}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Trasmittanza ottica e fotocorrente}{7}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Misura sperimentale di $E_{g,SeGa}$}{9}{subsubsection.3.2.2}%
+\contentsline {section}{\numberline {4}Conclusioni}{10}{section.4}%
+\contentsline {section}{\numberline {5}Appendice}{11}{section.5}%
+\global \c@tocdepth 0\relax 
+\contentsline {subsection}{\numberline {5.1}Dati calibrazione}{11}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Calibrazione spettrometro}{11}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Calibrazione monocromatore}{11}{subsubsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.2}Spettro di riferimento}{12}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Intensità trasmessa}{13}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Trasmittanza e fotocorrente}{14}{subsubsection.5.3.1}%
