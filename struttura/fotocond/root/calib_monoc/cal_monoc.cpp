@@ -29,7 +29,7 @@ void cal_monoc() {
     g_cal->Draw("AP");
 
     //fit
-    TF1* f1 =new TF1("f1","pol2",500.,740.);
+    TF1* f1 =new TF1("f1","pol1",500.,740.);
     fitres = g_cal->Fit("f1","RS+","e1",500.,740.); 
     std::cout<<"p-value "<<fitres->Prob()<<std::endl;
     fitres->GetCovarianceMatrix().Print();
