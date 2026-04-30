@@ -9,52 +9,25 @@
 #include "TRandom3.h"
 #include "TMath.h"
 #include "TGraphErrors.h"
-#include "TMultiGraph.h"
 #include "TCanvas.h"
 #include "TFile.h"
 
 TGraphErrors* graph_errors_filler(string title, string path); //general purpose
 std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
-void B_tot(){
-TMultiGraph* gtot = new TMultiGraph();
-//salita 1
-    string path = "../data/";
-    path += "salita1.txt"; 
-    TGraphErrors* g1 = graph_errors_filler("titolo1",path);
-    g1->SetMarkerStyle(7);
-    g1->SetMarkerColor("kMagenta");
-    g1->SetLineColor("kMagenta");
+void B_salita2(){
+    string path = "../../data/";
+    path += "salita2.txt";
+    string title = "salita 2";
+    title = "B vs I, "+title+";I[A];B[mT]";
+    TGraphErrors* g = graph_errors_filler(title,path);
+    g->SetMarkerStyle(7);
     TCanvas* c = new TCanvas("c1","c1",20,20,1098,732);
     c->SetGrid();
-    g1->Fit("pol1","R","",-0.5,10.);
-    gtot->Add(g1);
-//discesa 1
-    path = "../data/";
-    path += "discesa1.txt"; 
-    TGraphErrors* g2 = graph_errors_filler("titolo2",path);
-    g2->SetMarkerStyle(7);
-    g2->SetMarkerColor("kBlue");
-    g2->Fit("pol1","R","",-0.5,10.);
-    gtot->Add(g2);
-//salita 2
-    path = "../data/";
-    path += "salita2.txt"; 
-    TGraphErrors* g3 = graph_errors_filler("titolo3",path);
-    g3->SetMarkerStyle(7);
-    g3->SetMarkerColor("kRed");
-    g3->Fit("pol1","R","",-0.5,10.);
-    gtot->Add(g3);
-//discesa 2
-    path = "../data/";
-    path += "discesa2.txt"; 
-    TGraphErrors* g4 = graph_errors_filler("titolo4",path);
-    g4->SetMarkerStyle(7);
-    g4->SetMarkerColor("kGreen");
-    g4->Fit("pol1","R","",-0.5,10.);
-    gtot->Add(g4);
-    
-    gtot->Draw("AP");
+    g->Draw("AP");
+    TFitResultPtr r = g->Fit("pol1","SR+","",-0.5,10.);
+    r->GetCovarianceMatrix().Print();
+    std::cout<<"Covariance sigma_01 = "<<r->CovMatrix(0,1)<<std::endl;
 }
 
 
