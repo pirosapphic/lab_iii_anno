@@ -35,7 +35,7 @@ void trasv_down(){
     for(int i = 0; i<n; i++){
 	B[i] = (m*I[i]+q)/1000.; //convert to Tesla
 	s_B[i] = sqrt(pow(I[i]*s_m,2)+pow(m*s_I[i],2)+pow(s_q,2)+2.*I[i]*1.*cov)/1000.;
-	//if(s_B[i]<0.015) s_B[i] = 0.015;
+	if(s_B[i]<0.015) s_B[i] = 0.015;
     }
     std::vector<double> delta;
     std::vector<double> s_delta;
@@ -269,11 +269,12 @@ void trasv_down(){
 	d_D[i] = -delta[i]/Delta[i];
 	s_d_D[i] = abs(d_D[i])*sqrt(pow(s_delta[i]/delta[i],2)+pow(s_Delta[i]/Delta[i],2));
 	d_D[0]=0.;
+	std::cout<<"I = ("<<I[i]<<"+/-"<<s_I[i]<<")A,\t";
         std::cout<<"B = ("<<B[i]*1000.<<"+/-"<<s_B[i]*1000.<<")mT,\t d/D = "<<d_D[i]<<"+/-"<<s_d_D[i]<<std::endl;
     }
     TGraphErrors* g = new TGraphErrors(n,B.data(),d_D.data(),s_B.data(),s_d_D.data());
     g->SetMarkerStyle(7);
-    g->SetTitle("<#delta>/<#Delta> vs B, #Delta m_{L} = -1;B[T];#frac{<#delta>}{<#Delta>}[#]");
+    g->SetTitle("<#delta>/<#Delta> vs B, configurazione trasversale, #Delta m_{L} = -1;B[T];#frac{<#delta>}{<#Delta>}[#]");
     TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();
     g->Draw("AP");
@@ -292,12 +293,12 @@ void trasv_down(){
     double truemuB = 9.2740100657e-24;
     std::cout<<"Migliore stima mu_B = "<<truemuB<<", Z = "<<(muB-truemuB)/s_muB<<"\n";
     std::cout<<"Compatibile !\n";
-    double muup = 9.6e-24;
-    double s_muup = 3.e-25;
+    double muup = 9.49092e-24;
+    double s_muup = 3.77454e-25;
     double mudown = muB;//9.5
     double s_mudown = s_muB;//0.3
-    double mul=9.9e-24;
-    double s_mul = 2.e-25;
+    double mul=9.85949e-24;
+    double s_mul = 3.12393e-25;
     std::vector<double> muBfinale = w_mean({muup,mudown,mul},{s_muup,s_mudown,s_mul});
     double s_muBfinale = w_mean({muup,mudown,mul},{s_muup,s_mudown,s_mul})[1];
     std::cout<<"\nStima finale mu_B = ("<<muBfinale[0]<<" +/- "<<muBfinale[1]<<")J/T, Z = "<<(muBfinale[0]-truemuB)/muBfinale[1]<<"\n";

@@ -34,7 +34,7 @@ void longit(){
     for(int i = 0; i<n; i++){
 	B[i] = (m*I[i]+q)/1000.; //convert to Tesla
 	s_B[i] = sqrt(pow(I[i]*s_m,2)+pow(m*s_I[i],2)+pow(s_q,2)+2.*I[i]*1.*cov)/1000.;
-//	if(s_B[i]<0.015) s_B[i] = 0.015;
+	if(s_B[i]<0.015) s_B[i] = 0.015;
     }
     std::vector<double> delta;
     std::vector<double> s_delta;
@@ -334,7 +334,7 @@ void longit(){
     //B.pop_back();B.shrink_to_fit();d_D.pop_back();d_D.shrink_to_fit();
     //s_B.pop_back();s_B.shrink_to_fit();s_d_D.pop_back(); s_d_D.shrink_to_fit();
     TGraphErrors* g = new TGraphErrors(B.size(),B.data(),d_D.data(),s_B.data(),s_d_D.data());
-    g->SetTitle("<#delta>/<#Delta> vs B, #Delta m_{L} = 2;B[T];#frac{<#delta>}{<#Delta>}[#]");
+    g->SetTitle("<#delta>/<#Delta> vs B, configurazione longitudinale;B[T];#frac{<#delta>}{<#Delta>}[#]");
     g->SetMarkerStyle(7);
     TCanvas* c1 = new TCanvas("c1","c1",20,20,1098,732);
     c1->SetGrid();
