@@ -15,17 +15,19 @@
 TGraphErrors* graph_errors_filler(string title, string path); //general purpose
 std::vector<double> w_mean(std::vector<double> val, std::vector<double> s_val);
 
-void B_discesa1(){
-    string path = "../data/";
-    path += "discesa1.txt";
-    string title = "discesa 1";
+void B_discesa2(){
+    string path = "../../data/";
+    path += "discesa2.txt";
+    string title = "discesa 2";
     title = "B vs I, "+title+";I[A];B[mT]";
     TGraphErrors* g = graph_errors_filler(title,path);
     g->SetMarkerStyle(7);
     TCanvas* c = new TCanvas("c1","c1",20,20,1098,732);
     c->SetGrid();
     g->Draw("AP");
-    g->Fit("pol1","R+","",-0.5,10.);
+    TFitResultPtr r = g->Fit("pol1","SR+","",-0.5,10.);
+    r->GetCovarianceMatrix().Print();
+    std::cout<<"Covariance sigma_01 = "<<r->CovMatrix(0,1)<<std::endl;
 }
 
 
