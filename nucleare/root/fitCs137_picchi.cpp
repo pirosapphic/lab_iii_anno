@@ -43,12 +43,15 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   double A[10] = {};
 
   //prima gaussiana
-  TF1* f1 = new TF1("f1","gaus",1370,1470);
+  TF1* f1 = new TF1("f1","gaus",1370,1490);
   f1->SetParameters(1500, 1425, 90);
   f1->SetLineColor(kRed);
 
+  gStyle->SetOptStat(0);
   theHisto->Draw("e1");
   theHisto->Fit(f1,"R");
+  double prob = f1->GetProb();
+  cout << "p-value = " << prob << endl;
 
  A[0]   = f1->GetParameter(0);
   double mean1  = f1->GetParameter(1);
@@ -62,7 +65,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   f2->SetLineColor(kBlue);
 
   theHisto->Fit(f2,"R+");
-  double prob = f2->GetProb();
+  prob = f2->GetProb();
   cout << "p-value = " << prob << endl;
 
   A[1]    = f2->GetParameter(0);
@@ -170,7 +173,7 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
 
   double media[10]= {mean1, mean2, mean3, mean4, mean5, mean6, mean7, mean8, mean9, mean10};
   //uso sigma come errore
-  //double errM[10] ={errM1,errM2,errM3,errM4,errM5,errM6,errM7,errM8,errM9,errM10};
+  double s_media[10] ={errM1,errM2,errM3,errM4,errM5,errM6,errM7,errM8,errM9,errM10};
   double sigma[10] = {sigma1,sigma2,sigma3,sigma4,sigma5,sigma6,sigma7,sigma8,sigma9,sigma10};
   double ersig[10] = {ersig1,ersig2,ersig3,ersig4,ersig5,ersig6,ersig7,ersig8,ersig9,ersig10};
 
@@ -181,14 +184,14 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   for(int i=0;i < 9; i++){
     deltapp[i]= media[i+1]-media[i];
     errpp[i] = sqrt(pow(sigma[i],2)+ pow(sigma[i+1],2)); //misure indipendenti
-    cout<<"deltapp "<< i<<" "<<deltapp<<"+/-"<<errpp<<endl;
+    cout<<"deltapp "<< i<<" "<<deltapp[i]<<"+/-"<<errpp[i]<<endl;
   }
   //media pesata
   double a[9] = {};
   double n= 0.0;
   double d=0.0;
   double meanpp=0.0;
-  double error=0.0;
+  double s_meanpp=0.0;
   for(int i=0; i<9; i++){
     a[i] = pow(1./errpp[i],2);
     n += a[i]*deltapp[i];
@@ -197,8 +200,9 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
   }
 
   meanpp= n/d;
-  error= pow(1./d,0.5); //errore su deltapp
-  cout << "<deltapp> vale: " << meanpp << " +/- " << error << endl;
+  s_meanpp= pow(1./d,0.5); //errore su deltapp
+  cout << "<deltapp> vale: " << meanpp << " +/- " << s_meanpp << endl;
+/*
 //sigma pesata
    n= 0;
    d=0;
@@ -262,12 +266,69 @@ void fitCs137_picchi(string input = "../data_sorg/A8_Cs137_picchi.txt")
     }
     
   }
-  
-  //test Z risoluzione
-  double Zr= (Rat-0.128)/sqrt(pow(erat,2)+pow(0.016,2));
-  cout<< "Zr: "<< Zr<< endl;
-
- 
+  */
+ // //test Z risoluzione
+ // double Zr= (Rat-0.128)/sqrt(pow(erat,2)+pow(0.016,2));
+  //cout<< "Zr: "<< Zr<< endl;
+//ora facciamo il fit delle sigma^2:
+//s^2_n = s_0^2 + ns_p^2
+std::vector<double>var(10);
+std::vector<double>s_var(10);
+std::vector<double>nci(10);
+std::vector<double>s_nci(10);
+std::vector<double>sqnci(10);
+std::vector<double>s_sqnci(10);
+for(int i = 0;i<10;i++){
+    var[i] = pow(sigma[i],2);
+    s_var[i] = var[i]*2.*ersig[i]/sigma[i];
+    nci[i] = media[i]/meanpp; //calcolo ogni volta quanto vale il n. di celle accese
+    s_nci[i] = nci[i]*sqrt(sigma[i]/media[i]+s_meanpp/meanpp);
+    nci[i] = 8.+i;
+    s_nci[i] = 0.5;
+    sqnci[i] = sqrt(nci[i]);
+    s_sqnci[i] = s_nci[i]/2./sqnci[i];
 }
+TGraphErrors* g1 = new TGraphErrors(var.size(),sqnci.data(),sigma,s_sqnci.data(),ersig); //sigma vs sqrt(N)
+//TGraphErrors* g2 = new TGraphErrors(var.size(),nci.data(),var.data(),s_nci.data(),s_var.data()); //var vs N
+g1->SetMarkerStyle(7);
+g1->SetTitle("#sigma_{p,i} vs #sqrt{N};#sqrt{N}[#];#sigma_{p} [CHN]");
+//g2->SetMarkerStyle(7);
+//g2->SetTitle("#sigma^{2}_{p,N} vs N;N[#];#sigma^{2}_{p} [CHN^2]");
+TCanvas* c2 = new TCanvas("c2","c2",20,20,1098,732);
+c2->cd();
+c2->SetGrid();
+g1->Draw("ALP");
+TF1* lin1 = new TF1("lin1","pol1");
+g1->Fit(lin1,"R+","",2.9,4.1);
+std::cout<<"p="<<lin1->GetProb()<<std::endl;
+double sigmap = lin1->GetParameter(1);
+double s_sigmap = lin1->GetParError(1);
+for(int i=0;i<var.size();i++){
+    std::cout<<"N celle "<<nci[i]<<"pm"<<s_nci[i]<<" s^2 "<<var[i]<<"pm"<<s_var[i]<<std::endl;
+}
+//ORA calcolo la risoluzione attesa del picco di conversione interna
 
 
+    double CHNci= 19704.8;
+    double eCHNci= 2512.8;
+    double Nci= CHNci/meanpp;
+
+  double s_Nci= pow(pow(eCHNci/meanpp,2)+pow(CHNci*s_meanpp/pow(meanpp,2),2),0.5);
+  cout << "Nci: " <<Nci << " +/- " << s_Nci << endl;
+
+
+
+    double R_att = pow(Nci,-0.5)*sqrt(1+sigmap*sigmap/meanpp/meanpp);
+    double s_R_att = pow(sqrt(1+sigmap*sigmap/meanpp/meanpp)*1.5*pow(Nci,-1.5)*s_Nci,2);
+    s_R_att+= pow(sigmap/Nci/meanpp/meanpp/sqrt(1./Nci+sigmap*sigmap/meanpp/meanpp/Nci)*s_sigmap,2);
+    s_R_att+=pow(0.5*sigmap*sigmap*3*pow(meanpp,-3)/Nci/sqrt(1./Nci+sigmap*sigmap/meanpp/meanpp/Nci)*s_meanpp,2);
+    s_R_att = sqrt(s_R_att);
+
+
+//    double s_R_att=pow(3./2.*R_att*s_Nci/Nci,2);
+ //   s_R_att+=pow(pow(Nci,-0.5)*sigmap*pow(1+sigmap*sigmap/meanpp/meanpp,-0.5)*s_sigmap,2);
+ //   s_R_att+=pow(pow(Nci,-0.5)*pow(1+sigmap*sigmap/meanpp/meanpp,-0.5)*pow(meanpp,-3)*s_meanpp,2);
+  //  s_R_att = sqrt(s_R_att); //i REALLY hope this is correct.
+std::cout<<"R_att = "<<R_att<<"pm"<<s_R_att<<"\n";
+
+}

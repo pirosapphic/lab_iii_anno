@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.6)  7 APR 2026 23:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.8)  7 MAY 2026 10:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -554,10 +554,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
 [5 <./fig1/led_gsipm.png>]
-<fig1/deltapp_G.png, id=98, 1100.11pt x 710.655pt>
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 25.2842pt, for example:
+(fancyhdr)                \setlength{\headheight}{25.2842pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
+
+[6]
+<fig1/deltapp_G.png, id=106, 1100.11pt x 710.655pt>
 File: fig1/deltapp_G.png Graphic file (type png)
 <use fig1/deltapp_G.png>
-Package pdftex.def Info: fig1/deltapp_G.png  used on input line 139.
+Package pdftex.def Info: fig1/deltapp_G.png  used on input line 156.
 (pdftex.def)             Requested size: 232.84843pt x 150.41307pt.
 
 
@@ -567,31 +575,30 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[6 <./fig1/deltapp_G.png>]
-<fig1/led_vbias.png, id=114, 1100.11pt x 710.655pt>
+[7 <./fig1/deltapp_G.png>]
+<fig1/led_vbias.png, id=123, 1100.11pt x 710.655pt>
 File: fig1/led_vbias.png Graphic file (type png)
 <use fig1/led_vbias.png>
-Package pdftex.def Info: fig1/led_vbias.png  used on input line 179.
+Package pdftex.def Info: fig1/led_vbias.png  used on input line 196.
 (pdftex.def)             Requested size: 218.87808pt x 141.3911pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 207--208
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
 
  []
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 25.2842pt, for example:
-(fancyhdr)                \setlength{\headheight}{25.2842pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
-
-[7 <./fig1/led_vbias.png>]
 <fig1/led_2_5.png, id=124, 1100.11pt x 710.655pt>
 File: fig1/led_2_5.png Graphic file (type png)
 <use fig1/led_2_5.png>
-Package pdftex.def Info: fig1/led_2_5.png  used on input line 215.
+Package pdftex.def Info: fig1/led_2_5.png  used on input line 232.
 (pdftex.def)             Requested size: 314.40001pt x 203.0918pt.
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 25.2842pt, for example:
+(fancyhdr)                \setlength{\headheight}{25.2842pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
+
+[8 <./fig1/led_vbias.png> <./fig1/led_2_5.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 25.2842pt, for example:
@@ -599,27 +606,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[8 <./fig1/led_2_5.png>]
-<fig1/led_area_2_5.png, id=136, 1100.11pt x 710.655pt>
+[9]
+<fig1/led_area_2_5.png, id=140, 1100.11pt x 710.655pt>
 File: fig1/led_area_2_5.png Graphic file (type png)
 <use fig1/led_area_2_5.png>
-Package pdftex.def Info: fig1/led_area_2_5.png  used on input line 252.
+Package pdftex.def Info: fig1/led_area_2_5.png  used on input line 285.
 (pdftex.def)             Requested size: 232.84843pt x 150.41307pt.
-<fig1/led_var_2_5.png, id=137, 1098.1025pt x 710.655pt>
+<fig1/led_var_2_5.png, id=141, 1098.1025pt x 710.655pt>
 File: fig1/led_var_2_5.png Graphic file (type png)
 <use fig1/led_var_2_5.png>
-Package pdftex.def Info: fig1/led_var_2_5.png  used on input line 258.
+Package pdftex.def Info: fig1/led_var_2_5.png  used on input line 291.
 (pdftex.def)             Requested size: 232.84843pt x 150.68416pt.
 ) (./sections/2_sorg.tex
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 25.2842pt, for example:
-(fancyhdr)                \setlength{\headheight}{25.2842pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
-
-[9 <./fig1/led_area_2_5.png> <./fig1/led_var_2_5.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 11--14
+Underfull \hbox (badness 10000) in paragraph at lines 12--15
 
  []
 
@@ -630,16 +629,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[10]
-<fig2/sr90_tot.png, id=150, 1100.11pt x 710.655pt>
+[10 <./fig1/led_area_2_5.png> <./fig1/led_var_2_5.png>]
+<fig2/sr90_tot.png, id=149, 1100.11pt x 710.655pt>
 File: fig2/sr90_tot.png Graphic file (type png)
 <use fig2/sr90_tot.png>
-Package pdftex.def Info: fig2/sr90_tot.png  used on input line 28.
-(pdftex.def)             Requested size: 314.40001pt x 203.0918pt.
-<fig2/kurie_cen.png, id=152, 1100.11pt x 710.655pt>
-File: fig2/kurie_cen.png Graphic file (type png)
-<use fig2/kurie_cen.png>
-Package pdftex.def Info: fig2/kurie_cen.png  used on input line 46.
+Package pdftex.def Info: fig2/sr90_tot.png  used on input line 29.
 (pdftex.def)             Requested size: 314.40001pt x 203.0918pt.
 
 
@@ -650,10 +644,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
 [11 <./fig2/sr90_tot.png>]
-<fig2/sr90_max.png, id=164, 1100.11pt x 710.655pt>
+<fig2/kurie_cen.png, id=159, 1100.11pt x 710.655pt>
+File: fig2/kurie_cen.png Graphic file (type png)
+<use fig2/kurie_cen.png>
+Package pdftex.def Info: fig2/kurie_cen.png  used on input line 47.
+(pdftex.def)             Requested size: 314.40001pt x 203.0918pt.
+<fig2/sr90_max.png, id=162, 1100.11pt x 710.655pt>
 File: fig2/sr90_max.png Graphic file (type png)
 <use fig2/sr90_max.png>
-Package pdftex.def Info: fig2/sr90_max.png  used on input line 63.
+Package pdftex.def Info: fig2/sr90_max.png  used on input line 64.
 (pdftex.def)             Requested size: 309.56569pt x 199.96881pt.
 
 
@@ -663,14 +662,27 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[12 <./fig2/kurie_cen.png> <./fig2/sr90_max.png>]
+[12 <./fig2/kurie_cen.png>]
 <fig2/kurie_decen.png, id=173, 1100.11pt x 710.655pt>
 File: fig2/kurie_decen.png Graphic file (type png)
 <use fig2/kurie_decen.png>
-Package pdftex.def Info: fig2/kurie_decen.png  used on input line 81.
+Package pdftex.def Info: fig2/kurie_decen.png  used on input line 82.
 (pdftex.def)             Requested size: 338.58632pt x 218.71759pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--89
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 25.2842pt, for example:
+(fancyhdr)                \setlength{\headheight}{25.2842pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
+
+[13 <./fig2/sr90_max.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--107
 
  []
 
@@ -681,32 +693,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[13 <./fig2/kurie_decen.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 103--106
-
- []
-
-<fig2/ass_carta.png, id=184, 1100.11pt x 709.65125pt>
+[14 <./fig2/kurie_decen.png>]
+<fig2/ass_carta.png, id=192, 1100.11pt x 709.65125pt>
 File: fig2/ass_carta.png Graphic file (type png)
 <use fig2/ass_carta.png>
-Package pdftex.def Info: fig2/ass_carta.png  used on input line 108.
+Package pdftex.def Info: fig2/ass_carta.png  used on input line 109.
 (pdftex.def)             Requested size: 232.84843pt x 150.20062pt.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 25.2842pt, for example:
-(fancyhdr)                \setlength{\headheight}{25.2842pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
-
-[14 <./fig2/ass_carta.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 141--144
+Underfull \hbox (badness 10000) in paragraph at lines 142--145
 
  []
 
-<fig2/ass_all.png, id=197, 1100.11pt x 709.65125pt>
+<fig2/ass_all.png, id=196, 1100.11pt x 709.65125pt>
 File: fig2/ass_all.png Graphic file (type png)
 <use fig2/ass_all.png>
-Package pdftex.def Info: fig2/ass_all.png  used on input line 148.
+Package pdftex.def Info: fig2/ass_all.png  used on input line 149.
 (pdftex.def)             Requested size: 232.84843pt x 150.20062pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -715,11 +716,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[15 <./fig2/ass_all.png>]
-<fig2/cs137_conv_int.png, id=207, 1100.11pt x 710.655pt>
+[15 <./fig2/ass_carta.png>]
+<fig2/cs137_conv_int.png, id=206, 1100.11pt x 710.655pt>
 File: fig2/cs137_conv_int.png Graphic file (type png)
 <use fig2/cs137_conv_int.png>
-Package pdftex.def Info: fig2/cs137_conv_int.png  used on input line 198.
+Package pdftex.def Info: fig2/cs137_conv_int.png  used on input line 199.
 (pdftex.def)             Requested size: 362.77264pt x 234.34337pt.
 
 
@@ -729,11 +730,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[16 <./fig2/cs137_conv_int.png>]
-<fig2/cs137_Tmax.png, id=218, 1100.11pt x 710.655pt>
+[16 <./fig2/ass_all.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 25.2842pt, for example:
+(fancyhdr)                \setlength{\headheight}{25.2842pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
+
+[17 <./fig2/cs137_conv_int.png>]
+<fig2/cs137_Tmax.png, id=224, 1100.11pt x 710.655pt>
 File: fig2/cs137_Tmax.png Graphic file (type png)
 <use fig2/cs137_Tmax.png>
-Package pdftex.def Info: fig2/cs137_Tmax.png  used on input line 223.
+Package pdftex.def Info: fig2/cs137_Tmax.png  used on input line 224.
 (pdftex.def)             Requested size: 314.40001pt x 203.0918pt.
 
 
@@ -743,13 +752,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[17 <./fig2/cs137_Tmax.png>]
-<fig2/fit_picchi.png, id=227, 1302.8675pt x 709.65125pt>
-File: fig2/fit_picchi.png Graphic file (type png)
-<use fig2/fit_picchi.png>
-Package pdftex.def Info: fig2/fit_picchi.png  used on input line 241.
-(pdftex.def)             Requested size: 396.63496pt x 216.03725pt.
-) (./sections/3_cosmici.tex
+[18 <./fig2/cs137_Tmax.png>]
+<fig2/fit_picchi_zoom.png, id=231, 1624.0675pt x 808.01875pt>
+File: fig2/fit_picchi_zoom.png Graphic file (type png)
+<use fig2/fit_picchi_zoom.png>
+Package pdftex.def Info: fig2/fit_picchi_zoom.png  used on input line 242.
+(pdftex.def)             Requested size: 396.63496pt x 197.33136pt.
+<fig2/cs137_sigma.png, id=235, 1100.11pt x 710.655pt>
+File: fig2/cs137_sigma.png Graphic file (type png)
+<use fig2/cs137_sigma.png>
+Package pdftex.def Info: fig2/cs137_sigma.png  used on input line 283.
+(pdftex.def)             Requested size: 314.40001pt x 203.0918pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 25.2842pt, for example:
@@ -757,31 +771,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[18 <./fig2/fit_picchi.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
+[19 <./fig2/fit_picchi_zoom.png>]) (./sections/3_cosmici.tex
 
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 25.2842pt, for example:
+(fancyhdr)                \setlength{\headheight}{25.2842pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-<fig2/raggi.png, id=239, 1100.11pt x 709.65125pt>
+[20 <./fig2/cs137_sigma.png>]
+<fig2/raggi.png, id=252, 1100.11pt x 709.65125pt>
 File: fig2/raggi.png Graphic file (type png)
 <use fig2/raggi.png>
 Package pdftex.def Info: fig2/raggi.png  used on input line 27.
 (pdftex.def)             Requested size: 299.8897pt x 193.44922pt.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 25.2842pt, for example:
-(fancyhdr)                \setlength{\headheight}{25.2842pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
-
-[19 <./fig2/raggi.png>]
-<fig2/raggi_zoom.png, id=248, 1100.11pt x 709.65125pt>
-File: fig2/raggi_zoom.png Graphic file (type png)
-<use fig2/raggi_zoom.png>
-Package pdftex.def Info: fig2/raggi_zoom.png  used on input line 39.
-(pdftex.def)             Requested size: 314.40001pt x 202.80495pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--53
+Underfull \hbox (badness 10000) in paragraph at lines 24--30
 
  []
 
@@ -792,7 +797,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[20 <./fig2/raggi_zoom.png>]) (./sections/4_conclusioni.tex
+[21 <./fig2/raggi.png>]
+<fig2/raggi_zoom.png, id=260, 1100.11pt x 709.65125pt>
+File: fig2/raggi_zoom.png Graphic file (type png)
+<use fig2/raggi_zoom.png>
+Package pdftex.def Info: fig2/raggi_zoom.png  used on input line 38.
+(pdftex.def)             Requested size: 314.40001pt x 202.80495pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--52
+
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 25.2842pt, for example:
@@ -800,7 +815,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[21]) (./sections/5_appendice.tex
+[22 <./fig2/raggi_zoom.png>]) (./sections/4_conclusioni.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 25.2842pt, for example:
@@ -808,33 +823,41 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[22]
-<appendice/dcr_l19.png, id=262, 1100.11pt x 710.655pt>
+[23]) (./sections/5_appendice.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 25.2842pt, for example:
+(fancyhdr)                \setlength{\headheight}{25.2842pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
+
+[24]
+<appendice/dcr_l19.png, id=274, 1100.11pt x 710.655pt>
 File: appendice/dcr_l19.png Graphic file (type png)
 <use appendice/dcr_l19.png>
 Package pdftex.def Info: appendice/dcr_l19.png  used on input line 16.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/dcr_h19.png, id=263, 1100.11pt x 710.655pt>
+<appendice/dcr_h19.png, id=275, 1100.11pt x 710.655pt>
 File: appendice/dcr_h19.png Graphic file (type png)
 <use appendice/dcr_h19.png>
 Package pdftex.def Info: appendice/dcr_h19.png  used on input line 23.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/dcr_l21.png, id=264, 1100.11pt x 710.655pt>
+<appendice/dcr_l21.png, id=276, 1100.11pt x 710.655pt>
 File: appendice/dcr_l21.png Graphic file (type png)
 <use appendice/dcr_l21.png>
 Package pdftex.def Info: appendice/dcr_l21.png  used on input line 32.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/dcr_h21.png, id=265, 1100.11pt x 710.655pt>
+<appendice/dcr_h21.png, id=277, 1100.11pt x 710.655pt>
 File: appendice/dcr_h21.png Graphic file (type png)
 <use appendice/dcr_h21.png>
 Package pdftex.def Info: appendice/dcr_h21.png  used on input line 39.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/dcr_l22.png, id=266, 1100.11pt x 710.655pt>
+<appendice/dcr_l22.png, id=278, 1100.11pt x 710.655pt>
 File: appendice/dcr_l22.png Graphic file (type png)
 <use appendice/dcr_l22.png>
 Package pdftex.def Info: appendice/dcr_l22.png  used on input line 48.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/dcr_h22.png, id=267, 1100.11pt x 710.655pt>
+<appendice/dcr_h22.png, id=279, 1100.11pt x 710.655pt>
 File: appendice/dcr_h22.png Graphic file (type png)
 <use appendice/dcr_h22.png>
 Package pdftex.def Info: appendice/dcr_h22.png  used on input line 55.
@@ -847,33 +870,33 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[23 <./appendice/dcr_l19.png> <./appendice/dcr_h19.png> <./appendice/dcr_l21.png> <./appendice/dcr_h21.png> <./appendice/dcr_l22.png> <./appendice/dcr_h22.png>]
-<appendice/dcr_l23.png, id=279, 1100.11pt x 710.655pt>
+[25 <./appendice/dcr_l19.png> <./appendice/dcr_h19.png> <./appendice/dcr_l21.png> <./appendice/dcr_h21.png> <./appendice/dcr_l22.png> <./appendice/dcr_h22.png>]
+<appendice/dcr_l23.png, id=293, 1100.11pt x 710.655pt>
 File: appendice/dcr_l23.png Graphic file (type png)
 <use appendice/dcr_l23.png>
 Package pdftex.def Info: appendice/dcr_l23.png  used on input line 64.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/dcr_h23.png, id=280, 1100.11pt x 710.655pt>
+<appendice/dcr_h23.png, id=294, 1100.11pt x 710.655pt>
 File: appendice/dcr_h23.png Graphic file (type png)
 <use appendice/dcr_h23.png>
 Package pdftex.def Info: appendice/dcr_h23.png  used on input line 71.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/dcr_l23_3.png, id=281, 1100.11pt x 710.655pt>
+<appendice/dcr_l23_3.png, id=295, 1100.11pt x 710.655pt>
 File: appendice/dcr_l23_3.png Graphic file (type png)
 <use appendice/dcr_l23_3.png>
 Package pdftex.def Info: appendice/dcr_l23_3.png  used on input line 80.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/dcr_h23_3.png, id=282, 1100.11pt x 710.655pt>
+<appendice/dcr_h23_3.png, id=296, 1100.11pt x 710.655pt>
 File: appendice/dcr_h23_3.png Graphic file (type png)
 <use appendice/dcr_h23_3.png>
 Package pdftex.def Info: appendice/dcr_h23_3.png  used on input line 87.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/dcr_l23_6.png, id=283, 1100.11pt x 710.655pt>
+<appendice/dcr_l23_6.png, id=297, 1100.11pt x 710.655pt>
 File: appendice/dcr_l23_6.png Graphic file (type png)
 <use appendice/dcr_l23_6.png>
 Package pdftex.def Info: appendice/dcr_l23_6.png  used on input line 96.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/dcr_h23_6.png, id=284, 1100.11pt x 710.655pt>
+<appendice/dcr_h23_6.png, id=298, 1100.11pt x 710.655pt>
 File: appendice/dcr_h23_6.png Graphic file (type png)
 <use appendice/dcr_h23_6.png>
 Package pdftex.def Info: appendice/dcr_h23_6.png  used on input line 103.
@@ -886,90 +909,84 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[24 <./appendice/dcr_l23.png> <./appendice/dcr_h23.png> <./appendice/dcr_l23_3.png> <./appendice/dcr_h23_3.png> <./appendice/dcr_l23_6.png> <./appendice/dcr_h23_6.png>]
-<appendice/dcr_l23_9.png, id=296, 1100.11pt x 710.655pt>
+[26 <./appendice/dcr_l23.png> <./appendice/dcr_h23.png> <./appendice/dcr_l23_3.png> <./appendice/dcr_h23_3.png> <./appendice/dcr_l23_6.png> <./appendice/dcr_h23_6.png>]
+<appendice/dcr_l23_9.png, id=309, 1100.11pt x 710.655pt>
 File: appendice/dcr_l23_9.png Graphic file (type png)
 <use appendice/dcr_l23_9.png>
 Package pdftex.def Info: appendice/dcr_l23_9.png  used on input line 113.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/dcr_h23_9.png, id=297, 1100.11pt x 710.655pt>
+<appendice/dcr_h23_9.png, id=310, 1100.11pt x 710.655pt>
 File: appendice/dcr_h23_9.png Graphic file (type png)
 <use appendice/dcr_h23_9.png>
 Package pdftex.def Info: appendice/dcr_h23_9.png  used on input line 120.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/gain25.png, id=298, 1100.11pt x 710.655pt>
+<appendice/gain25.png, id=311, 1100.11pt x 710.655pt>
 File: appendice/gain25.png Graphic file (type png)
 <use appendice/gain25.png>
-Package pdftex.def Info: appendice/gain25.png  used on input line 153.
+Package pdftex.def Info: appendice/gain25.png  used on input line 134.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/gain27.png, id=299, 1100.11pt x 710.655pt>
+<appendice/gain27.png, id=312, 1100.11pt x 710.655pt>
 File: appendice/gain27.png Graphic file (type png)
 <use appendice/gain27.png>
-Package pdftex.def Info: appendice/gain27.png  used on input line 158.
+Package pdftex.def Info: appendice/gain27.png  used on input line 139.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 25.2842pt, for example:
-(fancyhdr)                \setlength{\headheight}{25.2842pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
-
-[25 <./appendice/dcr_l23_9.png> <./appendice/dcr_h23_9.png> <./appendice/gain25.png> <./appendice/gain27.png>]
-<appendice/gain29.png, id=311, 1100.11pt x 710.655pt>
+<appendice/gain29.png, id=313, 1100.11pt x 710.655pt>
 File: appendice/gain29.png Graphic file (type png)
 <use appendice/gain29.png>
-Package pdftex.def Info: appendice/gain29.png  used on input line 166.
+Package pdftex.def Info: appendice/gain29.png  used on input line 147.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/gain31.png, id=312, 1100.11pt x 710.655pt>
+<appendice/gain31.png, id=314, 1100.11pt x 710.655pt>
 File: appendice/gain31.png Graphic file (type png)
 <use appendice/gain31.png>
-Package pdftex.def Info: appendice/gain31.png  used on input line 171.
+Package pdftex.def Info: appendice/gain31.png  used on input line 152.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/gain33.png, id=313, 1100.11pt x 710.655pt>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 25.2842pt, for example:
+(fancyhdr)                \setlength{\headheight}{25.2842pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
+
+[27 <./appendice/dcr_l23_9.png> <./appendice/dcr_h23_9.png> <./appendice/gain25.png> <./appendice/gain27.png> <./appendice/gain29.png> <./appendice/gain31.png>]
+<appendice/gain33.png, id=326, 1100.11pt x 710.655pt>
 File: appendice/gain33.png Graphic file (type png)
 <use appendice/gain33.png>
-Package pdftex.def Info: appendice/gain33.png  used on input line 179.
+Package pdftex.def Info: appendice/gain33.png  used on input line 160.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/gain35.png, id=314, 1100.11pt x 710.655pt>
+<appendice/gain35.png, id=327, 1100.11pt x 710.655pt>
 File: appendice/gain35.png Graphic file (type png)
 <use appendice/gain35.png>
-Package pdftex.def Info: appendice/gain35.png  used on input line 184.
+Package pdftex.def Info: appendice/gain35.png  used on input line 165.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/V53.png, id=315, 1100.11pt x 710.655pt>
+<appendice/V53.png, id=328, 1100.11pt x 710.655pt>
 File: appendice/V53.png Graphic file (type png)
 <use appendice/V53.png>
-Package pdftex.def Info: appendice/V53.png  used on input line 193.
+Package pdftex.def Info: appendice/V53.png  used on input line 174.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/V54.png, id=316, 1100.11pt x 710.655pt>
+<appendice/V54.png, id=329, 1100.11pt x 710.655pt>
 File: appendice/V54.png Graphic file (type png)
 <use appendice/V54.png>
-Package pdftex.def Info: appendice/V54.png  used on input line 198.
+Package pdftex.def Info: appendice/V54.png  used on input line 179.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 25.2842pt, for example:
-(fancyhdr)                \setlength{\headheight}{25.2842pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
-
-[26 <./appendice/gain29.png> <./appendice/gain31.png> <./appendice/gain33.png> <./appendice/gain35.png> <./appendice/V53.png> <./appendice/V54.png>]
-<appendice/V55.png, id=328, 1100.11pt x 710.655pt>
+<appendice/V55.png, id=330, 1100.11pt x 710.655pt>
 File: appendice/V55.png Graphic file (type png)
 <use appendice/V55.png>
-Package pdftex.def Info: appendice/V55.png  used on input line 206.
+Package pdftex.def Info: appendice/V55.png  used on input line 187.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/V56.png, id=329, 1100.11pt x 710.655pt>
+<appendice/V56.png, id=331, 1100.11pt x 710.655pt>
 File: appendice/V56.png Graphic file (type png)
 <use appendice/V56.png>
-Package pdftex.def Info: appendice/V56.png  used on input line 211.
+Package pdftex.def Info: appendice/V56.png  used on input line 192.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/V57.png, id=330, 1100.11pt x 710.655pt>
+<appendice/V57.png, id=332, 1100.11pt x 710.655pt>
 File: appendice/V57.png Graphic file (type png)
 <use appendice/V57.png>
-Package pdftex.def Info: appendice/V57.png  used on input line 218.
+Package pdftex.def Info: appendice/V57.png  used on input line 199.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
+
+Overfull \vbox (2.43457pt too high) has occurred while \output is active []
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -978,36 +995,36 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[27 <./appendice/V55.png> <./appendice/V56.png> <./appendice/V57.png>]
-<appendice/i2_0.png, id=339, 1100.11pt x 710.655pt>
+[28 <./appendice/gain33.png> <./appendice/gain35.png> <./appendice/V53.png> <./appendice/V54.png> <./appendice/V55.png> <./appendice/V56.png> <./appendice/V57.png>]
+<appendice/i2_0.png, id=345, 1100.11pt x 710.655pt>
 File: appendice/i2_0.png Graphic file (type png)
 <use appendice/i2_0.png>
-Package pdftex.def Info: appendice/i2_0.png  used on input line 246.
+Package pdftex.def Info: appendice/i2_0.png  used on input line 208.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/i2_8.png, id=340, 1100.11pt x 710.655pt>
+<appendice/i2_8.png, id=346, 1100.11pt x 710.655pt>
 File: appendice/i2_8.png Graphic file (type png)
 <use appendice/i2_8.png>
-Package pdftex.def Info: appendice/i2_8.png  used on input line 251.
+Package pdftex.def Info: appendice/i2_8.png  used on input line 213.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/pois2_0.png, id=341, 1100.11pt x 710.655pt>
+<appendice/pois2_0.png, id=347, 1100.11pt x 710.655pt>
 File: appendice/pois2_0.png Graphic file (type png)
 <use appendice/pois2_0.png>
-Package pdftex.def Info: appendice/pois2_0.png  used on input line 261.
+Package pdftex.def Info: appendice/pois2_0.png  used on input line 223.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/pois2_8.png, id=342, 1100.11pt x 710.655pt>
+<appendice/pois2_8.png, id=348, 1100.11pt x 710.655pt>
 File: appendice/pois2_8.png Graphic file (type png)
 <use appendice/pois2_8.png>
-Package pdftex.def Info: appendice/pois2_8.png  used on input line 267.
+Package pdftex.def Info: appendice/pois2_8.png  used on input line 229.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/sigma2_0.png, id=343, 1100.11pt x 710.655pt>
+<appendice/sigma2_0.png, id=349, 1100.11pt x 710.655pt>
 File: appendice/sigma2_0.png Graphic file (type png)
 <use appendice/sigma2_0.png>
-Package pdftex.def Info: appendice/sigma2_0.png  used on input line 275.
+Package pdftex.def Info: appendice/sigma2_0.png  used on input line 237.
 (pdftex.def)             Requested size: 230.52122pt x 148.90579pt.
-<appendice/sigma2_8.png, id=344, 1098.1025pt x 711.65875pt>
+<appendice/sigma2_8.png, id=350, 1098.1025pt x 711.65875pt>
 File: appendice/sigma2_8.png Graphic file (type png)
 <use appendice/sigma2_8.png>
-Package pdftex.def Info: appendice/sigma2_8.png  used on input line 281.
+Package pdftex.def Info: appendice/sigma2_8.png  used on input line 243.
 (pdftex.def)             Requested size: 230.52122pt x 149.38759pt.
 
 
@@ -1017,36 +1034,36 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[28 <./appendice/i2_0.png> <./appendice/i2_8.png> <./appendice/pois2_0.png> <./appendice/pois2_8.png> <./appendice/sigma2_0.png> <./appendice/sigma2_8.png>]
-<appendice/carta/c0.png, id=355, 1100.11pt x 709.65125pt>
+[29 <./appendice/i2_0.png> <./appendice/i2_8.png> <./appendice/pois2_0.png> <./appendice/pois2_8.png> <./appendice/sigma2_0.png> <./appendice/sigma2_8.png>]
+<appendice/carta/c0.png, id=362, 1100.11pt x 709.65125pt>
 File: appendice/carta/c0.png Graphic file (type png)
 <use appendice/carta/c0.png>
-Package pdftex.def Info: appendice/carta/c0.png  used on input line 296.
+Package pdftex.def Info: appendice/carta/c0.png  used on input line 258.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/carta/c1.png, id=356, 1100.11pt x 709.65125pt>
+<appendice/carta/c1.png, id=363, 1100.11pt x 709.65125pt>
 File: appendice/carta/c1.png Graphic file (type png)
 <use appendice/carta/c1.png>
-Package pdftex.def Info: appendice/carta/c1.png  used on input line 302.
+Package pdftex.def Info: appendice/carta/c1.png  used on input line 264.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/carta/c2.png, id=357, 1100.11pt x 709.65125pt>
+<appendice/carta/c2.png, id=364, 1100.11pt x 709.65125pt>
 File: appendice/carta/c2.png Graphic file (type png)
 <use appendice/carta/c2.png>
-Package pdftex.def Info: appendice/carta/c2.png  used on input line 310.
+Package pdftex.def Info: appendice/carta/c2.png  used on input line 272.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/carta/c3.png, id=358, 1100.11pt x 709.65125pt>
+<appendice/carta/c3.png, id=365, 1100.11pt x 709.65125pt>
 File: appendice/carta/c3.png Graphic file (type png)
 <use appendice/carta/c3.png>
-Package pdftex.def Info: appendice/carta/c3.png  used on input line 316.
+Package pdftex.def Info: appendice/carta/c3.png  used on input line 278.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/carta/c4.png, id=359, 1100.11pt x 709.65125pt>
+<appendice/carta/c4.png, id=366, 1100.11pt x 709.65125pt>
 File: appendice/carta/c4.png Graphic file (type png)
 <use appendice/carta/c4.png>
-Package pdftex.def Info: appendice/carta/c4.png  used on input line 324.
+Package pdftex.def Info: appendice/carta/c4.png  used on input line 286.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/carta/c5.png, id=360, 1100.11pt x 709.65125pt>
+<appendice/carta/c5.png, id=367, 1100.11pt x 709.65125pt>
 File: appendice/carta/c5.png Graphic file (type png)
 <use appendice/carta/c5.png>
-Package pdftex.def Info: appendice/carta/c5.png  used on input line 330.
+Package pdftex.def Info: appendice/carta/c5.png  used on input line 292.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
 
 
@@ -1056,36 +1073,36 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[29 <./appendice/carta/c0.png> <./appendice/carta/c1.png> <./appendice/carta/c2.png> <./appendice/carta/c3.png> <./appendice/carta/c4.png> <./appendice/carta/c5.png>]
-<appendice/carta/c6.png, id=373, 1100.11pt x 709.65125pt>
+[30 <./appendice/carta/c0.png> <./appendice/carta/c1.png> <./appendice/carta/c2.png> <./appendice/carta/c3.png> <./appendice/carta/c4.png> <./appendice/carta/c5.png>]
+<appendice/carta/c6.png, id=380, 1100.11pt x 709.65125pt>
 File: appendice/carta/c6.png Graphic file (type png)
 <use appendice/carta/c6.png>
-Package pdftex.def Info: appendice/carta/c6.png  used on input line 339.
+Package pdftex.def Info: appendice/carta/c6.png  used on input line 301.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/carta/c7.png, id=374, 1100.11pt x 709.65125pt>
+<appendice/carta/c7.png, id=381, 1100.11pt x 709.65125pt>
 File: appendice/carta/c7.png Graphic file (type png)
 <use appendice/carta/c7.png>
-Package pdftex.def Info: appendice/carta/c7.png  used on input line 345.
+Package pdftex.def Info: appendice/carta/c7.png  used on input line 307.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/alluminio/p0.png, id=375, 1100.11pt x 709.65125pt>
+<appendice/alluminio/p0.png, id=382, 1100.11pt x 709.65125pt>
 File: appendice/alluminio/p0.png Graphic file (type png)
 <use appendice/alluminio/p0.png>
-Package pdftex.def Info: appendice/alluminio/p0.png  used on input line 356.
+Package pdftex.def Info: appendice/alluminio/p0.png  used on input line 318.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/alluminio/p1.png, id=376, 1100.11pt x 709.65125pt>
+<appendice/alluminio/p1.png, id=383, 1100.11pt x 709.65125pt>
 File: appendice/alluminio/p1.png Graphic file (type png)
 <use appendice/alluminio/p1.png>
-Package pdftex.def Info: appendice/alluminio/p1.png  used on input line 362.
+Package pdftex.def Info: appendice/alluminio/p1.png  used on input line 324.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/alluminio/p2.png, id=377, 1100.11pt x 709.65125pt>
+<appendice/alluminio/p2.png, id=384, 1100.11pt x 709.65125pt>
 File: appendice/alluminio/p2.png Graphic file (type png)
 <use appendice/alluminio/p2.png>
-Package pdftex.def Info: appendice/alluminio/p2.png  used on input line 370.
+Package pdftex.def Info: appendice/alluminio/p2.png  used on input line 332.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/alluminio/p3.png, id=378, 1100.11pt x 709.65125pt>
+<appendice/alluminio/p3.png, id=385, 1100.11pt x 709.65125pt>
 File: appendice/alluminio/p3.png Graphic file (type png)
 <use appendice/alluminio/p3.png>
-Package pdftex.def Info: appendice/alluminio/p3.png  used on input line 376.
+Package pdftex.def Info: appendice/alluminio/p3.png  used on input line 338.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
 
 
@@ -1095,36 +1112,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[30 <./appendice/carta/c6.png> <./appendice/carta/c7.png> <./appendice/alluminio/p0.png> <./appendice/alluminio/p1.png> <./appendice/alluminio/p2.png> <./appendice/alluminio/p3.png>]
-<appendice/alluminio/p4.png, id=390, 1100.11pt x 709.65125pt>
+[31 <./appendice/carta/c6.png> <./appendice/carta/c7.png> <./appendice/alluminio/p0.png> <./appendice/alluminio/p1.png> <./appendice/alluminio/p2.png> <./appendice/alluminio/p3.png>]
+<appendice/alluminio/p4.png, id=398, 1100.11pt x 709.65125pt>
 File: appendice/alluminio/p4.png Graphic file (type png)
 <use appendice/alluminio/p4.png>
-Package pdftex.def Info: appendice/alluminio/p4.png  used on input line 385.
+Package pdftex.def Info: appendice/alluminio/p4.png  used on input line 347.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/alluminio/p5.png, id=391, 1100.11pt x 709.65125pt>
+<appendice/alluminio/p5.png, id=399, 1100.11pt x 709.65125pt>
 File: appendice/alluminio/p5.png Graphic file (type png)
 <use appendice/alluminio/p5.png>
-Package pdftex.def Info: appendice/alluminio/p5.png  used on input line 391.
+Package pdftex.def Info: appendice/alluminio/p5.png  used on input line 353.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/alluminio/p6.png, id=392, 1100.11pt x 709.65125pt>
+<appendice/alluminio/p6.png, id=400, 1100.11pt x 709.65125pt>
 File: appendice/alluminio/p6.png Graphic file (type png)
 <use appendice/alluminio/p6.png>
-Package pdftex.def Info: appendice/alluminio/p6.png  used on input line 401.
+Package pdftex.def Info: appendice/alluminio/p6.png  used on input line 363.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-<appendice/alluminio/p7.png, id=393, 1100.11pt x 709.65125pt>
+<appendice/alluminio/p7.png, id=401, 1100.11pt x 709.65125pt>
 File: appendice/alluminio/p7.png Graphic file (type png)
 <use appendice/alluminio/p7.png>
-Package pdftex.def Info: appendice/alluminio/p7.png  used on input line 407.
+Package pdftex.def Info: appendice/alluminio/p7.png  used on input line 369.
 (pdftex.def)             Requested size: 230.52122pt x 148.69548pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 25.2842pt, for example:
-(fancyhdr)                \setlength{\headheight}{25.2842pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
-
-[31 <./appendice/alluminio/p4.png> <./appendice/alluminio/p5.png> <./appendice/alluminio/p6.png> <./appendice/alluminio/p7.png>])
+)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 25.2842pt, for example:
@@ -1132,7 +1141,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-13.2842pt}.
 
-[32] (aux/beta.aux)
+[32 <./appendice/alluminio/p4.png> <./appendice/alluminio/p5.png> <./appendice/alluminio/p6.png> <./appendice/alluminio/p7.png>] (aux/beta.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1141,18 +1150,18 @@ Package rerunfilecheck Info: File `beta.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 14491 strings out of 469504
- 238767 string characters out of 5470380
- 764387 words of memory out of 5000000
- 42794 multiletter control sequences out of 15000+600000
+ 14498 strings out of 469504
+ 238988 string characters out of 5470380
+ 764534 words of memory out of 5000000
+ 42802 multiletter control sequences out of 15000+600000
  639142 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,15n,84p,1553b,521s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on aux/beta.pdf (32 pages, 1810623 bytes).
+ 75i,15n,84p,1552b,566s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on aux/beta.pdf (32 pages, 1842246 bytes).
 PDF statistics:
- 524 PDF objects out of 1000 (max. 8388607)
- 377 compressed objects within 4 object streams
- 162 named destinations out of 1000 (max. 500000)
- 346 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 530 PDF objects out of 1000 (max. 8388607)
+ 380 compressed objects within 4 object streams
+ 161 named destinations out of 1000 (max. 500000)
+ 351 words of extra memory for PDF output out of 10000 (max. 10000000)
 

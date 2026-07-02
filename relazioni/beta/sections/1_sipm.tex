@@ -7,7 +7,7 @@
 {\color{gray}\hrule}
 \end{center}
 Per la prima parte dell'esperienza, volta allo studio di un \textit{Silicon photomultiplier} (SiPM) a 667 celle in 1.3x1.3 mm$^2$, l'apparato sperimentale impiegato è compreso nel kit CAEN di caratterizzazione dei fotomoltiplicatori al silicio e permette di fornire una risposta \textit{lineare} all'energia depositata sul rivelatore. Il kit sperimentale è composto da un'unità di alimentazione e amplificazione in tensione (PSAU) con SiPM integrato, che fornisce un segnale analogico in tensione proporzionale alla carica generata dal rivelatore; tale segnale viene acquisito da un \textit{Digitizer}, il quale lo discretizza in canali (CHN) per la successiva analisi. \\
-La caratterizzazione del SiPM è stata svolta dapprima in assenza di una sorgente luminosa, cioè azzerando il numero di fotoni esterni incidenti. In questo modo è possibile isolare e analizzare il rumore intrinseco del SiPM, consistente in fluttuazioni dovute alla generazione localizzata e casuale di coppie lacuna-elettrone; tali coppie si formano per agitazione termica - ogni volta che $E_{term}>E_{gap}$ - e sono sufficienti ad innescare il singolo pixel. Successivamente si osserva il SiPM in azione in presenza di una sorgente luminosa:  tramite una fibra ottica, un \textit{LED driver} invia a bassa frequenza al SiPM  impulsi luminosi (fotoni nel violetto $\lambda= (400 \pm 14)$nm) di intensità regolabile.
+La caratterizzazione del SiPM è stata svolta dapprima in assenza di una sorgente luminosa, cioè azzerando il numero di fotoni esterni incidenti. In questo modo è possibile isolare e analizzare il rumore intrinseco del SiPM, consistente in fluttuazioni dovute alla generazione localizzata e casuale di coppie lacuna-elettrone; tali coppie si formano per agitazione termica ogni volta che $E_{term}>E_{gap}$ e sono sufficienti ad innescare il singolo pixel. Successivamente si osserva il SiPM in azione in presenza di una sorgente luminosa:  tramite una fibra ottica, un \textit{LED driver} invia a bassa frequenza al SiPM  impulsi luminosi (fotoni nel violetto $\lambda= (400 \pm 14)$nm) di intensità regolabile.
 
 \subsection{Caratterizzazione di un SiPM senza sorgente luminosa}
 \subsubsection{\textit{Dark Count Rate} e \textit{Optical Cross Talk}}
@@ -114,10 +114,27 @@ Fissati una tensione di alimentazione $V_{bias}$, un \textit{gain} di amplificaz
 \begin{figure} [H] 
     \centering
     \includegraphics[width=0.60\linewidth]{fig1/led_gsipm.png}
-    \caption{ \footnotesize Istogramma dei conteggi per numero di canale a $V_{BIAS}=55$V, $G_{ampl}=29$dB, intensità del LED di 2.8. e fit gaussiani ditinguibili dal colore (per ciascun fit parametri estratti, d.o.f e $\chi^2$ sono riportati nella tabella \ref{tab:gsipm} in appendice)}
+    \caption{ \footnotesize Istogramma dei conteggi per numero di canale a $V_{BIAS}=55$V, $G_{ampl}=29$dB, intensità del LED di 2.8. e fit gaussiani ditinguibili dal colore (per ciascun fit parametri estratti, d.o.f e $\chi^2$ sono riportati nella tabella \ref{tab:gsipm})}
     \label{fig:LED_Gsipm}
 \end{figure}
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        
+        \textbf{N. picco} & \textbf{$\mathbf{\chi^2}$ fit} & \textbf{d.o.f.} &$\mathbf{(p_i\pm\sigma_{p,i})}$\textbf{[CHN]} & $\mathbf{\Delta_{pp}}$\textbf{[CHN]} \\ \hline
+        
+        0   & 27 & 27 & $1\pm8$ & \textbf{X} \\ \hline
+        1   & 40 & 52 & $233\pm12$    & $232\pm15$ \\ \hline
+        2   & 72 & 71 & $463\pm17$    & $230\pm20$ \\ \hline        
+        3   & 100 & 82 & $690\pm20$   & $230\pm30$ \\ \hline
+        4   & 96 & 97 & $920\pm30$    & $230\pm40$ \\ \hline
+        5   & 141 & 117 & $1150\pm40$ & $230\pm50$ \\ \hline
+    \end{tabular}
+    \caption{\footnotesize Coordinate dei picchi, parametri dei fit e stime di $\Delta_{pp}$ utilizzate per il calcolo di $G_{SiPM}$.}
+    \label{tab:gsipm}   
+\end{table}
 \textit{Osseravzione.} Ciascun picco del grafico \ref{fig:LED_Gsipm} rappresenta un diverso numero di celle accese e la sua altezza rappresenta la quantità di volte in cui ciò avviene: in particolare, il primo rappresenta gli eventi in cui il trigger si è attivato, ma non si sono rilevati fotoni, mentre i successivi rappresentano 1, 2,... fotoni incidenti.
 
 Inoltre, è possibile notare che i picchi sono equidistanti di $\Delta_{pp}$, corrispondente alla carica raccolta da una singola cella. Effettuando dei fit guassiani sui primi 6 picchi, da cui si estraggono i valori attesi $p_i$ e le rispettive deviazioni standard $\sigma_{p,i}$ (vedi Tabella \ref{tab:gsipm} in appendice), si possono calcolare diverse stime $\Delta_{pp, i}$ tra picchi consecutivi. Dopo aver dimostrato che queste appartengono alla stessa popolazione tramite test di Gauss, se ne fa una media pesata ottenendo $$ \langle\Delta_{pp}\rangle= (231  \pm  11 ) \text{CHN} $$
@@ -132,7 +149,7 @@ In conclusione, si può ottenere una prima stima del guadagno del SiPM dalla seg
 \subsubsection{Verifica della linearità dell'amplificazione della carica}
 In questa sezione, si vuole dimostrare che l'intensità del segnale associata all'accensione di una singola cella $\Delta_{pp}$ cresce linearmente con l'amplificazione $G_{ampl}$; perciò a intensità del LED di 2.5 e $V_{bias}=55$V fissate, si acquisiscono gli spettri dei fotoelettroni al variare di $G_{ampl}$. \\
 Da ogni spettro si ricavano le rispettive stime di $\langle\Delta_{pp}\rangle_j$ e le relative incertezze (riportate in tabella \ref{tab:gain}) seguendo lo stesso procedimento descritto nel paragrafo precedente 1.2.1. Tutti gli spettri sono riportati nell'appendice \ref{sec:app_gain}.
-
+\newpage
 \begin{multicols}{2}
 \begin{figure} [H]
     \centering
@@ -172,7 +189,7 @@ Allo stesso modo, il valore di $b$ ottenuto risulta statisticamente compatibile 
 Al fine di poter studiare l'andamento del guadagno del SiPM $G_{SiPM}$ in funzione di $V_{bias}$ vengono mantenuti costanti l'intensità del LED a 2.5 e il \textit{gain} di amplificazione a $29$dB.\\
 Sperimentalmente è possibile ripetere la stessa procedura vista nel paragrafo precedente per l'ottenimento delle stime di $\langle\Delta_{pp}\rangle$ da ogni spettro e dunque stimare il $G_{SiPM}$ usando la relazione \ref{eq:GSiPM} al variare della tensione $V_{bias}$. In appendice 5.2.3 sono riportati tutti gli spettri di fotoelettroni. \\
 Si ottengono così cinque coppie di valori di ($G_{SiPM,k}$, $V_{bias,k}$), riportate in tabella \ref{tab:vbias}, le quali suggeriscono un andamento lineare e crescente; per verificare tale ipotesi, si è effettuata una regressione lineare sui dati, riportata in figura \ref{fig:vbias_G}.
-
+\newpage
 \begin{multicols}{2}
 \begin{figure} [H]
     \centering
@@ -213,10 +230,25 @@ Si determina infine il numero medio di celle del SiPM colpite per 3 diverse inte
 \begin{figure} [H]
     \centering
     \includegraphics[width=.65\linewidth]{fig1/led_2_5.png}
-    \caption{ \footnotesize Istogramma dei conteggi per numero di canale a $V_{BIAS}=55$V, $G_{ampl}=29$dB, intensità del LED di 2.5. e fit gaussiani distinguibili dal colore (per ciascun fit d.o.f e $\chi^2$ sono riportati nella tabella \ref{tab:led2_5} in appendice)}
+    \caption{ \footnotesize Istogramma dei conteggi per numero di canale a $V_{BIAS}=55$V, $G_{ampl}=29$dB, intensità del LED di 2.5. e fit gaussiani distinguibili dal colore (per ciascun fit d.o.f e $\chi^2$ sono riportati nella tabella \ref{tab:led2_5})}
     \label{fig:led_I_2_5}
 \end{figure}
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        
+        \textbf{N. picco} & \textbf{$\mathbf{\chi^2}$ fit} & \textbf{d.o.f.} &$\mathbf{(p_i\pm\sigma_{p,i})}$\textbf{[CHN]} & $\mathbf{\Delta_{pp}}$\textbf{[CHN]} \\ \hline
+        
+        0   & 46 & 37 & $1\pm8$ & \textbf{X} \\ \hline
+        1   & 65 & 52 & $234\pm12$    & $232\pm15$ \\ \hline
+        2   & 67 & 72 & $463\pm17$    & $230\pm20$ \\ \hline        
+        3   & 71 & 77 & $690\pm20$   & $230\pm30$ \\ \hline
+    \end{tabular}
+    \caption{\footnotesize Coordinate dei picchi, parametri dei fit e stime di $\Delta_{pp}$ utilizzate per il calcolo di $\mu_{ph}$ a $I_{LED} = 2.5$}
+    \label{tab:led2_5}   
+\end{table}
 Il numero medio di fotoelettroni può essere stimato in due modi, uno più approssimativo e uno più accurato.
 
 Il metodo approssimativo consiste nello stimare la media dell'istogramma $\langle CHN\rangle$ e la distanza media tra i picchi $\langle\Delta_{pp}\rangle$: il numero medio di fotoelettroni è stimato dal rapporto
@@ -246,6 +278,7 @@ Per i tre spettri acquisiti al variare di $I_{LED}$, queste regressioni non vann
 Per ciascun valore di $I_{LED}$ si verifica inoltre la relazione, prevista dalla teoria, tra le varianze dei picchi gaussiani
 $$ \sigma^2_{N} = \sigma^2_{0} + N\sigma^2_{p} $$
 in cui $\sigma_0^2$ è la varianza del picco corrispondente a 0 fotoelettroni, N è il numero di picco e $\sigma^2_p$ è una costante.
+\newpage
 \begin{multicols}{2}
     \begin{figure} [H]
     \centering
@@ -262,4 +295,4 @@ in cui $\sigma_0^2$ è la varianza del picco corrispondente a 0 fotoelettroni, N
 \end{multicols}
 Il fit lineare non va a buon fine in nessuno dei tre casi, probabilmente per una sottostima delle incertezze sulle varianze, stimate dalle incertezze sui parametri $\sigma_N$ delle gaussiane.
 
-I grafici dello spettro eneregetico, dell'istogramma delle aree e del grafico delle varianze per gli altri due valori di $I_{LED}$ si trovano in appendice 5.2.4.
+I grafici dello spettro energetico, dell'istogramma delle aree e del grafico delle varianze per gli altri due valori di $I_{LED}$ si trovano in appendice 5.2.4.

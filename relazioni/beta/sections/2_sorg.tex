@@ -1,4 +1,5 @@
-\newpage
+%\newpage
+\bigskip
 {\color{gray}\hrule}
 \begin{center}
 \section{Rivelazione della radiazione $\beta^{-}$}
@@ -174,7 +175,7 @@ Si grafica il rate in funzione del numero di foglietti e si effettua sui dati un
 Questa volta, dal fit si estrae il prodotto $c=\mu_{Al}d_{Al}$, allora la stima dello spessore di un singolo foglietto di alluminio usando il valore teorico di $\mu_{Al}$ è $$d_{Al}= ( 0.04 \pm 0.03 ) \text{ mm}$$
 
 Come per la carta, all'aumentare del numero di foglietti di alluminio la parte di spettro che subisce un maggior assorbimento è quella in corrispondenza delle basse energie.
-\newpage
+%\newpage
 \subsection{Spettro ${}^{137}\text{Cs}$}
 Nel $94.6\%$ dei casi il decadimento del Cesio-137 in Bario-137 avviene tramite emissione $\beta^-$ seguendo la reazione $$^{137}\mathrm{Cs} \rightarrow {}^{137}\mathrm{Ba(^*)} + e^- + \bar{\nu}_e $$
 dove $^{137}\mathrm{Ba(^*)}$ è una forma instabile del Bario-137, la quale a sua volta può diseccitarsi emettendo un $\gamma$ con una probabilità dell'85.1$\%$:
@@ -228,24 +229,80 @@ la quale convertita in energia risulta essere $$T_{max,Cs}= ( 100 \pm 20 ) \text
     }
     \label{fig:cs_tmax}
 \end{figure}
-\newpage
+%\newpage
 Questa stima \textit{non} risulta statisticamente compatibile con il valore atteso (Z-score$=2.26$)
 $$T_\text{max,Cs,att} = (153.6\pm0.3)\text{keV}$$
 Questo è probabilmente dovuto in primo luogo al fatto che l'incertezza associata al massimo deriva da quelle sui parametri dei fit (e risulta quindi sottostimata), in secondo luogo al fatto che intorno al massimo, come si vedrà nella sezione successiva, l'andamento dell'istogramma è la sovrapposizione di diversi massimi locali che è stato necessario accorpare per poter determinare un solo massimo globale: questo ha probablimente influito nel peggiorare la stima di $T_\text{max,Cs}$
-
+\newpage
 \subsubsection{Verifica della risoluzione attesa $\mathbf{R_{att}}$}
-Si vuole ora stimare la risoluzione sperimentale dell'apparato; a tal fine si è acquisito uno spettro con zoom a bassi canali. 
+Si vuole ora stimare la risoluzione attesa dalle caratteristiche dell'apparato sul picco di conversione interna; a tal fine si è acquisito uno spettro con zoom sui bassi canali. 
 
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.82\linewidth]{fig2/fit_picchi.png}
+    \includegraphics[width=0.82\linewidth]{fig2/fit_picchi_zoom.png}
     \caption{ \footnotesize Istogramma di conteggi per numero di canale per il ${}^{137}$Cs con zoom a bassi canali ($G_{ampl}=28$dB, $V_{bias}=54$V).}
     \label{fig:cesio-zoom1}
 \end{figure}
 
-Dal grafico \ref{fig:cesio-zoom1} si osservano i singoli picchi delle celle del SiPM accese, per ciascuno dei quali è stato effettuato un fit gaussiano da cui si sono estratti i valori medi $p_i$ e le rispettive deviazioni standard $\sigma_{p,i}$. Si possono allora calcolare diverse stime $\Delta_{pp, i}$ (vedi Tabella \ref{tab:zoomcs}) tra picchi consecutivi e dopo aver dimostrato che queste appartengono alla stessa popolazione tramite il test di Gauss, si calcolano la media pesata $\langle\Delta_{pp}\rangle$ e la sua incertezza $\sigma_{pp}$, ottenendo $$ \langle\Delta_{pp}\rangle= ( 1.7  \pm  0.3  )\cdot10^{2}\text{ CHN} $$
+Dal grafico \ref{fig:cesio-zoom1} si osservano i singoli picchi delle celle del SiPM accese, per ciascuno dei quali è stato effettuato un fit gaussiano da cui si sono estratti i valori medi $p_i$ e le rispettive deviazioni standard $\sigma_{p,i}$. Si possono allora calcolare diverse stime $\Delta_{pp, i}$ (vedi Tabella \ref{tab:zoomcs}) tra picchi consecutivi e dopo aver dimostrato che queste appartengono alla stessa popolazione tramite il test di Gauss, si calcolano la media pesata $\langle\Delta_{pp}\rangle$ e la sua incertezza, ottenendo $$ \langle\Delta_{pp}\rangle= ( 1.7  \pm  0.3  )\cdot10^{2}\text{ CHN} $$
 
-Si è verificato infine che la risoluzione attesa dalle caratteristiche dello strumento $$R_{att}=\sqrt{ \frac{\langle\Delta_{pp}\rangle}{\langle CHN\rangle_{ci}} \cdot \left( 1 + \left(\frac{\sigma_{pp}}{\langle\Delta_{pp}\rangle} \right)^2 \right)} =  0.095 \pm  0.009  $$ 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        
+	\textbf{N. picco} & \textbf{$\mathbf{\chi^2}$ fit} & \textbf{d.o.f.} &$\mathbf{(p_i\pm\sigma_{p,i})}$\textbf{[CHN]} & $\mathbf{\Delta_{pp}}$\textbf{[CHN]} \\ \hline
+        1   & 8 & 8 & $1430\pm50$    & \textbf{X} \\ \hline
+        2   & 4 & 5 & $1600\pm40$    & $170\pm60$ \\ \hline        
+        3   & 11 & 6 & $1780\pm50$  & $170\pm70$ \\ \hline
+        4   & 16 & 8 & $1950\pm60$   & $170\pm70$ \\ \hline
+        5   & 13 & 9 & $2130\pm60$ & $180\pm80$ \\ \hline
+        6   & 9 & 9 & $2300\pm 70$ & $170\pm90$ \\ \hline
+        7   & 11 & 7 & $2480\pm60$ & $180\pm90$ \\ \hline
+        8   & 6 & 7 & $2660\pm60$ & $170\pm90$ \\ \hline
+        9   & 10 & 8 & $2830\pm70$ & $170\pm100$ \\ \hline
+        10   & 5 & 7 & $3000\pm70$ & $170\pm100$ \\ \hline
+    \end{tabular}
+    \caption{\footnotesize Coordinate dei picchi, parametri dei fit e stime di $\Delta_{pp}$ utilizzate per il calcolo di $\langle\Delta_{pp}\rangle$ .}
+    \label{tab:zoomcs}   
+\end{table}
+
+Dalla teoria è noto che l'andamento delle deviazioni standard dei picchi
+$\sigma_{p,i}$ è
+$$\sigma_{p,i} = \sqrt{\sigma^2_0+N\sigma^2_p} \approx\sqrt{N}\sigma_p$$
+dove $N$ è il numero di celle del SiPM accese corrispondente all'i-esimo picco e
+$\sigma_p$ è (circa) la deviazione standard del picco corrispondente a una sola cella
+accesa:
+si è dunque stimato il numero di celle accese corrispondente al primo picco fittato
+(come $\frac{p_1}{\langle\Delta_{pp}\rangle}\approx8$) e si è associato ai picchi
+successivi un numero crescente di celle accese.\\
+Il grafico di $\sigma_{p,i}$ in funzione di $\sqrt{N}$ è riportato in figura
+\ref{fig:sigma_cs}.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.65\linewidth]{fig2/cs137_sigma.png}
+    \caption{ \footnotesize Grafico dei dati $(\sqrt{N},\sigma_{p,i})$ con fit
+    lineare $y=mx+q$ e parametri estratti $m = (26\pm3)$CHN, $q = (-33\pm10)$CHN,
+    $\chi^2=12$ e d.o.f.$=6$.}
+    \label{fig:sigma_cs}
+\end{figure}
+Si è effettuata una regressione lineare su tutti i dati tranne il primo e l'ultimo
+che, per errori sistematici sconosciuti, non seguono l'andamento approssimativamente
+lineare degli altri: la regressione va a buon fine, anche se il termine noto non
+risulta compatibile con 0, come previsto dalla teoria.\\
+Dal coefficiente angolare si stima il valore
+$$\sigma_p = (26\pm3)\text{CHN}$$
+
+Si utilizza ora questo parametro, caratteristico dello strumento, per stimare la
+risoluzione attesa del picco di conversione interna: detto
+$N_{ci}:=\frac{\langle\text{CHN}\rangle_{ci}}{\langle\Delta_{pp}\rangle}$ il numero
+di celle accese per il picco di conversione interna, essa vale
+
+$$R_{att}=\sqrt{ \left(\frac{1}{\sqrt{N_{ci}}}\right)^2 +
+\left(\frac{1}{\sqrt{N_{ci}}}\frac{\sigma_p}{\langle\Delta_{pp}\rangle}\right)^2}=
+0.10\pm0.03
+$$
+
 è statisticamente compatibile con quella sperimentale $R_{exp}$ (\ref{eq:R_exp}).
 
 
